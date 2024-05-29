@@ -1,0 +1,16 @@
+/* frontend/static/css/styles.css */
+.iconos-ordenadores {
+    display: flex;
+    flex-wrap: wrap;
+}
+  
+.icono-ordenador {
+    margin: 10px;
+    text-align: center;
+}
+
+.icono-ordenador img {
+    width: 100px; /* Ajusta el tamaño según sea necesario */
+    height: auto;
+}
+  
