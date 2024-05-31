@@ -1,5 +1,5 @@
 ---
-- name: Escanear red local y generar inventario
+- name: Escanear red local
   hosts: localhost
   gather_facts: no
   tasks:
@@ -11,9 +11,9 @@
 
     - name: Crear lista de hosts que respondieron al ping
       set_fact:
-        live_hosts: "{{ ping_result.results | selectattr('ping', 'eq', 'pong') | map(attribute='ansible_host') | list }}"
+        live_hosts: "{{ ping_result | selectattr('ansible_facts.ping', 'defined') | map(attribute='ansible_host') | list }}"
 
     - name: Escribir inventario dinámico
       template:
-        src: inventory_template.ini
+        src: templates/inventory_template.ini.j2
         dest: "{{ playbook_dir }}/inventory.ini"
