@@ -16,10 +16,9 @@ Including another URLconf
 # backend/admin_web_project_dj/admin_web_project_dj/urls.py
 from django.contrib import admin
 from django.urls import path, include
-from admin_web_app import views 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('testing_page/', views.testing_page, name='testing_page'),
+    path('', include('admin_web_app.urls')),
 ]
 
