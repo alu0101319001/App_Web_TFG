@@ -12,7 +12,7 @@ sudo apt install -y python3 python3-pip
 sudo apt install -y ansible
 
 # Crear y activar un entorno virtual para el proyecto Django
-python3 -m venv venv
+python3 -m venv .env
 source venv/bin/activate
 
 # Instalar Django y otras dependencias del proyecto Django
