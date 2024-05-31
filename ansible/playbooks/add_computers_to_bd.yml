@@ -1,0 +1,6 @@
+---
+- name: Añadir ordenadores a la base de datos de Django
+  hosts: ordenadores
+  tasks:
+    - name: Ejecutar script Django para añadir ordenadores
+      script: scripts/add_computers.py

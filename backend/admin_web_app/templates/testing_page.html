@@ -1,0 +1,23 @@
+<!-- backend/admin_web_project_dj/admin_web_app/templates/testing_page.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Página de Ejemplo</h1>
+<div class="iconos-ordenadores">
+  <!-- Iterar sobre los datos de los ordenadores -->
+  {% for computer in computers %}
+    <div class="icono-ordenador">
+      {% if computer.state_icon %}
+        <img src="{{ computer.state_icon.url }}" alt="Icono de Ordenador">
+      {% else %}
+        <img src="{% static 'img/computer-' %}{{ computer.state }}{% static '.png' %}" alt="Icono de Ordenador">
+      {% endif %}
+      <p>{{ computer.name }}</p>
+      <p>Estado: {{ computer.state }}</p>
+      <p>MAC: {{ computer.mac }}</p>
+      <p>IP: {{ computer.ip }}</p>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}
