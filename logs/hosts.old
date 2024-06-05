@@ -1,0 +1,56 @@
+# Fichero generado automaticamente a partir de /etc/hosts_cabecera
+# y lo obtendio por /root/bin/arp2hosts.sh
+# NO EDITAR su contenido sera borrado periodicamente. 
+# Añadir lo que se quiera conservar en /etc/hosts_cabecera
+
+
+127.0.0.1	localhost
+10.209.2.232	maserver.isaatc.ull.es	maserver
+
+193.145.102.231	ucanca.isaatc.ull.es	ucanca
+	
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+
+# actualizado en 2024-06-05T13:04:11+01:00
+10.209.2.33	p1-019-00.isaatc.ull.es	p1-019-00	# 64:51:06:2f:56:ce
+10.209.2.15	p1-019-11.isaatc.ull.es	p1-019-11	# 8c:dc:d4:2e:37:07
+10.209.2.112	p1-019-12.isaatc.ull.es	p1-019-12	# 08:2e:5f:21:df:2b
+10.209.2.63	p1-019-16.isaatc.ull.es	p1-019-16	# 3c:d9:2b:4d:0a:6f
+10.209.2.184	p1-019-21.isaatc.ull.es	p1-019-21	# 64:51:06:61:3b:06
+10.209.2.113	p1-019-23.isaatc.ull.es	p1-019-23	# 64:51:06:5f:6f:bc
+10.209.2.46	p1-019-24.isaatc.ull.es	p1-019-24	# c4:34:6b:5e:5e:b4
+10.209.2.144	p1-019-25.isaatc.ull.es	p1-019-25	# 24:be:05:21:0e:03
+10.209.2.77	p1-019-26.isaatc.ull.es	p1-019-26	# 24:be:05:0f:be:15
+10.209.2.25	p1-019-28.isaatc.ull.es	p1-019-28	# 2c:41:38:99:6d:a3
+10.209.2.81	p1-019-31.isaatc.ull.es	p1-019-31	# 64:51:06:5f:76:dc
+10.209.2.29	p1-019-32.isaatc.ull.es	p1-019-32	# c4:34:6b:7a:ad:ea
+10.209.2.94	p1-019-33.isaatc.ull.es	p1-019-33	# a0:d3:c1:1d:b0:8e
+10.209.2.53	p1-019-34.isaatc.ull.es	p1-019-34	# 64:51:06:60:af:4d
+10.209.2.188	p1-019-35.isaatc.ull.es	p1-019-35	# a0:d3:c1:33:9a:82
+10.209.2.171	p1-019-36.isaatc.ull.es	p1-019-36	# c4:34:6b:74:b0:cb
+10.209.2.23	p1-019-37.isaatc.ull.es	p1-019-37	# 3c:d9:2b:59:d9:73
+10.209.2.179	p1-019-38.isaatc.ull.es	p1-019-38	# e8:39:35:5d:e3:34
+10.209.2.115	p1-019-41.isaatc.ull.es	p1-019-41	# 24:be:05:15:56:1c
+10.209.2.129	p1-019-42.isaatc.ull.es	p1-019-42	# 3c:d9:2b:49:3b:4f
+10.209.2.42	p1-019-43.isaatc.ull.es	p1-019-43	# 24:be:05:04:b3:4c
+10.209.2.177	p1-019-44.isaatc.ull.es	p1-019-44	# 2c:44:fd:39:8b:67
+10.209.2.148	p1-019-45.isaatc.ull.es	p1-019-45	# 08:2e:5f:15:69:bb
+10.209.2.65	p1-019-46.isaatc.ull.es	p1-019-46	# 24:be:05:09:19:48
+10.209.2.116	p1-019-47.isaatc.ull.es	p1-019-47	# a0:d3:c1:0f:f2:1a
+10.209.2.49	p1-019-48.isaatc.ull.es	p1-019-48	# b4:b5:2f:ab:4b:0d
+10.209.2.37	p1-020-05.isaatc.ull.es	p1-020-05	# b4:b5:2f:ac:ee:dd
+10.209.2.100	p1-020-06.isaatc.ull.es	p1-020-06	# 6c:3b:e5:3e:8f:4a
+10.209.2.50	p1-020-07.isaatc.ull.es	p1-020-07	# 74:46:a0:b4:ec:ee
+10.209.2.175	p1-020-08.isaatc.ull.es	p1-020-08	# 74:46:a0:c0:0e:94
+10.209.2.44	p1-020-09.isaatc.ull.es	p1-020-09	# 2c:44:fd:0f:4c:a3
+10.209.2.196	p1-020-11.isaatc.ull.es	p1-020-11	# 2c:44:fd:18:76:54
+10.209.2.34	p1-020-13.isaatc.ull.es	p1-020-13	# 2c:41:38:a4:2a:b8
+10.209.2.151	p1-020-21.isaatc.ull.es	p1-020-21	# 10:60:4b:74:cc:1c
+10.209.2.24	p1-020-22.isaatc.ull.es	p1-020-22	# 24:be:05:25:21:10
+10.209.2.167	p1-020-90.isaatc.ull.es	p1-020-90	# 2c:44:fd:37:4e:e7

@@ -1,0 +1,14 @@
+---
+- name: Ejecutar script de escaneo en localhost
+  hosts: localhost
+  tasks:
+    - name: Ejecutar script
+      shell: "../../app/admin_web_app/management/bash/scan_lab_by_arp.sh p1-019-"
+      register: script_output
+      become: true
+
+    - name: Guardar salida del script
+      copy:
+        content: "{{ script_output.stdout_lines | join('\n') }}"
+        dest: ../../outputs/ansible_scan_output.log
+      delegate_to: localhost

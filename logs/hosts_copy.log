@@ -1,0 +1,27 @@
+# Fichero generado automaticamente a partir de /etc/hosts_cabecera
+# y lo obtendio por /root/bin/arp2hosts.sh
+# NO EDITAR su contenido sera borrado periodicamente. 
+# Añadir lo que se quiera conservar en /etc/hosts_cabecera
+
+
+127.0.0.1	localhost
+10.209.2.232	maserver.isaatc.ull.es	maserver
+
+193.145.102.231	ucanca.isaatc.ull.es	ucanca
+	
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+
+# actualizado en 2024-06-05T17:17:57+01:00
+10.209.2.33	p1-019-00.isaatc.ull.es	p1-019-00	# 64:51:06:2f:56:ce
+10.209.2.15	p1-019-11.isaatc.ull.es	p1-019-11	# 8c:dc:d4:2e:37:07
+10.209.2.184	p1-019-21.isaatc.ull.es	p1-019-21	# 64:51:06:61:3b:06
+10.209.2.113	p1-019-23.isaatc.ull.es	p1-019-23	# 64:51:06:5f:6f:bc
+10.209.2.25	p1-019-28.isaatc.ull.es	p1-019-28	# 2c:41:38:99:6d:a3
+10.209.2.188	p1-019-35.isaatc.ull.es	p1-019-35	# a0:d3:c1:33:9a:82
+10.209.2.171	p1-019-36.isaatc.ull.es	p1-019-36	# c4:34:6b:74:b0:cb
