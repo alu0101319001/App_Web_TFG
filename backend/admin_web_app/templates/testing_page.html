@@ -1,23 +1,37 @@
 <!-- backend/admin_web_project_dj/admin_web_app/templates/testing_page.html -->
-{% extends 'base.html' %}
-{% load static %}
-
-{% block content %}
-<h1>Página de Ejemplo</h1>
-<div class="iconos-ordenadores">
-  <!-- Iterar sobre los datos de los ordenadores -->
-  {% for computer in computers %}
-    <div class="icono-ordenador">
-      {% if computer.state_icon %}
-        <img src="{{ computer.state_icon.url }}" alt="Icono de Ordenador">
-      {% else %}
-        <img src="{% static 'img/computer-' %}{{ computer.state }}{% static '.png' %}" alt="Icono de Ordenador">
-      {% endif %}
-      <p>{{ computer.name }}</p>
-      <p>Estado: {{ computer.state }}</p>
-      <p>MAC: {{ computer.mac }}</p>
-      <p>IP: {{ computer.ip }}</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Web App</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Admin Web App</h1>
+    </header>
+    <div class="container">
+        <aside class="sidebar">
+            <!-- Aquí van las opciones globales -->
+        </aside>
+        <main class="main-content">
+          <div class="computers-grid">
+            {% for computer in computers %}
+                <div class="computer-icon">
+                  <img src="{% static 'img/' %}{{ computer.icon }}" alt="{{ computer.name }}">
+                    <p>{{ computer.name }}</p>
+                    <a href="{% url 'computer_detail' computer.pk %}">Detalles</a>
+                </div>
+            {% endfor %}
+        </div>
+        </main>
     </div>
-  {% endfor %}
-</div>
-{% endblock %}
+    <footer>
+        <p>© 2024 Admin Web App</p>
+    </footer>
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>
+

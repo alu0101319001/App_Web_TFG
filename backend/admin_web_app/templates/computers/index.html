@@ -1,0 +1,21 @@
+<!-- backend/admin_web_project_dj/admin_web_app/templates/computers/index.html -->
+{% extends 'computers/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="computers-grid">
+    {% for computer in computers %}
+        <div class="computer-icon" onclick="openComputerDetail('{{ computer.id }}')">
+            <img src="{% static 'img/' %}{{ computer.icon }}" alt="{{ computer.name }}">
+            <p>{{ computer.name }}</p>
+        </div>
+    {% endfor %}
+</div>
+
+<script>
+    function openComputerDetail(computerId) {
+        var url = "{% url 'computer_detail' 0 %}".replace('0', computerId);
+        window.open(url, 'popup', 'top=100, left=100, width=599, height=680, toolbar=NO, resizable=NO, Location=NO, Menubar=NO, Titlebar=NO, Status=NO');
+    }
+</script>
+{% endblock %}

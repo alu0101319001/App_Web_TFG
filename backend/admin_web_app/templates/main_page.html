@@ -1,7 +1,60 @@
-<!-- admin_web_app/templates/pagina_principal.html -->
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración de Ordenadores</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        /* Inline styles here if needed */
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 bg-light">
+            <h5>Comandos Globales</h5>
+            <!-- Aquí se pueden agregar los filtros y comandos -->
+        </div>
+        <div class="col-md-10">
+            <h3>Ordenadores</h3>
+            <div class="computer-grid">
+                {% for computer in computers %}
+                <div class="computer-icon {{ computer.status }}" data-toggle="modal" data-target="#computerModal-{{ forloop.counter }}">
+                    <img src="{% static 'img/' %}{{ computer.icon }}" alt="{{ computer.name }}" class="img-fluid">
+                    <p>{{ computer.name }}</p>
+                </div>
 
-{% block content %}
-<h1>Bienvenido a la Página Principal</h1>
-<p>Este es el contenido de la página principal.</p>
-{% endblock %}
+                <!-- Modal -->
+                <div class="modal fade" id="computerModal-{{ forloop.counter }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">{{ computer.name }}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Opciones para este ordenador -->
+                                <button class="btn btn-primary">Opción 1</button>
+                                <button class="btn btn-secondary">Opción 2</button>
+                                <!-- Agrega más opciones según sea necesario -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>
