@@ -15,7 +15,7 @@
 
     - name: Cargar inventario dinámico
       set_fact:
-        dynamic_inventory: "{{ inventory_output.stdout | from_json }}"
+        dynamic_inventory: "{{ inventory_output.stdout | from_yaml }}"
 
     - name: Depurar inventario dinámico
       debug:
@@ -24,8 +24,13 @@
     - name: Crear contenido del archivo de inventario
       set_fact:
         inventory_content: |
-          {% for host in dynamic_inventory.all.hosts %}
-          {{ host.hostname }} ansible_host={{ host.ansible_host }} mac_address={{ host.mac_address }} status={{ host.status }}
+          [online]
+          {% for host, info in dynamic_inventory.items() if info.status %}
+          {{ host }} ansible_host={{ info.ansible_host }} mac_address={{ info.mac_address }} status={{ info.status }}
+          {% endfor %}
+          [offline]
+          {% for host, info in dynamic_inventory.items() if not info.status %}
+          {{ host }} ansible_host={{ info.ansible_host }} mac_address={{ info.mac_address }} status={{ info.status }}
           {% endfor %}
 
     - name: Guardar el inventario en un archivo
@@ -35,16 +40,8 @@
 
     - name: Actualizar inventario
       add_host:
-        name: "{{ item.hostname }}"
-        ansible_host: "{{ item.ansible_host }}"
+        name: "{{ item.key }}"
+        ansible_host: "{{ item.value.ansible_host }}"
         ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
-        mac_address: "{{ item.mac_address }}"
-      with_items: "{{ dynamic_inventory.all.hosts }}"
-
-- name: Tareas en hosts activos
-  hosts: all
-  gather_facts: yes
-  tasks:
-    - name: Mostrar información del host
-      debug:
-        msg: "Host {{ inventory_hostname }} con IP {{ ansible_host }} y MAC {{ mac_address }}"
+        mac_address: "{{ item.value.mac_address }}"
+      with_dict: "{{ dynamic_inventory }}"

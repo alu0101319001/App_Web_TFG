@@ -1,8 +1,7 @@
 - name: Enviar mensaje a hosts remotos y escribir en archivo
-  hosts: all
+  hosts: online
   gather_facts: yes
   tasks:
     - name: Escribir mensaje en el host remoto
       shell: echo "Host {{ inventory_hostname }} con IP {{ ansible_host }} y MAC {{ mac_address }}" > /tmp/ansible_host_info.txt
       become: yes
-      when: hostvars[inventory_hostname]['status'] == 'on'

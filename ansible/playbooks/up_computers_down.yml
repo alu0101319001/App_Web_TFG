@@ -1,0 +1,14 @@
+- name: Levantar máquinas con estado 'off'
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Obtener lista de direcciones MAC fuera de línea
+      command: python3.12 ../scripts/obtain_mac_from_inventory.py ../inventories/dynamic_inventory.ini offline {{ target_host | default('') }}
+      register: macs_offline
+      changed_when: false
+
+    - name: Levantar máquinas con estado 'off'
+      shell: "wakeonlan {{ item }}"
+      loop: "{{ macs_offline.stdout_lines[0].replace('[','').replace(']','').split(', ') }}"
+      when: macs_offline.stdout_lines | length > 0
+      

@@ -1,9 +1,17 @@
-from ansible_runner import run
+import subprocess
 
-def run_playbook():
-    result = run(playbook='ansible/playbooks/scan_network.yml', inventory='ansible/inventories/production.ini')
-    if result.rc != 0:
-        print("Error executing playbook:", result.rc)
+def run_scan_playbook():
+    commands = [
+        "ansible-playbook -vvv ../playbooks/scan_p1_19_lab.yml --ask-become-pass",
+        "ansible-playbook ../playbooks/update_inventory.yml"
+    ]
 
-# Llama a la función para ejecutar el playbook
-run_playbook()
+    for command in commands:
+        result = subprocess.run(command, shell=True)
+        if result.returncode != 0:
+            print("Error executing command:", command)
+            print("Return code:", result.returncode)
+            break
+
+# Llama a la función para ejecutar los comandos
+run_scan_playbook()

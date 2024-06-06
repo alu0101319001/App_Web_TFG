@@ -1,0 +1,40 @@
+---
+- name: Configurar Wake-on-LAN
+  hosts: all
+  become: yes
+  tasks:
+    - name: Instalar ethtool (para sistemas Debian/Ubuntu)
+      apt:
+        name: ethtool
+        state: present
+      when: ansible_os_family == 'Debian'
+
+    - name: Instalar ethtool (para sistemas Red Hat/CentOS)
+      yum:
+        name: ethtool
+        state: present
+      when: ansible_os_family == 'RedHat'
+
+    - name: Crear archivo wol.service
+      copy:
+        dest: /etc/systemd/system/wol.service
+        content: |
+          [Unit]
+          Description=Configure Wake On LAN
+
+          [Service]
+          Type=oneshot
+          ExecStart=/sbin/ethtool -s eno1 wol g
+
+          [Install]
+          WantedBy=basic.target
+
+    - name: Recargar systemd
+      systemd:
+        daemon_reload: yes
+
+    - name: Habilitar y activar el servicio wol
+      systemd:
+        name: wol
+        state: started
+        enabled: yes
