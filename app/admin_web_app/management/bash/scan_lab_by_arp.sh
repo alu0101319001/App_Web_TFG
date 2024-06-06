@@ -6,39 +6,39 @@ if [ $# -ne 1 ]; then
     exit 1
 fi
 
-# Archivo ethers para usar
-ETHER_FILE=../../../../registers/ethers_copy
-
-# Carpeta para almacenar la salida
-OUT_DIR=../../../../outputs
+# Establecer rutas y nombres de archivos
+PROJECT_DIR="$HOME/Documentos/Repositorios/tfg_app_web_proyecto"
+ETHER_FILE="$PROJECT_DIR/registers/ethers_copy"
+OUT_DIR="$PROJECT_DIR/outputs"
 
 # Cadena por la que debe empezar el hostname
 SEARCH_STRING="$1"
 
-# Obtener la tabla ARP y resolver el nombre de host para cada IP
-arp -a | while read -r line
-do
-    # Extraer la IP, MAC y nombre de host de cada línea de la salida de arp
-    ip=$(echo "$line" | awk '{print $2}' | tr -d '()')
+# Imprimir mensaje de depuración
+echo "Cadena de búsqueda: $SEARCH_STRING"
+
+# Obtener la tabla ARP y crear un diccionario de MAC a IP
+declare -A arp_table
+while read -r line; do
     mac=$(echo "$line" | awk '{print $4}')
-    hostname=$(nslookup "$ip" | awk -F 'name = ' '/name = / { print $2 }' | tr -d '.')
+    ip=$(echo "$line" | awk '{print $2}' | tr -d '()')
+    arp_table["$mac"]="$ip"
+    echo "arp_table['$mac']=$ip"
+done < <(arp -a)
+
+# Procesar el archivo ethers_copy
+while IFS= read -r ethers_line; do
+    host=$(echo "$ethers_line" | awk '{print $1}')
+    mac=$(echo "$ethers_line" | awk '{print $2}')
     
-    # Verificar si el hostname comienza con la cadena de búsqueda
-    if [[ "$hostname" == "$SEARCH_STRING"* ]]; then
-        # El dispositivo está encendido y encontrado en la tabla ARP
-        echo "$hostname $ip $mac on found"
-    else
-        # Buscar la dirección MAC en el archivo de mapeo ethers
-        found=false
-        while IFS= read -r ethers_line; do
-            ethers_mac=$(echo "$ethers_line" | awk '{print $2}')
-            ethers_hostname=$(echo "$ethers_line" | awk '{print $1}')
-            if [[ "$mac" == "$ethers_mac" ]]; then
-                # El dispositivo está apagado pero encontrado en el archivo de mapeo ethers
-                echo "$ethers_hostname $ip $mac off not-found"
-                found=true
-                break
-            fi
-        done < "$ETHER_FILE"
+    if [[ "$host" == "$SEARCH_STRING"* ]]; then
+        # Verificar si la MAC está en la tabla ARP
+        if [ -n "${arp_table[$mac]}" ]; then
+            # Si la MAC está en la tabla ARP, generar la entrada hostname-mac-ip-on
+            echo "$host $mac ${arp_table[$mac]} on"
+        else
+            # Si la MAC no está en la tabla ARP, generar la entrada hostname-mac-none-off
+            echo "$host $mac none off"
+        fi
     fi
-done | sort > "$OUT_DIR/output_scan_"$SEARCH_STRING".txt"
+done < "$ETHER_FILE" > "$OUT_DIR/output_scan_$SEARCH_STRING.txt"

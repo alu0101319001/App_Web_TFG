@@ -3,12 +3,17 @@
   hosts: localhost
   tasks:
     - name: Ejecutar script
-      shell: "../../app/admin_web_app/management/bash/scan_lab_by_arp.sh p1-019-"
+      shell: "sudo {{ script_path }} {{ search_string }}"
       register: script_output
       become: true
 
     - name: Guardar salida del script
       copy:
         content: "{{ script_output.stdout_lines | join('\n') }}"
-        dest: ../../outputs/ansible_scan_output.log
+        dest: "{{ output_directory }}/ansible_scan_output.log"
       delegate_to: localhost
+
+  vars:
+    script_path: "~/Documentos/Repositorios/tfg_app_web_proyecto/app/admin_web_app/management/bash/scan_lab_by_arp.sh"
+    search_string: "p1-019-"
+    output_directory: "~/Documentos/Repositorios/tfg_app_web_proyecto/outputs"

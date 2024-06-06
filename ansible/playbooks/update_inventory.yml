@@ -1,0 +1,50 @@
+---
+- name: Actualizar inventario de Ansible y ejecutar tareas
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: Ejecutar script para generar inventario
+      command: python3 ../scripts/generate_inventory.py
+      register: inventory_output
+      delegate_to: localhost
+
+    - name: Depurar salida del script de inventario
+      debug:
+        var: inventory_output.stdout
+
+    - name: Cargar inventario dinámico
+      set_fact:
+        dynamic_inventory: "{{ inventory_output.stdout | from_json }}"
+
+    - name: Depurar inventario dinámico
+      debug:
+        var: dynamic_inventory
+
+    - name: Crear contenido del archivo de inventario
+      set_fact:
+        inventory_content: |
+          {% for host in dynamic_inventory.all.hosts %}
+          {{ host.hostname }} ansible_host={{ host.ansible_host }} mac_address={{ host.mac_address }} status={{ host.status }}
+          {% endfor %}
+
+    - name: Guardar el inventario en un archivo
+      copy:
+        content: "{{ inventory_content }}"
+        dest: "../inventories/dynamic_inventory.ini"
+
+    - name: Actualizar inventario
+      add_host:
+        name: "{{ item.hostname }}"
+        ansible_host: "{{ item.ansible_host }}"
+        ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+        mac_address: "{{ item.mac_address }}"
+      with_items: "{{ dynamic_inventory.all.hosts }}"
+
+- name: Tareas en hosts activos
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: Mostrar información del host
+      debug:
+        msg: "Host {{ inventory_hostname }} con IP {{ ansible_host }} y MAC {{ mac_address }}"
