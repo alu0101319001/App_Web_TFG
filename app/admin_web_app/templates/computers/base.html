@@ -17,7 +17,11 @@
     <div class="container">
         <aside class="sidebar">
             <h5>Global Commands</h5>
-            <!-- Aquí van las opciones globales -->
+            <ul>
+                <li><a href="{% url 'update-view' %}">Update View</a></li>
+                <li><a href="{% url 'turn_on_all' %}">Turn ON all</a></li>
+                <li><a href="{% url 'turn_off_all' %}">Turn OFF all</a></li>
+            </ul>
         </aside>
         <main class="main-content">
             {% block content %}
