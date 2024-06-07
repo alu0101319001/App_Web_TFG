@@ -1,36 +1,49 @@
-//static/js/scripts.js
 document.addEventListener('DOMContentLoaded', function() {
-  console.log("DOM fully loaded and parsed");
-  const openButtons = document.querySelectorAll(".btn-open-computer-info");
-  const modal = document.getElementById("computerModal");
-  const modalName = document.getElementById("modalName");
-  const modalStatus = document.getElementById("modalStatus");
-  const closeModalButton = document.getElementById("btn-close-computer-info");
+    const turnOnAllButton = document.getElementById('turnOnAllButton');
+    const turnOffAllButton = document.getElementById('turnOffAllButton');
+    const updateViewButton = document.getElementById('updateView');
 
-  if (openButtons.length > 0) {
-      console.log("Found open buttons:", openButtons.length);
-  } else {
-      console.log("No open buttons found");
-  }
+    if (turnOnAllButton) {
+        turnOnAllButton.addEventListener('click', function() {
+            fetch('/turn-on-all/')
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data);
+                    alert("Playbook para encender todos los dispositivos ejecutado correctamente.");
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    } else {
+        console.log("No turn on button found");
+    }
 
-  openButtons.forEach(button => {
-      console.log("Adding event listener to button", button);
-      button.addEventListener("click", function() {
-          console.log("Button clicked");
-          const name = this.getAttribute("data-name");
-          const status = this.getAttribute("data-status");
-          console.log("Opening modal for:", name, status);
-          modalName.textContent = name;
-          modalStatus.textContent = status;
-          modal.showModal();
-      });
-  });
+    if (turnOffAllButton) {
+        turnOffAllButton.addEventListener('click', function() {
+            fetch('/turn-off-all/')
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data);
+                    alert("Playbook para apagar todos los dispositivos ejecutado correctamente.");
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    } else {
+        console.log("No turn off button found");
+    }
 
-  closeModalButton.addEventListener("click", function() {
-      console.log("Closing modal");
-      modal.close();
-  });
+    if (updateViewButton) {
+        updateViewButton.addEventListener('click', function() {
+            fetch('/update-view/')
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data);
+                    alert("Vista actualizada correctamente.");
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    } else {
+        console.log("No update view button found");
+    }
 });
-
 
 

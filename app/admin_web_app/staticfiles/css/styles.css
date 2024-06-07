@@ -1,0 +1,152 @@
+/* frontend/static/css/styles.css */
+/* Reset some default styles */
+body, h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+/* General styles */
+body {
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+/* Container adjustments */
+.container-fluid {
+    padding: 20px;
+}
+
+/* Sidebar styles */
+.bg-light {
+    background-color: #ffffff !important;
+    border-right: 1px solid #dee2e6;
+    padding: 20px;
+    height: 100vh;
+}
+
+.bg-light h5 {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #007bff;
+}
+
+/* Main content styles */
+.col-md-10 {
+    padding: 20px;
+}
+
+h3 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #343a40;
+}
+body {
+    font-family: Arial, sans-serif;
+}
+
+header, footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.computers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.computer-icon {
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+.computer-icon img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.computer-icon:hover {
+    transform: scale(1.05);
+}
+
+.computer-detail {
+    text-align: center;
+}
+
+.computer-detail img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.actions {
+    margin-top: 20px;
+}
+
+/* Modal styles */
+#modal::backdrop {
+    background-color: rgba(0,0,0,.55);
+}
+#modal {
+    max-width: 50ch;
+}
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-body {
+    padding: 20px;
+}
+
+.btn-primary, .btn-secondary {
+    border-radius: 8px;
+}
+
+.iconos-ordenadores {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+.icono-ordenador {
+    margin: 10px;
+    text-align: center;
+}
+
+.icono-ordenador img {
+    width: 40px; 
+    height: 40px;
+}
+
+.menu-lateral {
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-right: 1px solid #dee2e6;
+    height: 100vh;
+    overflow-y: auto;
+}
+  

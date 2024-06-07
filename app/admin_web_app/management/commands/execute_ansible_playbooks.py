@@ -16,6 +16,8 @@ def execute_ansible_playbook(playbook_path, inventory_path):
         # Manejo del error
         print("Error al ejecutar el playbook:")
         print(stderr.decode('utf-8'))
+        return stderr.decode('utf-8')
     else:
         # Imprime la salida estándar
         print(stdout.decode('utf-8'))
+        return stdout.decode('utf-8')

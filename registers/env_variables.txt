@@ -1,0 +1,2 @@
+ANSIBLE_CONFIG=$BASE/ansible/ansible.cfg
+ANSIBLE_PYTHON_INTERPRETER=/usr/local/bin/python3.12
