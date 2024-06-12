@@ -1,20 +1,24 @@
+from django.http import HttpResponse
+from django.conf import settings
+from django.core.management import execute_from_command_line
 import subprocess
 import os
+import io
+import sys
 
-CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-VENV_PATH = "/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/venv"
-PROJECT_PATH = "/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto"
+# Añade el directorio del proyecto al PYTHONPATH
+sys.path.append(settings.BASE_DIR)
 
 def run_external_script(script_path):
     try:
         # Crea un script bash temporal para activar el entorno virtual, establecer PYTHONPATH y ejecutar el script Python
         bash_script = f"""
         #!/bin/bash
-        source {VENV_PATH}/bin/activate
-        export PYTHONPATH={PROJECT_PATH}:${{PYTHONPATH}}        
+        source {settings.VENV_PATH}/bin/activate
+        export PYTHONPATH={settings.PROJECT_PATH}:${{PYTHONPATH}}
         python3.12 {script_path}
         """
-        bash_script_path = os.path.join(CURRENT_DIR, 'run_script.sh')
+        bash_script_path = os.path.join(settings.BASE_DIR, 'run_script.sh')
         
         # Guarda el script bash en un archivo temporal
         with open(bash_script_path, 'w') as file:
@@ -45,33 +49,55 @@ def run_external_script(script_path):
         return f"Error al ejecutar el script externo: {e}"
 
 def run_scan_playbook():
-    scan_yml_path = "/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/scan_p1_19_lab.yml"
-    update_yml_path = "/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/update_inventory.yml"
+    scan_yml_path = os.path.join(settings.PROJECT_PATH, "ansible", "playbooks", "scan_p1_19_lab.yml")
+    update_yml_path = os.path.join(settings.PROJECT_PATH, "ansible", "playbooks", "update_inventory.yml")
 
     commands = [
-        f"sudo ansible-playbook -vvv {scan_yml_path}",
-        f"sudo ansible-playbook -vvv {update_yml_path}"
+        f"sudo ansible-playbook {scan_yml_path}",
+        f"sudo ansible-playbook {update_yml_path}"
     ]
 
+    result_list = []
     for command in commands:
         result = subprocess.run(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         stdout = result.stdout.decode('utf-8')
         stderr = result.stderr.decode('utf-8')
-
+        
         print(f"Executing command: {command}")
         print("Output:", stdout)
         if result.returncode != 0:
             print("Error executing command:", command)
             print("Error Output:", stderr)
             print("Return code:", result.returncode)
-            break
+            result_list.append(f"Error executing command: {command}\nError Output: {stderr}\nReturn code: {result.returncode}")
+        else:
+            result_list.append(stdout)
+    
+    return result_list
 
 def run_scan_update():
-    # Ejecutar otro script de Python
-    script_path = os.path.abspath(os.path.join(CURRENT_DIR, '../../app/admin_web_app/management/commands/update_computers_from_inventory.py'))
-    output = run_external_script(script_path)
-    print("Script output:", output)
+    script_path = os.path.join(settings.BASE_DIR, 'admin_web_app', 'management', 'commands', 'update_computers_from_inventory.py')
+    
+    # Capturar la salida del script en objetos StringIO
+    stdout_capture = io.StringIO()
+    stderr_capture = io.StringIO()
 
-# Llama a la función para ejecutar los comandos
-run_scan_playbook()
-run_scan_update()
+    # Redirigir la salida estándar y la salida de error al objeto StringIO
+    sys.stdout = stdout_capture
+    sys.stderr = stderr_capture
+
+    # Ejecutar el script
+    execute_from_command_line(['manage.py', 'update_computers_from_inventory'])
+
+    # Restaurar la salida estándar y la salida de error
+    sys.stdout = sys.__stdout__
+    sys.stderr = sys.__stderr__
+
+    # Obtener la salida del objeto StringIO
+    stdout_output = stdout_capture.getvalue()
+    stderr_output = stderr_capture.getvalue()
+
+    print("Standard output:", stdout_output)
+    print("Error output:", stderr_output)
+
+    return stdout_output, stderr_output

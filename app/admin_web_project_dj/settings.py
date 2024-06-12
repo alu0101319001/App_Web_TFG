@@ -26,7 +26,12 @@ SECRET_KEY = 'django-insecure-%cidb=p*b06je5q^5%dxuu&to$o52w6e8k#&ls8dvvz4x4z!vz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'adminwebapp.servehttp.com',
+    'localhost',
+    '127.0.0.1',
+    '[::1]'
+]
 
 
 # Application definition
@@ -130,3 +135,13 @@ STATIC_ROOT = os.path.join(BASE_DIR,'admin_web_app', 'staticfiles')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Define the path to the virtual environment
+VENV_PATH = '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/venv'
+
+# Define the path to the project directory
+PROJECT_PATH = '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto'
+
+# Allow SSH connection without confirmate authentication
+os.environ["SSH_OPTIONS"] = "-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"

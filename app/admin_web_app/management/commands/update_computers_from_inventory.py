@@ -1,4 +1,5 @@
 import os
+from io import StringIO
 from django.core.management.base import BaseCommand
 from admin_web_app.models import Computer
 import configparser
@@ -7,7 +8,6 @@ class Command(BaseCommand):
     help = 'Update computers from Ansible inventory'
 
     def handle(self, *args, **kwargs):
-
         # Define la ruta del archivo de inventario como constante
         current_dir = os.path.dirname(os.path.abspath(__file__))
         inventory_path = os.path.join(current_dir, '../../../../ansible/inventories/dynamic_inventory.ini')
@@ -37,10 +37,9 @@ class Command(BaseCommand):
         for host, details in offline_computers.items():
             self.update_computer(host, details, 'offline')
 
-        self.stdout.write(self.style.SUCCESS("Computers updated successfully."))
+        return "Computers updated successfully."
 
     def update_computer(self, host, details, status):
-        print(host, details, status)
         name = host.split()[0]
         state = self.get_value_from_string(details, 'status')
         mac = self.get_value_from_string(details, 'mac_address')
@@ -52,8 +51,7 @@ class Command(BaseCommand):
         # Insertar o actualizar el registro en la base de datos
         computer = Computer(name=name, state=state, icon=icon, mac=mac, ip=ip)
         computer.save()
-        self.stdout.write(self.style.SUCCESS("Inventory computers created successfully."))
-
+        return f"Inventory computers created successfully for {name}."
 
     def get_value_from_string(self, string, key):
         # Parsea el valor de la cadena para obtener el valor de la clave especificada
@@ -66,4 +64,3 @@ class Command(BaseCommand):
             return string.split()[0]
         else:
             return None
-
