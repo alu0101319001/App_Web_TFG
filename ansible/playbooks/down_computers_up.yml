@@ -1,6 +1,28 @@
 ---
 - name: Apagar máquinas en línea
-  hosts: "{{ target_host | default('localhost') }}"
+  hosts: localhost
+  gather_facts: no
+  vars:
+    local_ip: "10.209.2.232"
+    local_hostname: "maserver"
+  tasks:
+    - name: Guardar facts locales
+      set_fact:
+        local_ip: "{{ local_ip }}"
+        local_hostname: "{{ local_hostname }}"
+
+- name: Apagar máquinas en línea excluyendo el host local
+  hosts: "{{ target_host | default('all') }}"
+  gather_facts: no
+  vars:
+    local_ip: "10.209.2.232"  # Definimos local_ip nuevamente aquí
+    local_hostname: "maserver"  # Definimos local_hostname nuevamente aquí
+    filtered_hosts: >-
+      {{
+        groups['online']
+        | difference([local_ip, local_hostname, ansible_host])
+        | difference([inventory_hostname])
+      }}
   tasks:
     - name: Apagar máquinas en el grupo [online]
       shell: |
@@ -10,7 +32,8 @@
       become: yes
       become_method: sudo
       ignore_errors: yes  # Ignora errores de conexión, ya que la máquina se está apagando
-      with_items: "{{ groups['online'] if target_host is undefined else [target_host] }}"
+      with_items: "{{ filtered_hosts if target_host is undefined else [target_host] }}"
+      
     - name: Verificar que las máquinas se han apagado
       wait_for_connection:
         delay: 30  # Espera 30 segundos antes de verificar la conexión
@@ -18,4 +41,4 @@
         sleep: 5  # Espera 5 segundos entre intentos de conexión
       delegate_to: "{{ item }}"
       ignore_unreachable: yes  # Ignora las máquinas inaccesibles, ya que pueden estar apagadas
-      with_items: "{{ groups['online'] if target_host is undefined else [target_host] }}"
+      with_items: "{{ filtered_hosts if target_host is undefined else [target_host] }}"

@@ -3,9 +3,27 @@
 {% load static %}
 
 {% block content %}
-<div class="computers-grid">
+<style>
+    .computers-grid {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr); /* 8 columnas */
+        gap: 10px; /* Espacio entre los elementos del grid */
+    }
+    .computer-icon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        cursor: pointer;
+    }
+</style>
+
+<div class="computers-grid" id="computersGrid">
     {% for computer in computers %}
-        <div class="computer-icon" onclick="openComputerDetail('{{ computer.id }}')">
+        <div class="computer-icon" id="{{ computer.name }}" onclick="showComputerDetails('{{ computer.id }}')">
             <img src="{% static 'img/' %}{{ computer.icon }}" alt="{{ computer.name }}">
             <p>{{ computer.name }}</p>
         </div>
@@ -13,9 +31,112 @@
 </div>
 
 <script>
-    function openComputerDetail(computerId) {
-        var url = "{% url 'computer_detail' 0 %}".replace('0', computerId);
-        window.open(url, 'popup', 'top=100, left=100, width=599, height=680, toolbar=NO, resizable=NO, Location=NO, Menubar=NO, Titlebar=NO, Status=NO');
+    // Función para posicionar los ordenadores en el grid según su nombre
+    function positionComputers() {
+        const computers = document.querySelectorAll('.computer-icon');
+        computers.forEach(computer => {
+            const name = computer.id;
+            const pos = name.split('-')[2]; // Obtiene la última parte del nombre
+            
+            let fila, columna;
+
+            if (pos === '00') {
+                fila = 1;
+                columna = 1;
+            } else {
+                fila = parseInt(pos[0]) + 1; // Suma 1 a la fila
+                columna = parseInt(pos[1]); // Suma 1 a la columna
+            }
+
+            computer.style.gridRowStart = fila;
+            computer.style.gridColumnStart = columna;
+        });
     }
+
+    // Llama a la función para posicionar los ordenadores al cargar la página
+    document.addEventListener('DOMContentLoaded', positionComputers);
+
+    // Función para mostrar los detalles del ordenador seleccionado
+    function showComputerDetails(computerId) {
+        // Realizar solicitud al servidor para obtener los detalles del ordenador
+        fetch(`/get-computer-details/${computerId}/`)
+            .then(response => response.json())
+            .then(data => {
+                const computerDetailsContainer = document.getElementById('computerDetailsContainer');
+                const noComputerSelectedMessage = document.getElementById('noComputerSelectedMessage');
+                const computerDetails = document.getElementById('computerDetails');
+                
+                // Determinar el texto del estado
+                const estado = data.state ? "ON" : "OFF";
+                const computer_data = encodeURIComponent(JSON.stringify({
+                    'name': data.name,
+                    'state': estado,
+                    'mac': data.mac,
+                    'ip': data.ip
+                }));
+                // Mostrar los detalles del ordenador en el sidebar derecho
+                computerDetails.innerHTML = `
+                    <p><strong>Nombre:</strong> ${data.name}</p>
+                    <p><strong>Estado:</strong> ${estado}</p>
+                    <p><strong>MAC:</strong> ${data.mac}</p>
+                    <p><strong>IP:</strong> ${data.ip}</p>
+                    <!-- Agregar más detalles según sea necesario -->
+                    <h5>Opciones</h5>
+                    <button class="btn btn-primary" onclick="turnOnComputer('${computer_data}')">Encender</button>
+                    <button class="btn btn-primary" onclick="turnOffComputer('${computer_data}')">Apagar</button>
+                    <!-- Agregar más botones de opciones según sea necesario -->
+                `;
+
+                // Mostrar los detalles del ordenador y ocultar el mensaje "Selecciona un PC"
+                noComputerSelectedMessage.style.display = 'none';
+                computerDetails.style.display = 'block';
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    // Función para encender el ordenador seleccionado
+    function turnOnComputer(computerInfoEncoded) {
+        const computerInfo = JSON.parse(decodeURIComponent(computerInfoEncoded));
+        console.log("Encendiendo el ordenador:", computerInfo.name);
+        executePlaybook('up_computers_down.yml', computerInfo.name);    
+    }
+
+    // Función para apagar el ordenador seleccionado
+    function turnOffComputer(computerInfoEncoded) {
+        const computerInfo = JSON.parse(decodeURIComponent(computerInfoEncoded));
+        console.log("Apagando el ordenador:", computerInfo.name);
+        executePlaybook('down_computers_up.yml', computerInfo.name);
+    }
+
+    // Función para ejecutar el playbook de Ansible
+    function executePlaybook(playbook, hostname) {
+        // Mostrar ventana de carga antes de hacer la solicitud
+        showLoadingOverlay(` | Turning On ${hostname} | `);
+        fetch(`/execute-playbook/${playbook}/${hostname}/`)
+            .then(response => response.text())
+            .then(data => {
+                console.log(data);
+                alert("Playbook para encender el ordenador seleccionado ejecutado correctamente. Espere unos 2 minutos antes de realizar el escaneo.");
+            })
+            .catch(error => console.error('Error:', error))
+            .finally(() => {
+                // Ocultar ventana de carga después de que se complete la solicitud
+                hideLoadingOverlay();
+            });
+    }
+
+    function showLoadingOverlay(name_function=null) {
+        const loadingMessage = document.getElementById('loadingMessage');
+        loadingMessage.textContent = name_function ? `Executing ${name_function}...` : 'Executing functionality...';
+    
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        loadingOverlay.style.display = 'block';
+    }
+    
+    function hideLoadingOverlay() {
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        loadingOverlay.style.display = 'none';
+    }
+
 </script>
 {% endblock %}

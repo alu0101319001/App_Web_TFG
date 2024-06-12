@@ -17,6 +17,7 @@
         <h1>Admin Web App</h1>
     </header>
     <div class="container">
+        <!-- Sidebar izquierdo -->
         <aside class="sidebar">
             <h5>Global Commands</h5>
             <ul>
@@ -25,10 +26,20 @@
                 <button id="turnOffAllButton" class="btn btn-danger">Turn OFF All</button>
             </ul>
         </aside>
+        <!-- Contenido principal -->
         <main class="main-content">
             {% block content %}
             {% endblock %}
         </main>
+        <!-- Sidebar derecho -->
+        <div id="rightSidebar">
+            <div id="computerDetailsContainer">
+                <p id="noComputerSelectedMessage">Selecciona un PC</p>
+                <div id="computerDetails" style="display: none;">
+                    <!-- Detalles del ordenador y lista de opciones se agregarán aquí -->
+                </div>
+            </div>
+        </div>
     </div>
     <!-- Ventana de carga -->
     <div id="loadingOverlay" class="overlay">

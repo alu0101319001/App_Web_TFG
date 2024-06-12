@@ -191,3 +191,17 @@ header, footer {
 #loadingMessage {
     margin-top: 200px; /* Espacio entre el círculo y el mensaje */
 }
+
+/* Estilos para el sidebar derecho */
+#rightSidebar {
+    position: fixed; /* Sidebar fijo */
+    top: 0;
+    right: 0; /* Alineado a la derecha */
+    width: 300px;
+    height: 100%;
+    background-color: #f8f9fa;
+    border-left: 1px solid #dee2e6;
+    box-shadow: -1px 0 3px rgba(0,0,0,0.1);
+    transition: right 0.3s ease;
+    z-index: 999; /* Asegurar que esté sobre otros elementos */
+}

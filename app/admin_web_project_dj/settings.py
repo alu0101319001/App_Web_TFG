@@ -145,3 +145,10 @@ PROJECT_PATH = '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto
 
 # Allow SSH connection without confirmate authentication
 os.environ["SSH_OPTIONS"] = "-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+
+# Login default page
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+

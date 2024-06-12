@@ -23,6 +23,7 @@ from admin_web_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('', include('admin_web_app.urls')),
 ]
 
