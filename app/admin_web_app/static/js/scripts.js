@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const turnOffAllButton = document.getElementById('turnOffAllButton');
     const runScanButton = document.getElementById('runScanButton');
     const runScriptButton = document.getElementById('runScriptButton');
+    const copyFilesButton = document.getElementById('copyFilesButton');
+    const executeCommandButton = document.getElementById('executeCommandButton');
 
     function showLoadingOverlay(name_function=null) {
         const loadingMessage = document.getElementById('loadingMessage');
@@ -134,6 +136,77 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Function to handle copying files
+    function handleCopyFiles() {
+        const folderInput = prompt('Introduce a value for FOLDER:');
+        const filesInput = prompt('Introduce a value for FILES:');
+    
+        if (folderInput && filesInput) {
+            // Mostrar ventana de carga antes de hacer la solicitud
+            showLoadingOverlay('Running Copy Files...');
+    
+            fetch('/copy-files/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'  // CSRF token for security
+                },
+                body: JSON.stringify({ folder: folderInput, files: filesInput })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Mostrar el mensaje obtenido del servidor
+                alert(data.summary_message || 'No summary message available');
+            })
+            .catch(error => console.error('Error:', error))
+            .finally(() => {
+                // Ocultar ventana de carga después de que se complete la solicitud
+                hideLoadingOverlay();
+            });
+        } else {
+            alert('You need to introduce both arguments to execute this functionality.');
+        }
+    }
+
+    function handelExecuteCommand() {
+        const command = prompt('Introduce a value for COMMAND:');
+        const hostname = null
+
+        const requestData = {
+            command: command,
+            hostname: hostname
+        };
+
+        if (requestData) {
+            showLoadingOverlay('Running Execute Command for ALL...');
+
+            fetch('/execute-command/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'  // CSRF token for security
+                },
+                body: JSON.stringify(requestData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message || data.error || 'Error desconocido');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error al ejecutar el comando');
+            })
+            .finally(() => {
+                // Ocultar ventana de carga después de que se complete la solicitud
+                hideLoadingOverlay();
+            });
+        } else {
+            alert('You need to introduce command to execute this functionality.');
+        }
+    }
+    
+
+
     if (turnOnAllButton) {
         turnOnAllButton.addEventListener('click', function() {
             // Mostrar ventana de carga antes de hacer la solicitud
@@ -204,5 +277,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (runScriptButton) {
         runScriptButton.addEventListener('click', openFileExplorerAndExecute);
+    }
+
+    if (copyFilesButton) {
+        copyFilesButton.addEventListener('click', handleCopyFiles)
+    }
+
+    if (executeCommandButton) {
+        executeCommandButton.addEventListener('click', handelExecuteCommand)
     }
 });

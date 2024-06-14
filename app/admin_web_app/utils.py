@@ -6,6 +6,9 @@ import os
 import io
 import sys
 import time
+import re
+import json
+
 
 # Añade el directorio del proyecto al PYTHONPATH
 sys.path.append(settings.BASE_DIR)
@@ -105,4 +108,32 @@ def run_scan_update():
         log_output += f"\nError: {stderr_output}"
 
     return log_output
+
+def run_copyFiles_playbook(folder, files):
+    copyFiles_yml_path = os.path.join(settings.PROJECT_PATH, "ansible", "playbooks", "copyFiles.yml")
+    inventory_path = os.path.join(settings.PROJECT_PATH, "ansible", "inventories", "dynamic_inventory.ini")
+
+    command = [
+        'ansible-playbook',
+        copyFiles_yml_path,
+        '-i', inventory_path,
+        '--extra-vars', f'folder={folder} files={files}'
+    ]
+
+    try:
+        # Ejecutar el playbook
+        subprocess.run(command, check=True)
+
+        # Leer el contenido del archivo temporal
+        temp_file_path = "/tmp/ansible_summary_message.txt"
+        if os.path.exists(temp_file_path):
+            with open(temp_file_path, 'r') as f:
+                summary_message = f.read().strip()
+                return {'summary_message': summary_message}
+        else:
+            return {'error': 'Summary message file not found'}
+
+    except subprocess.CalledProcessError as e:
+        return {'error': f'An error occurred: {e}'}
+
 

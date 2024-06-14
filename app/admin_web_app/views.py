@@ -1,5 +1,6 @@
 # admin_web_app/views.py
 import os
+import json
 import subprocess
 from datetime import datetime
 from django.shortcuts import render, get_object_or_404, redirect
@@ -8,10 +9,11 @@ from django.views import View
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
 from .models import Computer
 from .management.commands.execute_ansible_playbooks import execute_ansible_playbook
 from .management.commands.execute_python_script import run_external_script
-from .utils import run_scan_playbook, run_scan_update
+from .utils import run_scan_playbook, run_scan_update, run_copyFiles_playbook
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 PLAYBOOKS_DIR = os.path.join(CURRENT_DIR, '../../ansible/playbooks')
@@ -154,3 +156,50 @@ def run_sh_script(request):
             return JsonResponse({'error': str(e)}, status=500)
 
     return JsonResponse({'error': 'Invalid request method'}, status=400)
+
+@csrf_exempt
+def copy_files(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        folder = data.get('folder')
+        files = data.get('files')
+
+        if folder and files:
+            # Llamar a la función que ejecuta el playbook de Ansible
+            result = run_copyFiles_playbook(folder, files)
+
+            if isinstance(result, dict) and 'summary_message' in result:
+                summary_message = result['summary_message']
+                return JsonResponse({'summary_message': summary_message})
+            else:
+                error_message = "Unexpected or missing result from playbook execution."
+                return JsonResponse({'message': error_message}, status=500)
+
+    return JsonResponse({'message': 'Invalid request'}, status=400)
+
+@csrf_exempt
+def execute_command(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        command = data.get('command')
+        hostname = data.get('hostname')
+        target_host = hostname if hostname else "online"
+
+        playbook_path = os.path.join(settings.PROJECT_PATH, 'ansible', 'playbooks', 'execute_command.yml')
+        inventory_path = os.path.join(settings.PROJECT_PATH, 'ansible', 'inventories', 'dynamic_inventory.ini')
+
+        command = [
+            'ansible-playbook',
+            playbook_path,
+            '-i', inventory_path,
+            '--extra-vars', f'command={command} target_host={target_host}'
+        ]
+
+        try:
+            result = subprocess.run(command, capture_output=True, text=True, check=True)
+            return JsonResponse({'message': result.stdout})
+        except subprocess.CalledProcessError as e:
+            return JsonResponse({'error': f'Error executing playbook: {e.stderr}'}, status=500)
+
+    return JsonResponse({'error': 'Invalid request'}, status=400)
+

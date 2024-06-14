@@ -1,0 +1,41 @@
+- name: Copiar archivos y verificar existencia en carpeta
+  hosts: localhost
+
+  tasks:
+    - name: Crear carpeta de destino en el servidor local si no existe
+      ansible.builtin.file:
+        path: "{{ folder }}"
+        state: directory
+
+    - name: Crear carpeta por cada host si no existe
+      ansible.builtin.file:
+        path: "{{ folder }}/{{ item }}"
+        state: directory
+      with_items: "{{ groups['online'] }}"
+
+    - name: Copiar archivos desde las máquinas remotas
+      ansible.builtin.shell:
+        cmd: |
+          sshpass -p 'alumno' scp -o StrictHostKeyChecking=no "alumno@{{ hostvars[item]['ansible_host'] }}:{{ files }}" "{{ folder }}/{{ item }}/"
+      with_items: "{{ groups['online'] }}"
+      register: copy_result
+      ignore_errors: yes
+
+    - name: Extraer nombre del archivo desde la ruta proporcionada en 'files'
+      set_fact:
+        file_name: "{{ files | basename }}"
+
+    - name: Filtrar hosts que fallaron en la copia
+      set_fact:
+        failed_hosts: "{{ copy_result.results | selectattr('failed', 'eq', true) | map(attribute='item') | list }}"
+
+    - name: Crear archivo temporal con el mensaje de resumen
+      ansible.builtin.copy:
+        content: |
+          Operación exitosa en {{ groups['online'] | difference(failed_hosts) | length }} máquinas.
+          Fallo en {{ failed_hosts | length }} máquinas.
+          Las máquinas en que ha fallado son las siguientes: {{ failed_hosts | join(', ') }}
+        dest: "/tmp/ansible_summary_message.txt"
+
+
+

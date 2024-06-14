@@ -84,6 +84,7 @@
                     <h5>Actions</h5>
                     <button class="btn btn-primary" onclick="turnOnComputer('${computer_data}')">Turn ON</button>
                     <button class="btn btn-primary" onclick="turnOffComputer('${computer_data}')">Turn OFF</button>
+                    <button class="btn btn-warning" onclick="executeCommand('${computer_data}')">Execute Command</button>
                 `;
 
                 // Mostrar los detalles del ordenador y ocultar el mensaje "Selecciona un PC"
@@ -135,6 +136,44 @@
     function hideLoadingOverlay() {
         const loadingOverlay = document.getElementById('loadingOverlay');
         loadingOverlay.style.display = 'none';
+    }
+
+    function executeCommand(computerInfoEncoded) {
+        const computerInfo = JSON.parse(decodeURIComponent(computerInfoEncoded));
+        const command = prompt('Introduce a value for COMMAND:');
+        const hostname = computerInfo.name
+
+        const requestData = {
+            command: command,
+            hostname: hostname
+        };
+
+        if (requestData) {
+            showLoadingOverlay(`Running Execute Command for ${hostname}...`);
+
+            fetch('/execute-command/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'  // CSRF token for security
+                },
+                body: JSON.stringify(requestData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message || data.error || 'Error desconocido');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error al ejecutar el comando');
+            })
+            .finally(() => {
+                // Ocultar ventana de carga después de que se complete la solicitud
+                hideLoadingOverlay();
+            });
+        } else {
+            alert('You need to introduce command to execute this functionality.');
+        }
     }
 
 </script>

@@ -14,6 +14,8 @@ urlpatterns = [
     path('turn-off-all/', views.turn_off_all, name='turn_off_all'),
     path('run-scan/', views.run_scan, name='run_scan'), 
     path('execute-playbook/<str:playbook>/<str:hostname>/', views.execute_playbook, name='execute_playbook'),
+    path('copy-files/', views.copy_files, name='copy_files'),
+    path('execute-command/', views.execute_command, name='execute_command'),
     path('run-sh-script/', views.run_sh_script, name='run_sh_script'),
 ]
 

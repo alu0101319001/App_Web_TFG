@@ -1,0 +1,23 @@
+---
+- name: Ejecutar comando en máquinas remotas desde localhost
+  hosts: localhost  # Ejecutar desde localhost
+  gather_facts: false  # No es necesario recolectar hechos de los hosts remotos
+
+  tasks:
+    - name: Obtener lista de hosts a los que ejecutar el comando
+      set_fact:
+        target_hosts: "{{ groups['online'] if target_host == 'online' else [target_host] }}"
+
+    - name: Ejecutar comando en los hosts remotos
+      ansible.builtin.shell:
+        cmd: "sshpass -p 'alumno' ssh alumno@{{ hostvars[item]['ansible_host'] }} '{{ command }}'"
+      with_items: "{{ target_hosts }}"
+      register: command_output
+      ignore_errors: yes  # Ignorar errores para manejarlos después si es necesario
+
+    - name: Mostrar salida del comando
+      ansible.builtin.debug:
+        msg: "Output en {{ item.item }}: {{ item.stdout | default(item.stderr) }}"
+      loop: "{{ command_output.results }}"
+      loop_control:
+        label: "{{ item.item }}"
