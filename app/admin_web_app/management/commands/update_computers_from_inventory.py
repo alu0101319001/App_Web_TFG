@@ -1,4 +1,5 @@
 import os
+import time
 from io import StringIO
 from django.core.management.base import BaseCommand
 from admin_web_app.models import Computer
@@ -12,10 +13,15 @@ class Command(BaseCommand):
         current_dir = os.path.dirname(os.path.abspath(__file__))
         inventory_path = os.path.join(current_dir, '../../../../ansible/inventories/dynamic_inventory.ini')
 
+        # Registra un log
+        log = {}
+
         # Parsea el archivo dynamic_inventory.ini
+        log[time.time()] = 'Parsing dynamic_inventory.ini...'
         config = configparser.ConfigParser()
         config.read(inventory_path)
 
+        log[time.time()] = 'Differentiate between online and offline sections...'
         # Obtén la sección 'online' del inventario
         online_computers = {}
         if 'online' in config:
@@ -27,17 +33,30 @@ class Command(BaseCommand):
             offline_computers = dict(config.items('offline'))
 
         # Limpiar la base de datos de ordenadores existentes
+        log[time.time()] = 'Cleaning the database...'
         Computer.objects.all().delete()
 
         # Iterar sobre los ordenadores en línea y actualizar la base de datos
+        log[time.time()] = 'Updating info for online computers...'
         for host, details in online_computers.items():
-            self.update_computer(host, details, 'online')
+            log[time.time()] = f'\tCalling update for: {host}'
+            output = self.update_computer(host, details, 'online')
+            log[time.time()] = output
 
         # Iterar sobre los ordenadores fuera de línea y actualizar la base de datos
+        log[time.time()] = 'Updating info for offline computers...'
         for host, details in offline_computers.items():
-            self.update_computer(host, details, 'offline')
+            log[time.time()] = f'\tCalling update for: {host}'
+            output = self.update_computer(host, details, 'offline')
+            log[time.time()] = output
 
-        return "Computers updated successfully."
+        log[time.time()] = 'Computers updated successfully.\nEND'
+        sorted_log = dict(sorted(log.items()))
+
+        # Convertir el diccionario de log a una cadena
+        log_string = "\n".join([f"{time.ctime(timestamp)}: {message}" for timestamp, message in sorted_log.items()])
+        
+        return log_string
 
     def update_computer(self, host, details, status):
         name = host.split()[0]
@@ -49,9 +68,11 @@ class Command(BaseCommand):
         icon = 'computer.png' if status.lower() == 'online' else 'computer-off.png'
 
         # Insertar o actualizar el registro en la base de datos
+        output = f'\tUpdating data: {name}--{state}--{icon}--{mac}--{ip}'
         computer = Computer(name=name, state=state, icon=icon, mac=mac, ip=ip)
         computer.save()
-        return f"Inventory computers created successfully for {name}."
+        output += f'\n\tInventory computers created successfully for {name}'
+        return output
 
     def get_value_from_string(self, string, key):
         # Parsea el valor de la cadena para obtener el valor de la clave especificada

@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const turnOnAllButton = document.getElementById('turnOnAllButton');
     const turnOffAllButton = document.getElementById('turnOffAllButton');
     const runScanButton = document.getElementById('runScanButton');
+    const runScriptButton = document.getElementById('runScriptButton');
 
     function showLoadingOverlay(name_function=null) {
         const loadingMessage = document.getElementById('loadingMessage');
@@ -15,14 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function hideLoadingOverlay() {
         const loadingOverlay = document.getElementById('loadingOverlay');
         loadingOverlay.style.display = 'none';
-    }
-
-    function openRightSidebar() {
-        document.getElementById('rightSidebar').classList.add('show');
-    }
-    
-    function closeRightSidebar() {
-        document.getElementById('rightSidebar').classList.remove('show');
     }
 
     // Función para mostrar los detalles del ordenador seleccionado
@@ -92,8 +85,54 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Ocultar ventana de carga después de que se complete la solicitud
                 hideLoadingOverlay();
             });
+    }    
+
+    // Función para abrir el explorador de archivos y ejecutar el script seleccionado (con argumento opcional)
+    function openFileExplorerAndExecute() {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = '.sh'; // Aceptar solo archivos con extensión .sh
+
+        input.onchange = function(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            // Preguntar al usuario si desea ingresar un argumento
+            const argument = prompt('Ingrese un argumento para el script (opcional):', '');
+
+            // Llamar a la función para ejecutar el script de bash con el archivo seleccionado y el argumento opcional
+            executeShScript(file, argument.trim());
+        };
+
+        input.click(); // Abrir el explorador de archivos
     }
-    
+
+    // Función para ejecutar el script de bash seleccionado (con argumento opcional)
+    function executeShScript(scriptFile, argument) {
+        // Mostrar ventana de carga antes de hacer la solicitud
+        showLoadingOverlay('Running .sh Script');
+
+        const formData = new FormData();
+        formData.append('scriptFile', scriptFile);
+        if (argument) {
+            formData.append('argument', argument); // Agregar el argumento al FormData solo si está presente
+        }
+
+        fetch('/run-sh-script/', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Script execution result:', data.output);
+            alert('Script executed successfully.'); // Puedes ajustar el mensaje de alerta según necesites
+        })
+        .catch(error => console.error('Error:', error))
+        .finally(() => {
+            // Ocultar ventana de carga después de que se complete la solicitud
+            hideLoadingOverlay();
+        });
+    }
 
     if (turnOnAllButton) {
         turnOnAllButton.addEventListener('click', function() {
@@ -161,5 +200,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     hideLoadingOverlay();
                 });
         });
+    }
+
+    if (runScriptButton) {
+        runScriptButton.addEventListener('click', openFileExplorerAndExecute);
     }
 });

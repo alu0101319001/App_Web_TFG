@@ -67,7 +67,8 @@
                 const computerDetails = document.getElementById('computerDetails');
                 
                 // Determinar el texto del estado
-                const estado = data.state ? "ON" : "OFF";
+                const isOn = data.state === true || data.state === "True" || data.state === "true";
+                const estado = isOn ? "ON" : "OFF";
                 const computer_data = encodeURIComponent(JSON.stringify({
                     'name': data.name,
                     'state': estado,
@@ -80,11 +81,9 @@
                     <p><strong>Estado:</strong> ${estado}</p>
                     <p><strong>MAC:</strong> ${data.mac}</p>
                     <p><strong>IP:</strong> ${data.ip}</p>
-                    <!-- Agregar más detalles según sea necesario -->
-                    <h5>Opciones</h5>
-                    <button class="btn btn-primary" onclick="turnOnComputer('${computer_data}')">Encender</button>
-                    <button class="btn btn-primary" onclick="turnOffComputer('${computer_data}')">Apagar</button>
-                    <!-- Agregar más botones de opciones según sea necesario -->
+                    <h5>Actions</h5>
+                    <button class="btn btn-primary" onclick="turnOnComputer('${computer_data}')">Turn ON</button>
+                    <button class="btn btn-primary" onclick="turnOffComputer('${computer_data}')">Turn OFF</button>
                 `;
 
                 // Mostrar los detalles del ordenador y ocultar el mensaje "Selecciona un PC"

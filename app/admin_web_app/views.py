@@ -7,6 +7,7 @@ from django.http import HttpResponse, JsonResponse
 from django.views import View
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.views.decorators.csrf import csrf_exempt
 from .models import Computer
 from .management.commands.execute_ansible_playbooks import execute_ansible_playbook
 from .management.commands.execute_python_script import run_external_script
@@ -16,6 +17,7 @@ CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 PLAYBOOKS_DIR = os.path.join(CURRENT_DIR, '../../ansible/playbooks')
 INVENTORY_DIR = os.path.join(CURRENT_DIR, '../../ansible/inventories')
 ANSIBLE_SCRIPTS_DIR = os.path.join(CURRENT_DIR, '../../ansible/scripts')
+STATIC_DIR = os.path.join(CURRENT_DIR, 'static')
 
 def is_admin(user):
     return user.is_superuser
@@ -108,7 +110,7 @@ def run_scan(request):
     # Devuelve los resultados como JSON al navegador
     return JsonResponse({
         'playbook_result': playbook_result,
-        'update_result': update_result
+        'update_result': [update_result]
     })
 
 @login_required
@@ -120,3 +122,35 @@ def execute_playbook(request, playbook, hostname):
     output = execute_ansible_playbook(playbook_path, inventory_path, extra_vars)
     return HttpResponse(output)
 
+
+@csrf_exempt
+@login_required
+@user_passes_test(is_admin)
+def run_sh_script(request):
+    if request.method == 'POST' and request.FILES.get('scriptFile'):
+        script_file = request.FILES['scriptFile']
+        script_path = os.path.abspath(os.path.join(STATIC_DIR, 'bash'))
+        argument = request.POST.get('argument', '').strip()  # Obtener el argumento del POST (opcional)
+
+        try:
+            # Guardar el archivo en el directorio de scripts
+            with open(script_path + script_file.name, 'wb+') as destination:
+                for chunk in script_file.chunks():
+                    destination.write(chunk)
+
+            # Ejecutar el script de bash con el argumento (si está presente)
+            if argument:
+                result = subprocess.run(['bash', script_path + script_file.name, argument],
+                                        capture_output=True, text=True)
+            else:
+                result = subprocess.run(['bash', script_path + script_file.name],
+                                        capture_output=True, text=True)
+
+            output = result.stdout
+
+            return JsonResponse({'output': output})
+
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+
+    return JsonResponse({'error': 'Invalid request method'}, status=400)

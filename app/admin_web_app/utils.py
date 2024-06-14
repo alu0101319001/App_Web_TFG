@@ -5,6 +5,7 @@ import subprocess
 import os
 import io
 import sys
+import time
 
 # Añade el directorio del proyecto al PYTHONPATH
 sys.path.append(settings.BASE_DIR)
@@ -86,18 +87,22 @@ def run_scan_update():
     sys.stdout = stdout_capture
     sys.stderr = stderr_capture
 
-    # Ejecutar el script
-    execute_from_command_line(['manage.py', 'update_computers_from_inventory'])
-
-    # Restaurar la salida estándar y la salida de error
-    sys.stdout = sys.__stdout__
-    sys.stderr = sys.__stderr__
+    try:
+        # Ejecutar el script
+        execute_from_command_line(['manage.py', 'update_computers_from_inventory'])
+    finally:
+        # Restaurar la salida estándar y la salida de error
+        sys.stdout = sys.__stdout__
+        sys.stderr = sys.__stderr__
 
     # Obtener la salida del objeto StringIO
     stdout_output = stdout_capture.getvalue()
     stderr_output = stderr_capture.getvalue()
 
-    print("Standard output:", stdout_output)
-    print("Error output:", stderr_output)
+     # Procesar la salida para crear una cadena de log
+    log_output = stdout_output
+    if stderr_output:
+        log_output += f"\nError: {stderr_output}"
 
-    return stdout_output, stderr_output
+    return log_output
+

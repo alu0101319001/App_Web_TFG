@@ -11,7 +11,7 @@ with open(output_file, 'r') as f:
         inventory[hostname] = {
             'ansible_host': ip,
             'mac_address': mac,
-            'status': status  # Agregar el estado del host al inventario
+            'status': status  
         }
 
 # Imprimir el inventario en formato YAML
