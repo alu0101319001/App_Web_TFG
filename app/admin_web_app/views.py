@@ -76,13 +76,15 @@ def index(request):
 def get_computer_details(request, computer_id):
     computer = Computer.objects.get(pk=computer_id)
     data = {
+        'id': computer.id,  # Añade el campo id
         'name': computer.name,
         'state': computer.state,
         'mac': computer.mac,
         'ip': computer.ip,
-        # Agregar más campos según sea necesario
+        'warning': computer.warning,
     }
     return JsonResponse(data)
+
 
 @login_required
 @user_passes_test(is_admin)
@@ -202,4 +204,19 @@ def execute_command(request):
             return JsonResponse({'error': f'Error executing playbook: {e.stderr}'}, status=500)
 
     return JsonResponse({'error': 'Invalid request'}, status=400)
+
+@login_required
+@user_passes_test(is_admin)
+@csrf_exempt
+def toggle_warning(request, computer_id):
+    computer = Computer.objects.get(pk=computer_id)
+    if request.method == 'POST':
+        computer.warning = not computer.warning
+        if computer.warning == True:
+            computer.icon = 'computer--exclamation.png'
+        else:
+            computer.icon = 'computer-off.png'
+        computer.save()
+        return JsonResponse({'success': True, 'warning': computer.warning})
+    return JsonResponse({'error': 'Invalid request method'}, status=400)
 

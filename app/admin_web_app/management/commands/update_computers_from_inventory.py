@@ -32,10 +32,6 @@ class Command(BaseCommand):
         if 'offline' in config:
             offline_computers = dict(config.items('offline'))
 
-        # Limpiar la base de datos de ordenadores existentes
-        log[time.time()] = 'Cleaning the database...'
-        Computer.objects.all().delete()
-
         # Iterar sobre los ordenadores en línea y actualizar la base de datos
         log[time.time()] = 'Updating info for online computers...'
         for host, details in online_computers.items():
@@ -65,11 +61,21 @@ class Command(BaseCommand):
         
         # Obtén la dirección IP solo si el estado es "online"
         ip = self.get_value_from_string(details, 'ansible_host') if status.lower() == 'online' else None
-        icon = 'computer.png' if status.lower() == 'online' else 'computer-off.png'
+
+        # Busca si existe un registro con la misma MAC
+        existing_computer = Computer.objects.filter(mac=mac).first()
+        if existing_computer:
+            # Si existe, mantén el valor de warning y asigna el icono correspondiente
+            warning = existing_computer.warning
+            icon = 'computer--exclamation.png' if warning else ('computer.png' if status.lower() == 'online' else 'computer-off.png')
+        else:
+            # Si no existe, asigna el icono predeterminado
+            warning = False
+            icon = 'computer.png' if status.lower() == 'online' else 'computer-off.png'
 
         # Insertar o actualizar el registro en la base de datos
         output = f'\tUpdating data: {name}--{state}--{icon}--{mac}--{ip}'
-        computer = Computer(name=name, state=state, icon=icon, mac=mac, ip=ip)
+        computer = Computer(name=name, state=state, icon=icon, mac=mac, ip=ip, warning=warning)
         computer.save()
         output += f'\n\tInventory computers created successfully for {name}'
         return output

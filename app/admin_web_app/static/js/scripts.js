@@ -261,11 +261,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.log('Playbook result:', data.playbook_result);
                     console.log('Update result:', data.update_result);
                     alert("Scan executed successfully."); // Actualiza el mensaje de alerta si lo deseas
-    
-                    // Redireccionar después de 2 segundos
-                    setTimeout(function() {
-                        window.location.reload();
-                    }, 1000);
+
+                    location.reload(); // Refrescar la página para ver la actualizacion
+
                 })
                 .catch(error => console.error('Error:', error))
                 .finally(() => {

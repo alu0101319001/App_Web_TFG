@@ -1,4 +1,4 @@
-<!-- backend/admin_web_project_dj/admin_web_app/templates/computers/index.html -->
+<!-- templates/computers/index.html -->
 {% extends 'computers/base.html' %}
 {% load static %}
 
@@ -31,13 +31,12 @@
 </div>
 
 <script>
-    // Función para posicionar los ordenadores en el grid según su nombre
     function positionComputers() {
         const computers = document.querySelectorAll('.computer-icon');
         computers.forEach(computer => {
             const name = computer.id;
             const pos = name.split('-')[2]; // Obtiene la última parte del nombre
-            
+
             let fila, columna;
 
             if (pos === '00') {
@@ -53,12 +52,9 @@
         });
     }
 
-    // Llama a la función para posicionar los ordenadores al cargar la página
     document.addEventListener('DOMContentLoaded', positionComputers);
 
-    // Función para mostrar los detalles del ordenador seleccionado
     function showComputerDetails(computerId) {
-        // Realizar solicitud al servidor para obtener los detalles del ordenador
         fetch(`/get-computer-details/${computerId}/`)
             .then(response => response.json())
             .then(data => {
@@ -66,51 +62,52 @@
                 const noComputerSelectedMessage = document.getElementById('noComputerSelectedMessage');
                 const computerDetails = document.getElementById('computerDetails');
                 
-                // Determinar el texto del estado
                 const isOn = data.state === true || data.state === "True" || data.state === "true";
                 const estado = isOn ? "ON" : "OFF";
                 const computer_data = encodeURIComponent(JSON.stringify({
+                    'id': data.id,
                     'name': data.name,
                     'state': estado,
                     'mac': data.mac,
-                    'ip': data.ip
+                    'ip': data.ip,
+                    'warning': data.warning
                 }));
+                
                 // Mostrar los detalles del ordenador en el sidebar derecho
                 computerDetails.innerHTML = `
                     <p><strong>Nombre:</strong> ${data.name}</p>
                     <p><strong>Estado:</strong> ${estado}</p>
                     <p><strong>MAC:</strong> ${data.mac}</p>
                     <p><strong>IP:</strong> ${data.ip}</p>
+                    <p><strong>Warning:</strong> ${data.warning}</p>
                     <h5>Actions</h5>
                     <button class="btn btn-primary" onclick="turnOnComputer('${computer_data}')">Turn ON</button>
                     <button class="btn btn-primary" onclick="turnOffComputer('${computer_data}')">Turn OFF</button>
                     <button class="btn btn-warning" onclick="executeCommand('${computer_data}')">Execute Command</button>
+                    <button onclick="toggleWarning('${computer_data}')">
+                        ${data.warning ? 'Disable Warning' : 'Enable Warning'}
+                    </button>
                 `;
 
-                // Mostrar los detalles del ordenador y ocultar el mensaje "Selecciona un PC"
                 noComputerSelectedMessage.style.display = 'none';
                 computerDetails.style.display = 'block';
             })
             .catch(error => console.error('Error:', error));
     }
 
-    // Función para encender el ordenador seleccionado
     function turnOnComputer(computerInfoEncoded) {
         const computerInfo = JSON.parse(decodeURIComponent(computerInfoEncoded));
         console.log("Encendiendo el ordenador:", computerInfo.name);
         executePlaybook('up_computers_down.yml', computerInfo.name);    
     }
 
-    // Función para apagar el ordenador seleccionado
     function turnOffComputer(computerInfoEncoded) {
         const computerInfo = JSON.parse(decodeURIComponent(computerInfoEncoded));
         console.log("Apagando el ordenador:", computerInfo.name);
         executePlaybook('down_computers_up.yml', computerInfo.name);
     }
 
-    // Función para ejecutar el playbook de Ansible
     function executePlaybook(playbook, hostname) {
-        // Mostrar ventana de carga antes de hacer la solicitud
         showLoadingOverlay(` | Turning On ${hostname} | `);
         fetch(`/execute-playbook/${playbook}/${hostname}/`)
             .then(response => response.text())
@@ -120,7 +117,6 @@
             })
             .catch(error => console.error('Error:', error))
             .finally(() => {
-                // Ocultar ventana de carga después de que se complete la solicitud
                 hideLoadingOverlay();
             });
     }
@@ -155,7 +151,7 @@
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRFToken': '{{ csrf_token }}'  // CSRF token for security
+                    'X-CSRFToken': '{{ csrf_token }}'
                 },
                 body: JSON.stringify(requestData)
             })
@@ -168,7 +164,6 @@
                 alert('Error al ejecutar el comando');
             })
             .finally(() => {
-                // Ocultar ventana de carga después de que se complete la solicitud
                 hideLoadingOverlay();
             });
         } else {
@@ -176,5 +171,29 @@
         }
     }
 
+    function toggleWarning(computerInfoEncoded) {
+        const computerInfo = JSON.parse(decodeURIComponent(computerInfoEncoded));
+        const computerId = computerInfo.id
+
+        fetch(`/toggle-warning/${computerId}/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                location.reload(); // Refrescar la página para ver el estado actualizado de la advertencia
+            } else {
+                alert('Error toggling warning');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred in toggleWarning function');
+        });
+    }
 </script>
 {% endblock %}
