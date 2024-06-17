@@ -123,8 +123,31 @@ def execute_playbook(request, playbook, hostname):
     playbook_path = os.path.abspath(os.path.join(PLAYBOOKS_DIR, playbook))
     inventory_path = os.path.abspath(os.path.join(INVENTORY_DIR, 'dynamic_inventory.ini'))
     extra_vars = f"target_host={hostname}"
-    output = execute_ansible_playbook(playbook_path, inventory_path, extra_vars)
-    return HttpResponse(output)
+
+    if request.method == 'POST':
+        try:
+            # Parse the JSON body
+            body = json.loads(request.body)
+            custom_command = body.get('custom_command')
+            
+            # If a custom command is provided, add it to the extra_vars
+            if custom_command:
+                extra_vars += f" custom_command='{custom_command}'"
+            
+            output = execute_ansible_playbook(playbook_path, inventory_path, extra_vars)
+            return JsonResponse({'output': output})
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON'}, status=400)
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+    
+    elif request.method == 'GET':
+        output = execute_ansible_playbook(playbook_path, inventory_path, extra_vars)
+        return HttpResponse(output, content_type='text/plain')
+    
+    else:
+        return JsonResponse({'error': 'Invalid request method'}, status=405)
+
 
 
 @csrf_exempt

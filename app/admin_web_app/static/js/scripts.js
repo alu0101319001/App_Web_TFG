@@ -72,22 +72,39 @@ document.addEventListener('DOMContentLoaded', function() {
         executePlaybook('down_computers_up.yml', computerInfo.name);
     }
 
-    // Función para ejecutar el playbook de Ansible
-    function executePlaybook(playbook, hostname) {
+    // Función para ejecutar el playbook de Ansible con comando personalizado
+    function executePlaybook(playbook, hostname, customCommand = null) {
         // Mostrar ventana de carga antes de hacer la solicitud
-        showLoadingOverlay(` | Turning On ${hostname} | `);
-        fetch(`/execute-playbook/${playbook}/${hostname}/`)
-            .then(response => response.text())
-            .then(data => {
-                console.log(data);
-                alert("Playbook para encender el ordenador seleccionado ejecutado correctamente. Espere unos 2 minutos antes de realizar el escaneo.");
-            })
-            .catch(error => console.error('Error:', error))
-            .finally(() => {
-                // Ocultar ventana de carga después de que se complete la solicitud
-                hideLoadingOverlay();
-            });
-    }    
+        showLoadingOverlay(` | Ejecutando ${playbook} en ${hostname} | `);
+
+        const data = {
+            custom_command: customCommand
+        };
+
+        fetch(`/execute-playbook/${playbook}/${hostname}/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')  // Asegúrate de tener la función getCookie para obtener el token CSRF
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.output) {
+                console.log(data.output);
+                alert("Playbook ejecutado correctamente. Espere unos minutos antes de realizar el siguiente paso.");
+            } else if (data.error) {
+                console.error(data.error);
+                alert("Error al ejecutar el playbook: " + data.error);
+            }
+        })
+        .catch(error => console.error('Error:', error))
+        .finally(() => {
+            // Ocultar ventana de carga después de que se complete la solicitud
+            hideLoadingOverlay();
+        });
+    }
 
     // Función para abrir el explorador de archivos y ejecutar el script seleccionado (con argumento opcional)
     function openFileExplorerAndExecute() {
@@ -204,7 +221,22 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('You need to introduce command to execute this functionality.');
         }
     }
-    
+
+    // Función para obtener el token CSRF de las cookies
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }   
+        return cookieValue;
+    }   
 
 
     if (turnOnAllButton) {

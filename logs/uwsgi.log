@@ -39791,3 +39791,2959 @@ localhost                  : ok=7    changed=3    unreachable=0    failed=0
 [pid: 14751|app: 0|req: 7/23] 10.209.2.232 () {44 vars in 891 bytes} [Mon Jun 17 11:54:34 2024] GET / => generated 26460 bytes in 9 msecs (HTTP/1.1 200) 7 headers in 350 bytes (1 switches on core 1)
 [pid: 14753|app: 0|req: 6/24] 10.209.2.232 () {42 vars in 804 bytes} [Mon Jun 17 11:54:36 2024] GET /get-computer-details/3038/ => generated 109 bytes in 2 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 0)
 [pid: 14750|app: 0|req: 4/25] 10.209.2.232 () {42 vars in 804 bytes} [Mon Jun 17 11:54:37 2024] GET /get-computer-details/3046/ => generated 108 bytes in 2 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.26 (64bit) on [Mon Jun 17 13:23:51 2024] ***
+compiled with version: 7.5.0 on 07 June 2024 13:04:53
+os: Linux-5.4.0-150-generic #167~18.04.1-Ubuntu SMP Wed May 24 00:51:42 UTC 2023
+nodename: p1-019-38
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto
+detected binary path: /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/app
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 15169
+your memory page size is 4096 bytes
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/app/myapp.sock fd 3
+Python version: 3.12.3 (main, Jun  5 2024, 18:41:36) [GCC 7.5.0]
+PEP 405 virtualenv detected: /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/venv
+Set PythonHome to /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/venv
+Python main interpreter initialized at 0x555786355588
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 416880 bytes (407 KB) for 10 cores
+*** Operational MODE: preforking+threaded ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x555786355588 pid: 17841 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (pid: 17841, cores: 2)
+spawned uWSGI worker 2 (pid: 17842, cores: 2)
+spawned uWSGI worker 3 (pid: 17844, cores: 2)
+spawned uWSGI worker 4 (pid: 17846, cores: 2)
+spawned uWSGI worker 5 (pid: 17848, cores: 2)
+[pid: 17841|app: 0|req: 1/1] 10.209.2.232 () {44 vars in 891 bytes} [Mon Jun 17 12:23:56 2024] GET / => generated 26460 bytes in 56 msecs (HTTP/1.1 200) 7 headers in 350 bytes (1 switches on core 0)
+[pid: 17841|app: 0|req: 2/2] 10.209.2.232 () {42 vars in 804 bytes} [Mon Jun 17 12:23:59 2024] GET /get-computer-details/3038/ => generated 109 bytes in 3 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 1)
+Method Not Allowed: /execute-playbook/up_computers_down.yml/p1-019-25/
+[pid: 17848|app: 0|req: 1/3] 10.209.2.232 () {42 vars in 850 bytes} [Mon Jun 17 12:24:00 2024] GET /execute-playbook/up_computers_down.yml/p1-019-25/ => generated 35 bytes in 23 msecs (HTTP/1.1 405) 6 headers in 187 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.26 (64bit) on [Mon Jun 17 13:28:51 2024] ***
+compiled with version: 7.5.0 on 07 June 2024 13:04:53
+os: Linux-5.4.0-150-generic #167~18.04.1-Ubuntu SMP Wed May 24 00:51:42 UTC 2023
+nodename: p1-019-38
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto
+detected binary path: /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/app
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 15169
+your memory page size is 4096 bytes
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/app/myapp.sock fd 3
+Python version: 3.12.3 (main, Jun  5 2024, 18:41:36) [GCC 7.5.0]
+PEP 405 virtualenv detected: /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/venv
+Set PythonHome to /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/venv
+Python main interpreter initialized at 0x557091841588
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 416880 bytes (407 KB) for 10 cores
+*** Operational MODE: preforking+threaded ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x557091841588 pid: 17982 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (pid: 17982, cores: 2)
+spawned uWSGI worker 2 (pid: 17983, cores: 2)
+spawned uWSGI worker 3 (pid: 17984, cores: 2)
+spawned uWSGI worker 4 (pid: 17986, cores: 2)
+spawned uWSGI worker 5 (pid: 17988, cores: 2)
+[pid: 17982|app: 0|req: 1/1] 10.209.2.232 () {44 vars in 891 bytes} [Mon Jun 17 12:28:54 2024] GET / => generated 26460 bytes in 53 msecs (HTTP/1.1 200) 7 headers in 350 bytes (1 switches on core 0)
+[pid: 17982|app: 0|req: 2/2] 10.209.2.232 () {42 vars in 804 bytes} [Mon Jun 17 12:28:56 2024] GET /get-computer-details/3038/ => generated 109 bytes in 5 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 1)
+Executing ansible playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/up_computers_down.yml with inventory /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini...
+['sudo', 'ansible-playbook', '-i', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/up_computers_down.yml', '--extra-vars', 'target_host=p1-019-25']
+Processing output...
+
+PLAY [Levantar máquinas con estado 'off'] **************************************
+
+TASK [Obtener lista de direcciones MAC fuera de línea] *************************
+ok: [localhost]
+
+TASK [Levantar máquinas con estado 'off'] **************************************
+changed: [localhost] => (item='24:be:05:21:0e:03')
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=1    unreachable=0    failed=0   
+
+
+[pid: 17988|app: 0|req: 1/3] 10.209.2.232 () {42 vars in 850 bytes} [Mon Jun 17 12:28:58 2024] GET /execute-playbook/up_computers_down.yml/p1-019-25/ => generated 478 bytes in 2559 msecs (HTTP/1.1 200) 6 headers in 166 bytes (1 switches on core 0)
+[pid: 17986|app: 0|req: 1/4] 10.209.2.232 () {42 vars in 804 bytes} [Mon Jun 17 12:30:10 2024] GET /get-computer-details/3029/ => generated 117 bytes in 18 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 0)
+Executing ansible playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/down_computers_up.yml with inventory /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini...
+['sudo', 'ansible-playbook', '-i', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/down_computers_up.yml', '--extra-vars', 'target_host=p1-019-37']
+Processing output...
+Error al ejecutar el playbook:
+ [WARNING]: Ignoring invalid attribute: ignore_unreachable
+
+[pid: 17988|app: 0|req: 2/5] 10.209.2.232 () {42 vars in 850 bytes} [Mon Jun 17 12:30:11 2024] GET /execute-playbook/down_computers_up.yml/p1-019-37/ => generated 59 bytes in 2143 msecs (HTTP/1.1 200) 6 headers in 165 bytes (1 switches on core 1)
+Executing command: sudo ansible-playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/scan_p1_19_lab.yml
+Output: 
+PLAY [Ejecutar script de escaneo en localhost] *********************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Ejecutar script] *********************************************************
+changed: [localhost]
+
+TASK [Guardar salida del script] ***********************************************
+ok: [localhost -> localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=1    unreachable=0    failed=0   
+
+
+Executing command: sudo ansible-playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/update_inventory.yml
+Output: 
+PLAY [Actualizar inventario de Ansible y ejecutar tareas] **********************
+
+TASK [Ejecutar script para generar inventario] *********************************
+changed: [localhost -> localhost]
+
+TASK [Depurar salida del script de inventario] *********************************
+ok: [localhost] => {
+    "inventory_output.stdout": "p1-019-00:\n  ansible_host: none\n  mac_address: 64:51:06:2f:56:ce\n  status: off\np1-019-11:\n  ansible_host: none\n  mac_address: 8c:dc:d4:2e:37:07\n  status: off\np1-019-12:\n  ansible_host: none\n  mac_address: 08:2e:5f:21:df:2b\n  status: off\np1-019-16:\n  ansible_host: none\n  mac_address: 3c:d9:2b:4d:0a:6f\n  status: off\np1-019-21:\n  ansible_host: none\n  mac_address: 64:51:06:61:3b:06\n  status: off\np1-019-23:\n  ansible_host: none\n  mac_address: 64:51:06:5f:6f:bc\n  status: off\np1-019-25:\n  ansible_host: 10.209.2.144\n  mac_address: 24:be:05:21:0e:03\n  status: on\np1-019-26:\n  ansible_host: none\n  mac_address: 24:be:05:0f:be:15\n  status: off\np1-019-24:\n  ansible_host: 10.209.2.46\n  mac_address: c4:34:6b:5e:5e:b4\n  status: on\np1-019-28:\n  ansible_host: none\n  mac_address: 2c:41:38:99:6d:a3\n  status: off\np1-019-31:\n  ansible_host: none\n  mac_address: 64:51:06:5f:76:dc\n  status: off\np1-019-32:\n  ansible_host: none\n  mac_address: c4:34:6b:7a:ad:ea\n  status: off\np1-019-33:\n  ansible_host: none\n  mac_address: a0:d3:c1:1d:b0:8e\n  status: off\np1-019-34:\n  ansible_host: 10.209.2.53\n  mac_address: 64:51:06:60:af:4d\n  status: on\np1-019-35:\n  ansible_host: 10.209.2.74\n  mac_address: a0:d3:c1:33:9a:82\n  status: on\np1-019-36:\n  ansible_host: none\n  mac_address: c4:34:6b:74:b0:cb\n  status: off\np1-019-38:\n  ansible_host: none\n  mac_address: e8:39:35:5d:e3:34\n  status: off\np1-019-41:\n  ansible_host: none\n  mac_address: 24:be:05:15:56:1c\n  status: off\np1-019-42:\n  ansible_host: none\n  mac_address: 3c:d9:2b:49:3b:4f\n  status: off\np1-019-43:\n  ansible_host: none\n  mac_address: 24:be:05:04:b3:4c\n  status: off\np1-019-44:\n  ansible_host: 10.209.2.177\n  mac_address: 2c:44:fd:39:8b:67\n  status: on\np1-019-46:\n  ansible_host: none\n  mac_address: 24:be:05:09:19:48\n  status: off\np1-019-45:\n  ansible_host: 10.209.2.148\n  mac_address: 08:2e:5f:15:69:bb\n  status: on\np1-019-47:\n  ansible_host: none\n  mac_address: a0:d3:c1:0f:f2:1a\n  status: off\np1-019-48:\n  ansible_host: none\n  mac_address: b4:b5:2f:ab:4b:0d\n  status: off\np1-019-37:\n  ansible_host: 10.209.2.23\n  mac_address: 3c:d9:2b:59:d9:73\n  status: off"
+}
+
+TASK [Cargar inventario dinámico] **********************************************
+ok: [localhost]
+
+TASK [Depurar inventario dinámico] *********************************************
+ok: [localhost] => {
+    "dynamic_inventory": {
+        "p1-019-00": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:2f:56:ce", 
+            "status": false
+        }, 
+        "p1-019-11": {
+            "ansible_host": "none", 
+            "mac_address": "8c:dc:d4:2e:37:07", 
+            "status": false
+        }, 
+        "p1-019-12": {
+            "ansible_host": "none", 
+            "mac_address": "08:2e:5f:21:df:2b", 
+            "status": false
+        }, 
+        "p1-019-16": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:4d:0a:6f", 
+            "status": false
+        }, 
+        "p1-019-21": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:61:3b:06", 
+            "status": false
+        }, 
+        "p1-019-23": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:5f:6f:bc", 
+            "status": false
+        }, 
+        "p1-019-24": {
+            "ansible_host": "10.209.2.46", 
+            "mac_address": "c4:34:6b:5e:5e:b4", 
+            "status": true
+        }, 
+        "p1-019-25": {
+            "ansible_host": "10.209.2.144", 
+            "mac_address": "24:be:05:21:0e:03", 
+            "status": true
+        }, 
+        "p1-019-26": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:0f:be:15", 
+            "status": false
+        }, 
+        "p1-019-28": {
+            "ansible_host": "none", 
+            "mac_address": "2c:41:38:99:6d:a3", 
+            "status": false
+        }, 
+        "p1-019-31": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:5f:76:dc", 
+            "status": false
+        }, 
+        "p1-019-32": {
+            "ansible_host": "none", 
+            "mac_address": "c4:34:6b:7a:ad:ea", 
+            "status": false
+        }, 
+        "p1-019-33": {
+            "ansible_host": "none", 
+            "mac_address": "a0:d3:c1:1d:b0:8e", 
+            "status": false
+        }, 
+        "p1-019-34": {
+            "ansible_host": "10.209.2.53", 
+            "mac_address": "64:51:06:60:af:4d", 
+            "status": true
+        }, 
+        "p1-019-35": {
+            "ansible_host": "10.209.2.74", 
+            "mac_address": "a0:d3:c1:33:9a:82", 
+            "status": true
+        }, 
+        "p1-019-36": {
+            "ansible_host": "none", 
+            "mac_address": "c4:34:6b:74:b0:cb", 
+            "status": false
+        }, 
+        "p1-019-37": {
+            "ansible_host": "10.209.2.23", 
+            "mac_address": "3c:d9:2b:59:d9:73", 
+            "status": false
+        }, 
+        "p1-019-38": {
+            "ansible_host": "none", 
+            "mac_address": "e8:39:35:5d:e3:34", 
+            "status": false
+        }, 
+        "p1-019-41": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:15:56:1c", 
+            "status": false
+        }, 
+        "p1-019-42": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:49:3b:4f", 
+            "status": false
+        }, 
+        "p1-019-43": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:04:b3:4c", 
+            "status": false
+        }, 
+        "p1-019-44": {
+            "ansible_host": "10.209.2.177", 
+            "mac_address": "2c:44:fd:39:8b:67", 
+            "status": true
+        }, 
+        "p1-019-45": {
+            "ansible_host": "10.209.2.148", 
+            "mac_address": "08:2e:5f:15:69:bb", 
+            "status": true
+        }, 
+        "p1-019-46": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:09:19:48", 
+            "status": false
+        }, 
+        "p1-019-47": {
+            "ansible_host": "none", 
+            "mac_address": "a0:d3:c1:0f:f2:1a", 
+            "status": false
+        }, 
+        "p1-019-48": {
+            "ansible_host": "none", 
+            "mac_address": "b4:b5:2f:ab:4b:0d", 
+            "status": false
+        }
+    }
+}
+
+TASK [Crear contenido del archivo de inventario] *******************************
+ok: [localhost]
+
+TASK [Guardar el inventario en un archivo] *************************************
+changed: [localhost]
+
+TASK [Actualizar inventario] ***************************************************
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:2f:56:ce'}, 'key': 'p1-019-00'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'2c:41:38:99:6d:a3'}, 'key': 'p1-019-28'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:5f:6f:bc'}, 'key': 'p1-019-23'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:61:3b:06'}, 'key': 'p1-019-21'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:0f:be:15'}, 'key': 'p1-019-26'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.46', 'mac_address': u'c4:34:6b:5e:5e:b4'}, 'key': 'p1-019-24'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.144', 'mac_address': u'24:be:05:21:0e:03'}, 'key': 'p1-019-25'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'e8:39:35:5d:e3:34'}, 'key': 'p1-019-38'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:5f:76:dc'}, 'key': 'p1-019-31'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:4d:0a:6f'}, 'key': 'p1-019-16'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'a0:d3:c1:1d:b0:8e'}, 'key': 'p1-019-33'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'c4:34:6b:7a:ad:ea'}, 'key': 'p1-019-32'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.74', 'mac_address': u'a0:d3:c1:33:9a:82'}, 'key': 'p1-019-35'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'08:2e:5f:21:df:2b'}, 'key': 'p1-019-12'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'8c:dc:d4:2e:37:07'}, 'key': 'p1-019-11'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.53', 'mac_address': u'64:51:06:60:af:4d'}, 'key': 'p1-019-34'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'10.209.2.23', 'mac_address': u'3c:d9:2b:59:d9:73'}, 'key': 'p1-019-37'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'c4:34:6b:74:b0:cb'}, 'key': 'p1-019-36'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'b4:b5:2f:ab:4b:0d'}, 'key': 'p1-019-48'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.177', 'mac_address': u'2c:44:fd:39:8b:67'}, 'key': 'p1-019-44'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.148', 'mac_address': u'08:2e:5f:15:69:bb'}, 'key': 'p1-019-45'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:09:19:48'}, 'key': 'p1-019-46'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'a0:d3:c1:0f:f2:1a'}, 'key': 'p1-019-47'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:15:56:1c'}, 'key': 'p1-019-41'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:49:3b:4f'}, 'key': 'p1-019-42'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:04:b3:4c'}, 'key': 'p1-019-43'})
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=7    changed=3    unreachable=0    failed=0   
+
+
+[pid: 17982|app: 0|req: 3/6] 10.209.2.232 () {42 vars in 770 bytes} [Mon Jun 17 12:31:03 2024] GET /run-scan/ => generated 18560 bytes in 15589 msecs (HTTP/1.1 200) 5 headers in 160 bytes (1 switches on core 1)
+[pid: 17982|app: 0|req: 4/7] 10.209.2.232 () {44 vars in 891 bytes} [Mon Jun 17 12:31:47 2024] GET / => generated 31827 bytes in 16 msecs (HTTP/1.1 200) 7 headers in 350 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.26 (64bit) on [Mon Jun 17 16:01:40 2024] ***
+compiled with version: 7.5.0 on 07 June 2024 13:04:53
+os: Linux-5.4.0-150-generic #167~18.04.1-Ubuntu SMP Wed May 24 00:51:42 UTC 2023
+nodename: p1-019-38
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto
+detected binary path: /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/app
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 15169
+your memory page size is 4096 bytes
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/app/myapp.sock fd 3
+Python version: 3.12.3 (main, Jun  5 2024, 18:41:36) [GCC 7.5.0]
+PEP 405 virtualenv detected: /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/venv
+Set PythonHome to /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/venv
+Python main interpreter initialized at 0x55719b7f7588
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 416880 bytes (407 KB) for 10 cores
+*** Operational MODE: preforking+threaded ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55719b7f7588 pid: 20590 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (pid: 20590, cores: 2)
+spawned uWSGI worker 2 (pid: 20594, cores: 2)
+spawned uWSGI worker 3 (pid: 20595, cores: 2)
+spawned uWSGI worker 4 (pid: 20597, cores: 2)
+spawned uWSGI worker 5 (pid: 20599, cores: 2)
+[pid: 20597|app: 0|req: 1/1] 10.209.2.232 () {44 vars in 891 bytes} [Mon Jun 17 15:01:45 2024] GET / => generated 33219 bytes in 74 msecs (HTTP/1.1 200) 7 headers in 350 bytes (1 switches on core 0)
+[pid: 20597|app: 0|req: 2/2] 10.209.2.232 () {42 vars in 804 bytes} [Mon Jun 17 15:01:47 2024] GET /get-computer-details/3054/ => generated 118 bytes in 3 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 1)
+Executing ansible playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/down_computers_up.yml with inventory /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini...
+['sudo', 'ansible-playbook', '-i', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/down_computers_up.yml', '--extra-vars', 'target_host=p1-019-25']
+Processing output...
+Error al ejecutar el playbook:
+ [WARNING]: Ignoring invalid attribute: ignore_unreachable
+
+[pid: 20599|app: 0|req: 1/3] 10.209.2.232 () {50 vars in 1062 bytes} [Mon Jun 17 15:01:50 2024] POST /execute-playbook/down_computers_up.yml/p1-019-25/ => generated 74 bytes in 4036 msecs (HTTP/1.1 200) 6 headers in 171 bytes (1 switches on core 0)
+Executing command: sudo ansible-playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/scan_p1_19_lab.yml
+Output: 
+PLAY [Ejecutar script de escaneo en localhost] *********************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Ejecutar script] *********************************************************
+changed: [localhost]
+
+TASK [Guardar salida del script] ***********************************************
+changed: [localhost -> localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=2    unreachable=0    failed=0   
+
+
+Executing command: sudo ansible-playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/update_inventory.yml
+Output: 
+PLAY [Actualizar inventario de Ansible y ejecutar tareas] **********************
+
+TASK [Ejecutar script para generar inventario] *********************************
+changed: [localhost -> localhost]
+
+TASK [Depurar salida del script de inventario] *********************************
+ok: [localhost] => {
+    "inventory_output.stdout": "p1-019-00:\n  ansible_host: none\n  mac_address: 64:51:06:2f:56:ce\n  status: off\np1-019-11:\n  ansible_host: none\n  mac_address: 8c:dc:d4:2e:37:07\n  status: off\np1-019-12:\n  ansible_host: none\n  mac_address: 08:2e:5f:21:df:2b\n  status: off\np1-019-16:\n  ansible_host: none\n  mac_address: 3c:d9:2b:4d:0a:6f\n  status: off\np1-019-21:\n  ansible_host: none\n  mac_address: 64:51:06:61:3b:06\n  status: off\np1-019-23:\n  ansible_host: none\n  mac_address: 64:51:06:5f:6f:bc\n  status: off\np1-019-24:\n  ansible_host: 10.209.2.46\n  mac_address: c4:34:6b:5e:5e:b4\n  status: on\np1-019-26:\n  ansible_host: none\n  mac_address: 24:be:05:0f:be:15\n  status: off\np1-019-28:\n  ansible_host: none\n  mac_address: 2c:41:38:99:6d:a3\n  status: off\np1-019-31:\n  ansible_host: none\n  mac_address: 64:51:06:5f:76:dc\n  status: off\np1-019-32:\n  ansible_host: none\n  mac_address: c4:34:6b:7a:ad:ea\n  status: off\np1-019-33:\n  ansible_host: none\n  mac_address: a0:d3:c1:1d:b0:8e\n  status: off\np1-019-34:\n  ansible_host: 10.209.2.53\n  mac_address: 64:51:06:60:af:4d\n  status: on\np1-019-35:\n  ansible_host: 10.209.2.74\n  mac_address: a0:d3:c1:33:9a:82\n  status: on\np1-019-36:\n  ansible_host: none\n  mac_address: c4:34:6b:74:b0:cb\n  status: off\np1-019-37:\n  ansible_host: none\n  mac_address: 3c:d9:2b:59:d9:73\n  status: off\np1-019-38:\n  ansible_host: none\n  mac_address: e8:39:35:5d:e3:34\n  status: off\np1-019-41:\n  ansible_host: none\n  mac_address: 24:be:05:15:56:1c\n  status: off\np1-019-42:\n  ansible_host: none\n  mac_address: 3c:d9:2b:49:3b:4f\n  status: off\np1-019-43:\n  ansible_host: none\n  mac_address: 24:be:05:04:b3:4c\n  status: off\np1-019-44:\n  ansible_host: 10.209.2.177\n  mac_address: 2c:44:fd:39:8b:67\n  status: on\np1-019-45:\n  ansible_host: 10.209.2.148\n  mac_address: 08:2e:5f:15:69:bb\n  status: on\np1-019-46:\n  ansible_host: none\n  mac_address: 24:be:05:09:19:48\n  status: off\np1-019-47:\n  ansible_host: none\n  mac_address: a0:d3:c1:0f:f2:1a\n  status: off\np1-019-48:\n  ansible_host: none\n  mac_address: b4:b5:2f:ab:4b:0d\n  status: off\np1-019-25:\n  ansible_host: 10.209.2.144\n  mac_address: 24:be:05:21:0e:03\n  status: off"
+}
+
+TASK [Cargar inventario dinámico] **********************************************
+ok: [localhost]
+
+TASK [Depurar inventario dinámico] *********************************************
+ok: [localhost] => {
+    "dynamic_inventory": {
+        "p1-019-00": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:2f:56:ce", 
+            "status": false
+        }, 
+        "p1-019-11": {
+            "ansible_host": "none", 
+            "mac_address": "8c:dc:d4:2e:37:07", 
+            "status": false
+        }, 
+        "p1-019-12": {
+            "ansible_host": "none", 
+            "mac_address": "08:2e:5f:21:df:2b", 
+            "status": false
+        }, 
+        "p1-019-16": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:4d:0a:6f", 
+            "status": false
+        }, 
+        "p1-019-21": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:61:3b:06", 
+            "status": false
+        }, 
+        "p1-019-23": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:5f:6f:bc", 
+            "status": false
+        }, 
+        "p1-019-24": {
+            "ansible_host": "10.209.2.46", 
+            "mac_address": "c4:34:6b:5e:5e:b4", 
+            "status": true
+        }, 
+        "p1-019-25": {
+            "ansible_host": "10.209.2.144", 
+            "mac_address": "24:be:05:21:0e:03", 
+            "status": false
+        }, 
+        "p1-019-26": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:0f:be:15", 
+            "status": false
+        }, 
+        "p1-019-28": {
+            "ansible_host": "none", 
+            "mac_address": "2c:41:38:99:6d:a3", 
+            "status": false
+        }, 
+        "p1-019-31": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:5f:76:dc", 
+            "status": false
+        }, 
+        "p1-019-32": {
+            "ansible_host": "none", 
+            "mac_address": "c4:34:6b:7a:ad:ea", 
+            "status": false
+        }, 
+        "p1-019-33": {
+            "ansible_host": "none", 
+            "mac_address": "a0:d3:c1:1d:b0:8e", 
+            "status": false
+        }, 
+        "p1-019-34": {
+            "ansible_host": "10.209.2.53", 
+            "mac_address": "64:51:06:60:af:4d", 
+            "status": true
+        }, 
+        "p1-019-35": {
+            "ansible_host": "10.209.2.74", 
+            "mac_address": "a0:d3:c1:33:9a:82", 
+            "status": true
+        }, 
+        "p1-019-36": {
+            "ansible_host": "none", 
+            "mac_address": "c4:34:6b:74:b0:cb", 
+            "status": false
+        }, 
+        "p1-019-37": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:59:d9:73", 
+            "status": false
+        }, 
+        "p1-019-38": {
+            "ansible_host": "none", 
+            "mac_address": "e8:39:35:5d:e3:34", 
+            "status": false
+        }, 
+        "p1-019-41": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:15:56:1c", 
+            "status": false
+        }, 
+        "p1-019-42": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:49:3b:4f", 
+            "status": false
+        }, 
+        "p1-019-43": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:04:b3:4c", 
+            "status": false
+        }, 
+        "p1-019-44": {
+            "ansible_host": "10.209.2.177", 
+            "mac_address": "2c:44:fd:39:8b:67", 
+            "status": true
+        }, 
+        "p1-019-45": {
+            "ansible_host": "10.209.2.148", 
+            "mac_address": "08:2e:5f:15:69:bb", 
+            "status": true
+        }, 
+        "p1-019-46": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:09:19:48", 
+            "status": false
+        }, 
+        "p1-019-47": {
+            "ansible_host": "none", 
+            "mac_address": "a0:d3:c1:0f:f2:1a", 
+            "status": false
+        }, 
+        "p1-019-48": {
+            "ansible_host": "none", 
+            "mac_address": "b4:b5:2f:ab:4b:0d", 
+            "status": false
+        }
+    }
+}
+
+TASK [Crear contenido del archivo de inventario] *******************************
+ok: [localhost]
+
+TASK [Guardar el inventario en un archivo] *************************************
+changed: [localhost]
+
+TASK [Actualizar inventario] ***************************************************
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:2f:56:ce'}, 'key': 'p1-019-00'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'2c:41:38:99:6d:a3'}, 'key': 'p1-019-28'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:5f:6f:bc'}, 'key': 'p1-019-23'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:61:3b:06'}, 'key': 'p1-019-21'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:0f:be:15'}, 'key': 'p1-019-26'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.46', 'mac_address': u'c4:34:6b:5e:5e:b4'}, 'key': 'p1-019-24'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'10.209.2.144', 'mac_address': u'24:be:05:21:0e:03'}, 'key': 'p1-019-25'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'e8:39:35:5d:e3:34'}, 'key': 'p1-019-38'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:5f:76:dc'}, 'key': 'p1-019-31'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:4d:0a:6f'}, 'key': 'p1-019-16'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'a0:d3:c1:1d:b0:8e'}, 'key': 'p1-019-33'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'c4:34:6b:7a:ad:ea'}, 'key': 'p1-019-32'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.74', 'mac_address': u'a0:d3:c1:33:9a:82'}, 'key': 'p1-019-35'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'08:2e:5f:21:df:2b'}, 'key': 'p1-019-12'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'8c:dc:d4:2e:37:07'}, 'key': 'p1-019-11'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.53', 'mac_address': u'64:51:06:60:af:4d'}, 'key': 'p1-019-34'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:59:d9:73'}, 'key': 'p1-019-37'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'c4:34:6b:74:b0:cb'}, 'key': 'p1-019-36'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'b4:b5:2f:ab:4b:0d'}, 'key': 'p1-019-48'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.177', 'mac_address': u'2c:44:fd:39:8b:67'}, 'key': 'p1-019-44'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.148', 'mac_address': u'08:2e:5f:15:69:bb'}, 'key': 'p1-019-45'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:09:19:48'}, 'key': 'p1-019-46'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'a0:d3:c1:0f:f2:1a'}, 'key': 'p1-019-47'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:15:56:1c'}, 'key': 'p1-019-41'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:49:3b:4f'}, 'key': 'p1-019-42'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:04:b3:4c'}, 'key': u'p1-019-43'})
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=7    changed=3    unreachable=0    failed=0   
+
+
+[pid: 20599|app: 0|req: 2/4] 10.209.2.232 () {42 vars in 770 bytes} [Mon Jun 17 15:02:07 2024] GET /run-scan/ => generated 18545 bytes in 15340 msecs (HTTP/1.1 200) 5 headers in 160 bytes (1 switches on core 1)
+[pid: 20597|app: 0|req: 3/5] 10.209.2.232 () {44 vars in 891 bytes} [Mon Jun 17 15:02:24 2024] GET / => generated 38590 bytes in 20 msecs (HTTP/1.1 200) 7 headers in 350 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+[pid: 20597|app: 0|req: 4/6] 10.209.2.232 () {42 vars in 796 bytes} [Mon Jun 17 15:02:25 2024] GET /favicon.ico => generated 4970 bytes in 9 msecs (HTTP/1.1 404) 5 headers in 159 bytes (1 switches on core 1)
+[pid: 20590|app: 0|req: 1/7] 10.209.2.232 () {42 vars in 804 bytes} [Mon Jun 17 15:02:26 2024] GET /get-computer-details/3089/ => generated 109 bytes in 19 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 0)
+Executing ansible playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/up_computers_down.yml with inventory /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini...
+['sudo', 'ansible-playbook', '-i', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/up_computers_down.yml', '--extra-vars', 'target_host=p1-019-25']
+Processing output...
+
+PLAY [Levantar máquinas con estado 'off'] **************************************
+
+TASK [Obtener lista de direcciones MAC fuera de línea] *************************
+ok: [localhost]
+
+TASK [Levantar máquinas con estado 'off'] **************************************
+changed: [localhost] => (item='24:be:05:21:0e:03')
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=1    unreachable=0    failed=0   
+
+
+[pid: 20599|app: 0|req: 3/8] 10.209.2.232 () {50 vars in 1062 bytes} [Mon Jun 17 15:02:32 2024] POST /execute-playbook/up_computers_down.yml/p1-019-25/ => generated 516 bytes in 1900 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.26 (64bit) on [Mon Jun 17 16:06:36 2024] ***
+compiled with version: 7.5.0 on 07 June 2024 13:04:53
+os: Linux-5.4.0-150-generic #167~18.04.1-Ubuntu SMP Wed May 24 00:51:42 UTC 2023
+nodename: p1-019-38
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto
+detected binary path: /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/app
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 15169
+your memory page size is 4096 bytes
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/app/myapp.sock fd 3
+Python version: 3.12.3 (main, Jun  5 2024, 18:41:36) [GCC 7.5.0]
+PEP 405 virtualenv detected: /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/venv
+Set PythonHome to /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/venv
+Python main interpreter initialized at 0x55a9a7125588
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 416880 bytes (407 KB) for 10 cores
+*** Operational MODE: preforking+threaded ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55a9a7125588 pid: 21748 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (pid: 21748, cores: 2)
+spawned uWSGI worker 2 (pid: 21749, cores: 2)
+spawned uWSGI worker 3 (pid: 21751, cores: 2)
+spawned uWSGI worker 4 (pid: 21753, cores: 2)
+spawned uWSGI worker 5 (pid: 21755, cores: 2)
+[pid: 21751|app: 0|req: 1/1] 10.209.2.232 () {44 vars in 891 bytes} [Mon Jun 17 15:06:40 2024] GET / => generated 39107 bytes in 53 msecs (HTTP/1.1 200) 7 headers in 350 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+Mon Jun 17 15:06:40 2024 - SIGPIPE: writing to a closed pipe/socket/fd (probably the client disconnected) !!!
+Mon Jun 17 15:06:40 2024 - uwsgi_response_writev_headers_and_body_do(): Broken pipe [core/writer.c line 306] during GET /favicon.ico (10.209.2.232)
+OSError: write error
+[pid: 21755|app: 0|req: 1/2] 10.209.2.232 () {42 vars in 796 bytes} [Mon Jun 17 15:06:40 2024] GET /favicon.ico => generated 0 bytes in 26 msecs (HTTP/1.1 404) 5 headers in 0 bytes (0 switches on core 0)
+Executing command: sudo ansible-playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/scan_p1_19_lab.yml
+Output: 
+PLAY [Ejecutar script de escaneo en localhost] *********************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Ejecutar script] *********************************************************
+changed: [localhost]
+
+TASK [Guardar salida del script] ***********************************************
+ok: [localhost -> localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=1    unreachable=0    failed=0   
+
+
+Executing command: sudo ansible-playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/update_inventory.yml
+Output: 
+PLAY [Actualizar inventario de Ansible y ejecutar tareas] **********************
+
+TASK [Ejecutar script para generar inventario] *********************************
+changed: [localhost -> localhost]
+
+TASK [Depurar salida del script de inventario] *********************************
+ok: [localhost] => {
+    "inventory_output.stdout": "p1-019-00:\n  ansible_host: none\n  mac_address: 64:51:06:2f:56:ce\n  status: off\np1-019-11:\n  ansible_host: none\n  mac_address: 8c:dc:d4:2e:37:07\n  status: off\np1-019-12:\n  ansible_host: none\n  mac_address: 08:2e:5f:21:df:2b\n  status: off\np1-019-16:\n  ansible_host: none\n  mac_address: 3c:d9:2b:4d:0a:6f\n  status: off\np1-019-21:\n  ansible_host: none\n  mac_address: 64:51:06:61:3b:06\n  status: off\np1-019-23:\n  ansible_host: none\n  mac_address: 64:51:06:5f:6f:bc\n  status: off\np1-019-24:\n  ansible_host: 10.209.2.46\n  mac_address: c4:34:6b:5e:5e:b4\n  status: on\np1-019-25:\n  ansible_host: 10.209.2.144\n  mac_address: 24:be:05:21:0e:03\n  status: on\np1-019-26:\n  ansible_host: none\n  mac_address: 24:be:05:0f:be:15\n  status: off\np1-019-28:\n  ansible_host: none\n  mac_address: 2c:41:38:99:6d:a3\n  status: off\np1-019-31:\n  ansible_host: none\n  mac_address: 64:51:06:5f:76:dc\n  status: off\np1-019-32:\n  ansible_host: none\n  mac_address: c4:34:6b:7a:ad:ea\n  status: off\np1-019-33:\n  ansible_host: none\n  mac_address: a0:d3:c1:1d:b0:8e\n  status: off\np1-019-34:\n  ansible_host: 10.209.2.53\n  mac_address: 64:51:06:60:af:4d\n  status: on\np1-019-35:\n  ansible_host: 10.209.2.74\n  mac_address: a0:d3:c1:33:9a:82\n  status: on\np1-019-36:\n  ansible_host: none\n  mac_address: c4:34:6b:74:b0:cb\n  status: off\np1-019-37:\n  ansible_host: none\n  mac_address: 3c:d9:2b:59:d9:73\n  status: off\np1-019-38:\n  ansible_host: none\n  mac_address: e8:39:35:5d:e3:34\n  status: off\np1-019-41:\n  ansible_host: none\n  mac_address: 24:be:05:15:56:1c\n  status: off\np1-019-42:\n  ansible_host: none\n  mac_address: 3c:d9:2b:49:3b:4f\n  status: off\np1-019-43:\n  ansible_host: none\n  mac_address: 24:be:05:04:b3:4c\n  status: off\np1-019-44:\n  ansible_host: 10.209.2.177\n  mac_address: 2c:44:fd:39:8b:67\n  status: on\np1-019-45:\n  ansible_host: 10.209.2.148\n  mac_address: 08:2e:5f:15:69:bb\n  status: on\np1-019-46:\n  ansible_host: none\n  mac_address: 24:be:05:09:19:48\n  status: off\np1-019-47:\n  ansible_host: none\n  mac_address: a0:d3:c1:0f:f2:1a\n  status: off\np1-019-48:\n  ansible_host: none\n  mac_address: b4:b5:2f:ab:4b:0d\n  status: off"
+}
+
+TASK [Cargar inventario dinámico] **********************************************
+ok: [localhost]
+
+TASK [Depurar inventario dinámico] *********************************************
+ok: [localhost] => {
+    "dynamic_inventory": {
+        "p1-019-00": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:2f:56:ce", 
+            "status": false
+        }, 
+        "p1-019-11": {
+            "ansible_host": "none", 
+            "mac_address": "8c:dc:d4:2e:37:07", 
+            "status": false
+        }, 
+        "p1-019-12": {
+            "ansible_host": "none", 
+            "mac_address": "08:2e:5f:21:df:2b", 
+            "status": false
+        }, 
+        "p1-019-16": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:4d:0a:6f", 
+            "status": false
+        }, 
+        "p1-019-21": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:61:3b:06", 
+            "status": false
+        }, 
+        "p1-019-23": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:5f:6f:bc", 
+            "status": false
+        }, 
+        "p1-019-24": {
+            "ansible_host": "10.209.2.46", 
+            "mac_address": "c4:34:6b:5e:5e:b4", 
+            "status": true
+        }, 
+        "p1-019-25": {
+            "ansible_host": "10.209.2.144", 
+            "mac_address": "24:be:05:21:0e:03", 
+            "status": true
+        }, 
+        "p1-019-26": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:0f:be:15", 
+            "status": false
+        }, 
+        "p1-019-28": {
+            "ansible_host": "none", 
+            "mac_address": "2c:41:38:99:6d:a3", 
+            "status": false
+        }, 
+        "p1-019-31": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:5f:76:dc", 
+            "status": false
+        }, 
+        "p1-019-32": {
+            "ansible_host": "none", 
+            "mac_address": "c4:34:6b:7a:ad:ea", 
+            "status": false
+        }, 
+        "p1-019-33": {
+            "ansible_host": "none", 
+            "mac_address": "a0:d3:c1:1d:b0:8e", 
+            "status": false
+        }, 
+        "p1-019-34": {
+            "ansible_host": "10.209.2.53", 
+            "mac_address": "64:51:06:60:af:4d", 
+            "status": true
+        }, 
+        "p1-019-35": {
+            "ansible_host": "10.209.2.74", 
+            "mac_address": "a0:d3:c1:33:9a:82", 
+            "status": true
+        }, 
+        "p1-019-36": {
+            "ansible_host": "none", 
+            "mac_address": "c4:34:6b:74:b0:cb", 
+            "status": false
+        }, 
+        "p1-019-37": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:59:d9:73", 
+            "status": false
+        }, 
+        "p1-019-38": {
+            "ansible_host": "none", 
+            "mac_address": "e8:39:35:5d:e3:34", 
+            "status": false
+        }, 
+        "p1-019-41": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:15:56:1c", 
+            "status": false
+        }, 
+        "p1-019-42": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:49:3b:4f", 
+            "status": false
+        }, 
+        "p1-019-43": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:04:b3:4c", 
+            "status": false
+        }, 
+        "p1-019-44": {
+            "ansible_host": "10.209.2.177", 
+            "mac_address": "2c:44:fd:39:8b:67", 
+            "status": true
+        }, 
+        "p1-019-45": {
+            "ansible_host": "10.209.2.148", 
+            "mac_address": "08:2e:5f:15:69:bb", 
+            "status": true
+        }, 
+        "p1-019-46": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:09:19:48", 
+            "status": false
+        }, 
+        "p1-019-47": {
+            "ansible_host": "none", 
+            "mac_address": "a0:d3:c1:0f:f2:1a", 
+            "status": false
+        }, 
+        "p1-019-48": {
+            "ansible_host": "none", 
+            "mac_address": "b4:b5:2f:ab:4b:0d", 
+            "status": false
+        }
+    }
+}
+
+TASK [Crear contenido del archivo de inventario] *******************************
+ok: [localhost]
+
+TASK [Guardar el inventario en un archivo] *************************************
+changed: [localhost]
+
+TASK [Actualizar inventario] ***************************************************
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:2f:56:ce'}, 'key': 'p1-019-00'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'2c:41:38:99:6d:a3'}, 'key': 'p1-019-28'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:5f:6f:bc'}, 'key': 'p1-019-23'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:61:3b:06'}, 'key': 'p1-019-21'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:0f:be:15'}, 'key': 'p1-019-26'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.46', 'mac_address': u'c4:34:6b:5e:5e:b4'}, 'key': 'p1-019-24'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.144', 'mac_address': u'24:be:05:21:0e:03'}, 'key': 'p1-019-25'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'e8:39:35:5d:e3:34'}, 'key': 'p1-019-38'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:5f:76:dc'}, 'key': 'p1-019-31'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:4d:0a:6f'}, 'key': 'p1-019-16'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'a0:d3:c1:1d:b0:8e'}, 'key': 'p1-019-33'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'c4:34:6b:7a:ad:ea'}, 'key': 'p1-019-32'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.74', 'mac_address': u'a0:d3:c1:33:9a:82'}, 'key': 'p1-019-35'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'08:2e:5f:21:df:2b'}, 'key': 'p1-019-12'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'8c:dc:d4:2e:37:07'}, 'key': 'p1-019-11'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.53', 'mac_address': u'64:51:06:60:af:4d'}, 'key': 'p1-019-34'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:59:d9:73'}, 'key': 'p1-019-37'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'c4:34:6b:74:b0:cb'}, 'key': 'p1-019-36'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'b4:b5:2f:ab:4b:0d'}, 'key': 'p1-019-48'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.177', 'mac_address': u'2c:44:fd:39:8b:67'}, 'key': 'p1-019-44'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.148', 'mac_address': u'08:2e:5f:15:69:bb'}, 'key': 'p1-019-45'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:09:19:48'}, 'key': 'p1-019-46'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'a0:d3:c1:0f:f2:1a'}, 'key': 'p1-019-47'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:15:56:1c'}, 'key': 'p1-019-41'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:49:3b:4f'}, 'key': 'p1-019-42'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:04:b3:4c'}, 'key': 'p1-019-43'})
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=7    changed=3    unreachable=0    failed=0   
+
+
+[pid: 21755|app: 0|req: 2/3] 10.209.2.232 () {42 vars in 770 bytes} [Mon Jun 17 15:06:42 2024] GET /run-scan/ => generated 18539 bytes in 15083 msecs (HTTP/1.1 200) 5 headers in 160 bytes (1 switches on core 1)
+[pid: 21755|app: 0|req: 3/4] 10.209.2.232 () {44 vars in 891 bytes} [Mon Jun 17 15:07:01 2024] GET / => generated 44474 bytes in 34 msecs (HTTP/1.1 200) 7 headers in 350 bytes (1 switches on core 0)
+[pid: 21755|app: 0|req: 4/5] 10.209.2.232 () {42 vars in 804 bytes} [Mon Jun 17 15:07:06 2024] GET /get-computer-details/3105/ => generated 117 bytes in 3 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 1)
+Executing ansible playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/upgrade_machines.yml with inventory /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini...
+['sudo', 'ansible-playbook', '-i', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/upgrade_machines.yml', '--extra-vars', 'target_host=undefined']
+*** Starting uWSGI 2.0.26 (64bit) on [Mon Jun 17 16:09:12 2024] ***
+compiled with version: 7.5.0 on 07 June 2024 13:04:53
+os: Linux-5.4.0-150-generic #167~18.04.1-Ubuntu SMP Wed May 24 00:51:42 UTC 2023
+nodename: p1-019-38
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto
+detected binary path: /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/app
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 15169
+your memory page size is 4096 bytes
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/app/myapp.sock fd 3
+Python version: 3.12.3 (main, Jun  5 2024, 18:41:36) [GCC 7.5.0]
+PEP 405 virtualenv detected: /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/venv
+Set PythonHome to /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/venv
+Python main interpreter initialized at 0x564e6503c588
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 416880 bytes (407 KB) for 10 cores
+*** Operational MODE: preforking+threaded ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x564e6503c588 pid: 23025 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (pid: 23025, cores: 2)
+spawned uWSGI worker 2 (pid: 23026, cores: 2)
+spawned uWSGI worker 3 (pid: 23027, cores: 2)
+spawned uWSGI worker 4 (pid: 23029, cores: 2)
+spawned uWSGI worker 5 (pid: 23030, cores: 2)
+[pid: 23030|app: 0|req: 1/1] 10.209.2.232 () {44 vars in 891 bytes} [Mon Jun 17 15:09:18 2024] GET / => generated 44474 bytes in 67 msecs (HTTP/1.1 200) 7 headers in 350 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+Mon Jun 17 15:09:18 2024 - uwsgi_response_writev_headers_and_body_do(): Broken pipe [core/writer.c line 306] during GET /favicon.ico (10.209.2.232)
+OSError: write error
+[pid: 23030|app: 0|req: 2/2] 10.209.2.232 () {42 vars in 796 bytes} [Mon Jun 17 15:09:18 2024] GET /favicon.ico => generated 0 bytes in 8 msecs (HTTP/1.1 404) 5 headers in 0 bytes (0 switches on core 1)
+[pid: 23029|app: 0|req: 1/3] 10.209.2.232 () {42 vars in 804 bytes} [Mon Jun 17 15:09:19 2024] GET /get-computer-details/3105/ => generated 117 bytes in 23 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 0)
+Executing ansible playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/upgrade_machines.yml with inventory /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini...
+['sudo', 'ansible-playbook', '-i', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/upgrade_machines.yml', '--extra-vars', 'target_host=p1-019-24']
+Processing output...
+Error al ejecutar el playbook:
+
+[pid: 23026|app: 0|req: 1/4] 10.209.2.232 () {50 vars in 1060 bytes} [Mon Jun 17 15:09:30 2024] POST /execute-playbook/upgrade_machines.yml/p1-019-24/ => generated 14 bytes in 15088 msecs (HTTP/1.1 200) 6 headers in 171 bytes (1 switches on core 0)
+Executing command: sudo ansible-playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/scan_p1_19_lab.yml
+Output: 
+PLAY [Ejecutar script de escaneo en localhost] *********************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Ejecutar script] *********************************************************
+changed: [localhost]
+
+TASK [Guardar salida del script] ***********************************************
+ok: [localhost -> localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=1    unreachable=0    failed=0   
+
+
+Executing command: sudo ansible-playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/update_inventory.yml
+Output: 
+PLAY [Actualizar inventario de Ansible y ejecutar tareas] **********************
+
+TASK [Ejecutar script para generar inventario] *********************************
+changed: [localhost -> localhost]
+
+TASK [Depurar salida del script de inventario] *********************************
+ok: [localhost] => {
+    "inventory_output.stdout": "p1-019-00:\n  ansible_host: none\n  mac_address: 64:51:06:2f:56:ce\n  status: off\np1-019-11:\n  ansible_host: none\n  mac_address: 8c:dc:d4:2e:37:07\n  status: off\np1-019-12:\n  ansible_host: none\n  mac_address: 08:2e:5f:21:df:2b\n  status: off\np1-019-16:\n  ansible_host: none\n  mac_address: 3c:d9:2b:4d:0a:6f\n  status: off\np1-019-21:\n  ansible_host: none\n  mac_address: 64:51:06:61:3b:06\n  status: off\np1-019-23:\n  ansible_host: none\n  mac_address: 64:51:06:5f:6f:bc\n  status: off\np1-019-26:\n  ansible_host: none\n  mac_address: 24:be:05:0f:be:15\n  status: off\np1-019-28:\n  ansible_host: none\n  mac_address: 2c:41:38:99:6d:a3\n  status: off\np1-019-31:\n  ansible_host: none\n  mac_address: 64:51:06:5f:76:dc\n  status: off\np1-019-32:\n  ansible_host: none\n  mac_address: c4:34:6b:7a:ad:ea\n  status: off\np1-019-33:\n  ansible_host: none\n  mac_address: a0:d3:c1:1d:b0:8e\n  status: off\np1-019-34:\n  ansible_host: 10.209.2.53\n  mac_address: 64:51:06:60:af:4d\n  status: on\np1-019-35:\n  ansible_host: 10.209.2.74\n  mac_address: a0:d3:c1:33:9a:82\n  status: on\np1-019-36:\n  ansible_host: none\n  mac_address: c4:34:6b:74:b0:cb\n  status: off\np1-019-37:\n  ansible_host: none\n  mac_address: 3c:d9:2b:59:d9:73\n  status: off\np1-019-38:\n  ansible_host: none\n  mac_address: e8:39:35:5d:e3:34\n  status: off\np1-019-41:\n  ansible_host: none\n  mac_address: 24:be:05:15:56:1c\n  status: off\np1-019-42:\n  ansible_host: none\n  mac_address: 3c:d9:2b:49:3b:4f\n  status: off\np1-019-43:\n  ansible_host: none\n  mac_address: 24:be:05:04:b3:4c\n  status: off\np1-019-44:\n  ansible_host: 10.209.2.177\n  mac_address: 2c:44:fd:39:8b:67\n  status: on\np1-019-45:\n  ansible_host: 10.209.2.148\n  mac_address: 08:2e:5f:15:69:bb\n  status: on\np1-019-46:\n  ansible_host: none\n  mac_address: 24:be:05:09:19:48\n  status: off\np1-019-47:\n  ansible_host: none\n  mac_address: a0:d3:c1:0f:f2:1a\n  status: off\np1-019-48:\n  ansible_host: none\n  mac_address: b4:b5:2f:ab:4b:0d\n  status: off\np1-019-24:\n  ansible_host: 10.209.2.46\n  mac_address: c4:34:6b:5e:5e:b4\n  status: off\np1-019-25:\n  ansible_host: 10.209.2.144\n  mac_address: 24:be:05:21:0e:03\n  status: off"
+}
+
+TASK [Cargar inventario dinámico] **********************************************
+ok: [localhost]
+
+TASK [Depurar inventario dinámico] *********************************************
+ok: [localhost] => {
+    "dynamic_inventory": {
+        "p1-019-00": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:2f:56:ce", 
+            "status": false
+        }, 
+        "p1-019-11": {
+            "ansible_host": "none", 
+            "mac_address": "8c:dc:d4:2e:37:07", 
+            "status": false
+        }, 
+        "p1-019-12": {
+            "ansible_host": "none", 
+            "mac_address": "08:2e:5f:21:df:2b", 
+            "status": false
+        }, 
+        "p1-019-16": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:4d:0a:6f", 
+            "status": false
+        }, 
+        "p1-019-21": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:61:3b:06", 
+            "status": false
+        }, 
+        "p1-019-23": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:5f:6f:bc", 
+            "status": false
+        }, 
+        "p1-019-24": {
+            "ansible_host": "10.209.2.46", 
+            "mac_address": "c4:34:6b:5e:5e:b4", 
+            "status": false
+        }, 
+        "p1-019-25": {
+            "ansible_host": "10.209.2.144", 
+            "mac_address": "24:be:05:21:0e:03", 
+            "status": false
+        }, 
+        "p1-019-26": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:0f:be:15", 
+            "status": false
+        }, 
+        "p1-019-28": {
+            "ansible_host": "none", 
+            "mac_address": "2c:41:38:99:6d:a3", 
+            "status": false
+        }, 
+        "p1-019-31": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:5f:76:dc", 
+            "status": false
+        }, 
+        "p1-019-32": {
+            "ansible_host": "none", 
+            "mac_address": "c4:34:6b:7a:ad:ea", 
+            "status": false
+        }, 
+        "p1-019-33": {
+            "ansible_host": "none", 
+            "mac_address": "a0:d3:c1:1d:b0:8e", 
+            "status": false
+        }, 
+        "p1-019-34": {
+            "ansible_host": "10.209.2.53", 
+            "mac_address": "64:51:06:60:af:4d", 
+            "status": true
+        }, 
+        "p1-019-35": {
+            "ansible_host": "10.209.2.74", 
+            "mac_address": "a0:d3:c1:33:9a:82", 
+            "status": true
+        }, 
+        "p1-019-36": {
+            "ansible_host": "none", 
+            "mac_address": "c4:34:6b:74:b0:cb", 
+            "status": false
+        }, 
+        "p1-019-37": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:59:d9:73", 
+            "status": false
+        }, 
+        "p1-019-38": {
+            "ansible_host": "none", 
+            "mac_address": "e8:39:35:5d:e3:34", 
+            "status": false
+        }, 
+        "p1-019-41": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:15:56:1c", 
+            "status": false
+        }, 
+        "p1-019-42": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:49:3b:4f", 
+            "status": false
+        }, 
+        "p1-019-43": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:04:b3:4c", 
+            "status": false
+        }, 
+        "p1-019-44": {
+            "ansible_host": "10.209.2.177", 
+            "mac_address": "2c:44:fd:39:8b:67", 
+            "status": true
+        }, 
+        "p1-019-45": {
+            "ansible_host": "10.209.2.148", 
+            "mac_address": "08:2e:5f:15:69:bb", 
+            "status": true
+        }, 
+        "p1-019-46": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:09:19:48", 
+            "status": false
+        }, 
+        "p1-019-47": {
+            "ansible_host": "none", 
+            "mac_address": "a0:d3:c1:0f:f2:1a", 
+            "status": false
+        }, 
+        "p1-019-48": {
+            "ansible_host": "none", 
+            "mac_address": "b4:b5:2f:ab:4b:0d", 
+            "status": false
+        }
+    }
+}
+
+TASK [Crear contenido del archivo de inventario] *******************************
+ok: [localhost]
+
+TASK [Guardar el inventario en un archivo] *************************************
+changed: [localhost]
+
+TASK [Actualizar inventario] ***************************************************
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:2f:56:ce'}, 'key': 'p1-019-00'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'2c:41:38:99:6d:a3'}, 'key': 'p1-019-28'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:5f:6f:bc'}, 'key': 'p1-019-23'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:61:3b:06'}, 'key': 'p1-019-21'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:0f:be:15'}, 'key': 'p1-019-26'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'10.209.2.46', 'mac_address': u'c4:34:6b:5e:5e:b4'}, 'key': 'p1-019-24'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'10.209.2.144', 'mac_address': u'24:be:05:21:0e:03'}, 'key': 'p1-019-25'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'e8:39:35:5d:e3:34'}, 'key': 'p1-019-38'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:5f:76:dc'}, 'key': 'p1-019-31'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:4d:0a:6f'}, 'key': 'p1-019-16'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'a0:d3:c1:1d:b0:8e'}, 'key': 'p1-019-33'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'c4:34:6b:7a:ad:ea'}, 'key': 'p1-019-32'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.74', 'mac_address': u'a0:d3:c1:33:9a:82'}, 'key': 'p1-019-35'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'08:2e:5f:21:df:2b'}, 'key': 'p1-019-12'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'8c:dc:d4:2e:37:07'}, 'key': 'p1-019-11'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.53', 'mac_address': u'64:51:06:60:af:4d'}, 'key': 'p1-019-34'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:59:d9:73'}, 'key': 'p1-019-37'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'c4:34:6b:74:b0:cb'}, 'key': 'p1-019-36'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'b4:b5:2f:ab:4b:0d'}, 'key': 'p1-019-48'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.177', 'mac_address': u'2c:44:fd:39:8b:67'}, 'key': 'p1-019-44'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.148', 'mac_address': u'08:2e:5f:15:69:bb'}, 'key': 'p1-019-45'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:09:19:48'}, 'key': 'p1-019-46'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'a0:d3:c1:0f:f2:1a'}, 'key': 'p1-019-47'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:15:56:1c'}, 'key': 'p1-019-41'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:49:3b:4f'}, 'key': 'p1-019-42'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:04:b3:4c'}, 'key': 'p1-019-43'})
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=7    changed=3    unreachable=0    failed=0   
+
+
+[pid: 23029|app: 0|req: 2/5] 10.209.2.232 () {42 vars in 770 bytes} [Mon Jun 17 15:11:06 2024] GET /run-scan/ => generated 18540 bytes in 15236 msecs (HTTP/1.1 200) 5 headers in 160 bytes (1 switches on core 1)
+[pid: 23030|app: 0|req: 3/6] 10.209.2.232 () {44 vars in 891 bytes} [Mon Jun 17 15:11:24 2024] GET / => generated 49849 bytes in 22 msecs (HTTP/1.1 200) 7 headers in 350 bytes (1 switches on core 0)
+[pid: 23025|app: 0|req: 1/7] 10.209.2.232 () {42 vars in 804 bytes} [Mon Jun 17 15:11:26 2024] GET /get-computer-details/3132/ => generated 117 bytes in 23 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 0)
+Executing ansible playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/upgrade_machines.yml with inventory /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini...
+['sudo', 'ansible-playbook', '-i', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/upgrade_machines.yml', '--extra-vars', 'target_host=p1-019-34']
+Processing output...
+Error al ejecutar el playbook:
+
+[pid: 23030|app: 0|req: 4/8] 10.209.2.232 () {50 vars in 1060 bytes} [Mon Jun 17 15:11:36 2024] POST /execute-playbook/upgrade_machines.yml/p1-019-34/ => generated 14 bytes in 23140 msecs (HTTP/1.1 200) 6 headers in 171 bytes (1 switches on core 1)
+*** Starting uWSGI 2.0.26 (64bit) on [Mon Jun 17 16:29:21 2024] ***
+compiled with version: 7.5.0 on 07 June 2024 13:04:53
+os: Linux-5.4.0-150-generic #167~18.04.1-Ubuntu SMP Wed May 24 00:51:42 UTC 2023
+nodename: p1-019-38
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto
+detected binary path: /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/app
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 15169
+your memory page size is 4096 bytes
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/app/myapp.sock fd 3
+Python version: 3.12.3 (main, Jun  5 2024, 18:41:36) [GCC 7.5.0]
+PEP 405 virtualenv detected: /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/venv
+Set PythonHome to /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/venv
+Python main interpreter initialized at 0x560275788588
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 416880 bytes (407 KB) for 10 cores
+*** Operational MODE: preforking+threaded ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x560275788588 pid: 25794 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (pid: 25794, cores: 2)
+spawned uWSGI worker 2 (pid: 25795, cores: 2)
+spawned uWSGI worker 3 (pid: 25797, cores: 2)
+spawned uWSGI worker 4 (pid: 25799, cores: 2)
+spawned uWSGI worker 5 (pid: 25801, cores: 2)
+[pid: 25799|app: 0|req: 1/1] 10.209.2.232 () {44 vars in 891 bytes} [Mon Jun 17 15:29:27 2024] GET / => generated 49852 bytes in 74 msecs (HTTP/1.1 200) 7 headers in 350 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+Mon Jun 17 15:29:27 2024 - SIGPIPE: writing to a closed pipe/socket/fd (probably the client disconnected) !!!
+Mon Jun 17 15:29:27 2024 - uwsgi_response_writev_headers_and_body_do(): Broken pipe [core/writer.c line 306] during GET /favicon.ico (10.209.2.232)
+OSError: write error
+[pid: 25797|app: 0|req: 1/2] 10.209.2.232 () {42 vars in 796 bytes} [Mon Jun 17 15:29:27 2024] GET /favicon.ico => generated 0 bytes in 22 msecs (HTTP/1.1 404) 5 headers in 0 bytes (0 switches on core 0)
+Executing command: sudo ansible-playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/scan_p1_19_lab.yml
+Output: 
+PLAY [Ejecutar script de escaneo en localhost] *********************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Ejecutar script] *********************************************************
+changed: [localhost]
+
+TASK [Guardar salida del script] ***********************************************
+changed: [localhost -> localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=2    unreachable=0    failed=0   
+
+
+Executing command: sudo ansible-playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/update_inventory.yml
+Output: 
+PLAY [Actualizar inventario de Ansible y ejecutar tareas] **********************
+
+TASK [Ejecutar script para generar inventario] *********************************
+changed: [localhost -> localhost]
+
+TASK [Depurar salida del script de inventario] *********************************
+ok: [localhost] => {
+    "inventory_output.stdout": "p1-019-00:\n  ansible_host: none\n  mac_address: 64:51:06:2f:56:ce\n  status: off\np1-019-11:\n  ansible_host: none\n  mac_address: 8c:dc:d4:2e:37:07\n  status: off\np1-019-12:\n  ansible_host: none\n  mac_address: 08:2e:5f:21:df:2b\n  status: off\np1-019-16:\n  ansible_host: none\n  mac_address: 3c:d9:2b:4d:0a:6f\n  status: off\np1-019-21:\n  ansible_host: none\n  mac_address: 64:51:06:61:3b:06\n  status: off\np1-019-23:\n  ansible_host: none\n  mac_address: 64:51:06:5f:6f:bc\n  status: off\np1-019-24:\n  ansible_host: none\n  mac_address: c4:34:6b:5e:5e:b4\n  status: off\np1-019-25:\n  ansible_host: none\n  mac_address: 24:be:05:21:0e:03\n  status: off\np1-019-26:\n  ansible_host: none\n  mac_address: 24:be:05:0f:be:15\n  status: off\np1-019-28:\n  ansible_host: none\n  mac_address: 2c:41:38:99:6d:a3\n  status: off\np1-019-31:\n  ansible_host: none\n  mac_address: 64:51:06:5f:76:dc\n  status: off\np1-019-32:\n  ansible_host: none\n  mac_address: c4:34:6b:7a:ad:ea\n  status: off\np1-019-33:\n  ansible_host: none\n  mac_address: a0:d3:c1:1d:b0:8e\n  status: off\np1-019-36:\n  ansible_host: none\n  mac_address: c4:34:6b:74:b0:cb\n  status: off\np1-019-37:\n  ansible_host: none\n  mac_address: 3c:d9:2b:59:d9:73\n  status: off\np1-019-38:\n  ansible_host: none\n  mac_address: e8:39:35:5d:e3:34\n  status: off\np1-019-41:\n  ansible_host: none\n  mac_address: 24:be:05:15:56:1c\n  status: off\np1-019-42:\n  ansible_host: none\n  mac_address: 3c:d9:2b:49:3b:4f\n  status: off\np1-019-43:\n  ansible_host: none\n  mac_address: 24:be:05:04:b3:4c\n  status: off\np1-019-44:\n  ansible_host: 10.209.2.177\n  mac_address: 2c:44:fd:39:8b:67\n  status: on\np1-019-45:\n  ansible_host: 10.209.2.148\n  mac_address: 08:2e:5f:15:69:bb\n  status: on\np1-019-46:\n  ansible_host: none\n  mac_address: 24:be:05:09:19:48\n  status: off\np1-019-47:\n  ansible_host: none\n  mac_address: a0:d3:c1:0f:f2:1a\n  status: off\np1-019-48:\n  ansible_host: none\n  mac_address: b4:b5:2f:ab:4b:0d\n  status: off\np1-019-34:\n  ansible_host: 10.209.2.53\n  mac_address: 64:51:06:60:af:4d\n  status: off\np1-019-35:\n  ansible_host: 10.209.2.74\n  mac_address: a0:d3:c1:33:9a:82\n  status: off"
+}
+
+TASK [Cargar inventario dinámico] **********************************************
+ok: [localhost]
+
+TASK [Depurar inventario dinámico] *********************************************
+ok: [localhost] => {
+    "dynamic_inventory": {
+        "p1-019-00": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:2f:56:ce", 
+            "status": false
+        }, 
+        "p1-019-11": {
+            "ansible_host": "none", 
+            "mac_address": "8c:dc:d4:2e:37:07", 
+            "status": false
+        }, 
+        "p1-019-12": {
+            "ansible_host": "none", 
+            "mac_address": "08:2e:5f:21:df:2b", 
+            "status": false
+        }, 
+        "p1-019-16": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:4d:0a:6f", 
+            "status": false
+        }, 
+        "p1-019-21": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:61:3b:06", 
+            "status": false
+        }, 
+        "p1-019-23": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:5f:6f:bc", 
+            "status": false
+        }, 
+        "p1-019-24": {
+            "ansible_host": "none", 
+            "mac_address": "c4:34:6b:5e:5e:b4", 
+            "status": false
+        }, 
+        "p1-019-25": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:21:0e:03", 
+            "status": false
+        }, 
+        "p1-019-26": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:0f:be:15", 
+            "status": false
+        }, 
+        "p1-019-28": {
+            "ansible_host": "none", 
+            "mac_address": "2c:41:38:99:6d:a3", 
+            "status": false
+        }, 
+        "p1-019-31": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:5f:76:dc", 
+            "status": false
+        }, 
+        "p1-019-32": {
+            "ansible_host": "none", 
+            "mac_address": "c4:34:6b:7a:ad:ea", 
+            "status": false
+        }, 
+        "p1-019-33": {
+            "ansible_host": "none", 
+            "mac_address": "a0:d3:c1:1d:b0:8e", 
+            "status": false
+        }, 
+        "p1-019-34": {
+            "ansible_host": "10.209.2.53", 
+            "mac_address": "64:51:06:60:af:4d", 
+            "status": false
+        }, 
+        "p1-019-35": {
+            "ansible_host": "10.209.2.74", 
+            "mac_address": "a0:d3:c1:33:9a:82", 
+            "status": false
+        }, 
+        "p1-019-36": {
+            "ansible_host": "none", 
+            "mac_address": "c4:34:6b:74:b0:cb", 
+            "status": false
+        }, 
+        "p1-019-37": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:59:d9:73", 
+            "status": false
+        }, 
+        "p1-019-38": {
+            "ansible_host": "none", 
+            "mac_address": "e8:39:35:5d:e3:34", 
+            "status": false
+        }, 
+        "p1-019-41": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:15:56:1c", 
+            "status": false
+        }, 
+        "p1-019-42": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:49:3b:4f", 
+            "status": false
+        }, 
+        "p1-019-43": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:04:b3:4c", 
+            "status": false
+        }, 
+        "p1-019-44": {
+            "ansible_host": "10.209.2.177", 
+            "mac_address": "2c:44:fd:39:8b:67", 
+            "status": true
+        }, 
+        "p1-019-45": {
+            "ansible_host": "10.209.2.148", 
+            "mac_address": "08:2e:5f:15:69:bb", 
+            "status": true
+        }, 
+        "p1-019-46": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:09:19:48", 
+            "status": false
+        }, 
+        "p1-019-47": {
+            "ansible_host": "none", 
+            "mac_address": "a0:d3:c1:0f:f2:1a", 
+            "status": false
+        }, 
+        "p1-019-48": {
+            "ansible_host": "none", 
+            "mac_address": "b4:b5:2f:ab:4b:0d", 
+            "status": false
+        }
+    }
+}
+
+TASK [Crear contenido del archivo de inventario] *******************************
+ok: [localhost]
+
+TASK [Guardar el inventario en un archivo] *************************************
+changed: [localhost]
+
+TASK [Actualizar inventario] ***************************************************
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:2f:56:ce'}, 'key': 'p1-019-00'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'2c:41:38:99:6d:a3'}, 'key': 'p1-019-28'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:5f:6f:bc'}, 'key': 'p1-019-23'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:61:3b:06'}, 'key': 'p1-019-21'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:0f:be:15'}, 'key': 'p1-019-26'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'c4:34:6b:5e:5e:b4'}, 'key': 'p1-019-24'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:21:0e:03'}, 'key': 'p1-019-25'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'e8:39:35:5d:e3:34'}, 'key': 'p1-019-38'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:5f:76:dc'}, 'key': 'p1-019-31'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:4d:0a:6f'}, 'key': 'p1-019-16'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'a0:d3:c1:1d:b0:8e'}, 'key': 'p1-019-33'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'c4:34:6b:7a:ad:ea'}, 'key': 'p1-019-32'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'10.209.2.74', 'mac_address': u'a0:d3:c1:33:9a:82'}, 'key': 'p1-019-35'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'08:2e:5f:21:df:2b'}, 'key': 'p1-019-12'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'8c:dc:d4:2e:37:07'}, 'key': 'p1-019-11'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'10.209.2.53', 'mac_address': u'64:51:06:60:af:4d'}, 'key': 'p1-019-34'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:59:d9:73'}, 'key': 'p1-019-37'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'c4:34:6b:74:b0:cb'}, 'key': 'p1-019-36'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'b4:b5:2f:ab:4b:0d'}, 'key': 'p1-019-48'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.177', 'mac_address': u'2c:44:fd:39:8b:67'}, 'key': 'p1-019-44'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.148', 'mac_address': u'08:2e:5f:15:69:bb'}, 'key': 'p1-019-45'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:09:19:48'}, 'key': 'p1-019-46'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'a0:d3:c1:0f:f2:1a'}, 'key': 'p1-019-47'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:15:56:1c'}, 'key': 'p1-019-41'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:49:3b:4f'}, 'key': 'p1-019-42'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:04:b3:4c'}, 'key': 'p1-019-43'})
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=7    changed=3    unreachable=0    failed=0   
+
+
+[pid: 25801|app: 0|req: 1/3] 10.209.2.232 () {42 vars in 770 bytes} [Mon Jun 17 15:29:31 2024] GET /run-scan/ => generated 18502 bytes in 16261 msecs (HTTP/1.1 200) 5 headers in 160 bytes (1 switches on core 0)
+[pid: 25801|app: 0|req: 2/4] 10.209.2.232 () {44 vars in 891 bytes} [Mon Jun 17 15:30:19 2024] GET / => generated 55235 bytes in 37 msecs (HTTP/1.1 200) 7 headers in 350 bytes (1 switches on core 1)
+[pid: 25799|app: 0|req: 2/5] 10.209.2.232 () {42 vars in 804 bytes} [Mon Jun 17 15:30:21 2024] GET /get-computer-details/3174/ => generated 109 bytes in 3 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 1)
+Executing ansible playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/up_computers_down.yml with inventory /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini...
+['sudo', 'ansible-playbook', '-i', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/up_computers_down.yml', '--extra-vars', 'target_host=p1-019-34']
+Processing output...
+
+PLAY [Levantar máquinas con estado 'off'] **************************************
+
+TASK [Obtener lista de direcciones MAC fuera de línea] *************************
+ok: [localhost]
+
+TASK [Levantar máquinas con estado 'off'] **************************************
+changed: [localhost] => (item='64:51:06:60:af:4d')
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=1    unreachable=0    failed=0   
+
+
+[pid: 25797|app: 0|req: 2/6] 10.209.2.232 () {50 vars in 1062 bytes} [Mon Jun 17 15:30:22 2024] POST /execute-playbook/up_computers_down.yml/p1-019-34/ => generated 516 bytes in 2005 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 1)
+[pid: 25801|app: 0|req: 3/7] 10.209.2.232 () {42 vars in 804 bytes} [Mon Jun 17 15:30:27 2024] GET /get-computer-details/3171/ => generated 109 bytes in 3 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 0)
+Executing ansible playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/up_computers_down.yml with inventory /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini...
+['sudo', 'ansible-playbook', '-i', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/up_computers_down.yml', '--extra-vars', 'target_host=p1-019-35']
+Processing output...
+
+PLAY [Levantar máquinas con estado 'off'] **************************************
+
+TASK [Obtener lista de direcciones MAC fuera de línea] *************************
+ok: [localhost]
+
+TASK [Levantar máquinas con estado 'off'] **************************************
+changed: [localhost] => (item='a0:d3:c1:33:9a:82')
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=1    unreachable=0    failed=0   
+
+
+[pid: 25795|app: 0|req: 1/8] 10.209.2.232 () {50 vars in 1062 bytes} [Mon Jun 17 15:30:29 2024] POST /execute-playbook/up_computers_down.yml/p1-019-35/ => generated 516 bytes in 1939 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 0)
+[pid: 25801|app: 0|req: 4/9] 10.209.2.232 () {42 vars in 804 bytes} [Mon Jun 17 15:30:33 2024] GET /get-computer-details/3164/ => generated 109 bytes in 2 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 1)
+Executing ansible playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/up_computers_down.yml with inventory /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini...
+['sudo', 'ansible-playbook', '-i', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/up_computers_down.yml', '--extra-vars', 'target_host=p1-019-24']
+Processing output...
+
+PLAY [Levantar máquinas con estado 'off'] **************************************
+
+TASK [Obtener lista de direcciones MAC fuera de línea] *************************
+ok: [localhost]
+
+TASK [Levantar máquinas con estado 'off'] **************************************
+changed: [localhost] => (item='c4:34:6b:5e:5e:b4')
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=1    unreachable=0    failed=0   
+
+
+[pid: 25795|app: 0|req: 2/10] 10.209.2.232 () {50 vars in 1062 bytes} [Mon Jun 17 15:30:34 2024] POST /execute-playbook/up_computers_down.yml/p1-019-24/ => generated 516 bytes in 1907 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 1)
+[pid: 25801|app: 0|req: 5/11] 10.209.2.232 () {42 vars in 804 bytes} [Mon Jun 17 15:30:38 2024] GET /get-computer-details/3165/ => generated 109 bytes in 3 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 1)
+Executing ansible playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/up_computers_down.yml with inventory /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini...
+['sudo', 'ansible-playbook', '-i', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/up_computers_down.yml', '--extra-vars', 'target_host=p1-019-25']
+Processing output...
+
+PLAY [Levantar máquinas con estado 'off'] **************************************
+
+TASK [Obtener lista de direcciones MAC fuera de línea] *************************
+ok: [localhost]
+
+TASK [Levantar máquinas con estado 'off'] **************************************
+changed: [localhost] => (item='24:be:05:21:0e:03')
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=1    unreachable=0    failed=0   
+
+
+[pid: 25797|app: 0|req: 3/12] 10.209.2.232 () {50 vars in 1062 bytes} [Mon Jun 17 15:30:39 2024] POST /execute-playbook/up_computers_down.yml/p1-019-25/ => generated 516 bytes in 1956 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 0)
+[pid: 25801|app: 0|req: 6/13] 10.209.2.232 () {42 vars in 804 bytes} [Mon Jun 17 15:30:43 2024] GET /get-computer-details/3169/ => generated 109 bytes in 3 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 0)
+Executing ansible playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/up_computers_down.yml with inventory /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini...
+['sudo', 'ansible-playbook', '-i', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/up_computers_down.yml', '--extra-vars', 'target_host=p1-019-33']
+Processing output...
+
+PLAY [Levantar máquinas con estado 'off'] **************************************
+
+TASK [Obtener lista de direcciones MAC fuera de línea] *************************
+ok: [localhost]
+
+TASK [Levantar máquinas con estado 'off'] **************************************
+changed: [localhost] => (item='a0:d3:c1:1d:b0:8e')
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=1    unreachable=0    failed=0   
+
+
+[pid: 25801|app: 0|req: 7/14] 10.209.2.232 () {50 vars in 1062 bytes} [Mon Jun 17 15:30:44 2024] POST /execute-playbook/up_computers_down.yml/p1-019-33/ => generated 516 bytes in 1931 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 0)
+[pid: 25794|app: 0|req: 1/15] 10.209.2.232 () {42 vars in 804 bytes} [Mon Jun 17 15:30:48 2024] GET /get-computer-details/3166/ => generated 109 bytes in 17 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 0)
+Executing ansible playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/up_computers_down.yml with inventory /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini...
+['sudo', 'ansible-playbook', '-i', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/up_computers_down.yml', '--extra-vars', 'target_host=p1-019-38']
+Processing output...
+
+PLAY [Levantar máquinas con estado 'off'] **************************************
+
+TASK [Obtener lista de direcciones MAC fuera de línea] *************************
+ok: [localhost]
+
+TASK [Levantar máquinas con estado 'off'] **************************************
+changed: [localhost] => (item='e8:39:35:5d:e3:34')
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=1    unreachable=0    failed=0   
+
+
+[pid: 25801|app: 0|req: 8/16] 10.209.2.232 () {50 vars in 1062 bytes} [Mon Jun 17 15:30:49 2024] POST /execute-playbook/up_computers_down.yml/p1-019-38/ => generated 516 bytes in 1919 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 1)
+[pid: 25794|app: 0|req: 2/17] 10.209.2.232 () {42 vars in 804 bytes} [Mon Jun 17 15:30:53 2024] GET /get-computer-details/3167/ => generated 109 bytes in 3 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 1)
+Executing ansible playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/up_computers_down.yml with inventory /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini...
+['sudo', 'ansible-playbook', '-i', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/up_computers_down.yml', '--extra-vars', 'target_host=p1-019-31']
+Processing output...
+
+PLAY [Levantar máquinas con estado 'off'] **************************************
+
+TASK [Obtener lista de direcciones MAC fuera de línea] *************************
+ok: [localhost]
+
+TASK [Levantar máquinas con estado 'off'] **************************************
+changed: [localhost] => (item='64:51:06:5f:76:dc')
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=1    unreachable=0    failed=0   
+
+
+[pid: 25795|app: 0|req: 3/18] 10.209.2.232 () {50 vars in 1062 bytes} [Mon Jun 17 15:30:55 2024] POST /execute-playbook/up_computers_down.yml/p1-019-31/ => generated 516 bytes in 1912 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 0)
+[pid: 25801|app: 0|req: 9/19] 10.209.2.232 () {42 vars in 804 bytes} [Mon Jun 17 15:30:59 2024] GET /get-computer-details/3180/ => generated 109 bytes in 3 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 0)
+Executing ansible playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/up_computers_down.yml with inventory /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini...
+['sudo', 'ansible-playbook', '-i', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/up_computers_down.yml', '--extra-vars', 'target_host=p1-019-41']
+Processing output...
+
+PLAY [Levantar máquinas con estado 'off'] **************************************
+
+TASK [Obtener lista de direcciones MAC fuera de línea] *************************
+ok: [localhost]
+
+TASK [Levantar máquinas con estado 'off'] **************************************
+changed: [localhost] => (item='24:be:05:15:56:1c')
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=1    unreachable=0    failed=0   
+
+
+[pid: 25797|app: 0|req: 4/20] 10.209.2.232 () {50 vars in 1062 bytes} [Mon Jun 17 15:31:01 2024] POST /execute-playbook/up_computers_down.yml/p1-019-41/ => generated 516 bytes in 1928 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 1)
+Executing command: sudo ansible-playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/scan_p1_19_lab.yml
+Output: 
+PLAY [Ejecutar script de escaneo en localhost] *********************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Ejecutar script] *********************************************************
+changed: [localhost]
+
+TASK [Guardar salida del script] ***********************************************
+changed: [localhost -> localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=2    unreachable=0    failed=0   
+
+
+Executing command: sudo ansible-playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/update_inventory.yml
+Output: 
+PLAY [Actualizar inventario de Ansible y ejecutar tareas] **********************
+
+TASK [Ejecutar script para generar inventario] *********************************
+changed: [localhost -> localhost]
+
+TASK [Depurar salida del script de inventario] *********************************
+ok: [localhost] => {
+    "inventory_output.stdout": "p1-019-00:\n  ansible_host: none\n  mac_address: 64:51:06:2f:56:ce\n  status: off\np1-019-11:\n  ansible_host: none\n  mac_address: 8c:dc:d4:2e:37:07\n  status: off\np1-019-12:\n  ansible_host: none\n  mac_address: 08:2e:5f:21:df:2b\n  status: off\np1-019-16:\n  ansible_host: none\n  mac_address: 3c:d9:2b:4d:0a:6f\n  status: off\np1-019-21:\n  ansible_host: none\n  mac_address: 64:51:06:61:3b:06\n  status: off\np1-019-23:\n  ansible_host: none\n  mac_address: 64:51:06:5f:6f:bc\n  status: off\np1-019-24:\n  ansible_host: 10.209.2.46\n  mac_address: c4:34:6b:5e:5e:b4\n  status: on\np1-019-25:\n  ansible_host: 10.209.2.144\n  mac_address: 24:be:05:21:0e:03\n  status: on\np1-019-26:\n  ansible_host: none\n  mac_address: 24:be:05:0f:be:15\n  status: off\np1-019-28:\n  ansible_host: none\n  mac_address: 2c:41:38:99:6d:a3\n  status: off\np1-019-31:\n  ansible_host: 10.209.2.81\n  mac_address: 64:51:06:5f:76:dc\n  status: on\np1-019-32:\n  ansible_host: none\n  mac_address: c4:34:6b:7a:ad:ea\n  status: off\np1-019-33:\n  ansible_host: 10.209.2.94\n  mac_address: a0:d3:c1:1d:b0:8e\n  status: on\np1-019-34:\n  ansible_host: 10.209.2.53\n  mac_address: 64:51:06:60:af:4d\n  status: on\np1-019-35:\n  ansible_host: 10.209.2.74\n  mac_address: a0:d3:c1:33:9a:82\n  status: on\np1-019-36:\n  ansible_host: none\n  mac_address: c4:34:6b:74:b0:cb\n  status: off\np1-019-37:\n  ansible_host: none\n  mac_address: 3c:d9:2b:59:d9:73\n  status: off\np1-019-38:\n  ansible_host: 10.209.2.83\n  mac_address: e8:39:35:5d:e3:34\n  status: on\np1-019-41:\n  ansible_host: 10.209.2.115\n  mac_address: 24:be:05:15:56:1c\n  status: on\np1-019-42:\n  ansible_host: none\n  mac_address: 3c:d9:2b:49:3b:4f\n  status: off\np1-019-43:\n  ansible_host: none\n  mac_address: 24:be:05:04:b3:4c\n  status: off\np1-019-44:\n  ansible_host: 10.209.2.177\n  mac_address: 2c:44:fd:39:8b:67\n  status: on\np1-019-45:\n  ansible_host: 10.209.2.148\n  mac_address: 08:2e:5f:15:69:bb\n  status: on\np1-019-46:\n  ansible_host: none\n  mac_address: 24:be:05:09:19:48\n  status: off\np1-019-47:\n  ansible_host: none\n  mac_address: a0:d3:c1:0f:f2:1a\n  status: off\np1-019-48:\n  ansible_host: none\n  mac_address: b4:b5:2f:ab:4b:0d\n  status: off"
+}
+
+TASK [Cargar inventario dinámico] **********************************************
+ok: [localhost]
+
+TASK [Depurar inventario dinámico] *********************************************
+ok: [localhost] => {
+    "dynamic_inventory": {
+        "p1-019-00": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:2f:56:ce", 
+            "status": false
+        }, 
+        "p1-019-11": {
+            "ansible_host": "none", 
+            "mac_address": "8c:dc:d4:2e:37:07", 
+            "status": false
+        }, 
+        "p1-019-12": {
+            "ansible_host": "none", 
+            "mac_address": "08:2e:5f:21:df:2b", 
+            "status": false
+        }, 
+        "p1-019-16": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:4d:0a:6f", 
+            "status": false
+        }, 
+        "p1-019-21": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:61:3b:06", 
+            "status": false
+        }, 
+        "p1-019-23": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:5f:6f:bc", 
+            "status": false
+        }, 
+        "p1-019-24": {
+            "ansible_host": "10.209.2.46", 
+            "mac_address": "c4:34:6b:5e:5e:b4", 
+            "status": true
+        }, 
+        "p1-019-25": {
+            "ansible_host": "10.209.2.144", 
+            "mac_address": "24:be:05:21:0e:03", 
+            "status": true
+        }, 
+        "p1-019-26": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:0f:be:15", 
+            "status": false
+        }, 
+        "p1-019-28": {
+            "ansible_host": "none", 
+            "mac_address": "2c:41:38:99:6d:a3", 
+            "status": false
+        }, 
+        "p1-019-31": {
+            "ansible_host": "10.209.2.81", 
+            "mac_address": "64:51:06:5f:76:dc", 
+            "status": true
+        }, 
+        "p1-019-32": {
+            "ansible_host": "none", 
+            "mac_address": "c4:34:6b:7a:ad:ea", 
+            "status": false
+        }, 
+        "p1-019-33": {
+            "ansible_host": "10.209.2.94", 
+            "mac_address": "a0:d3:c1:1d:b0:8e", 
+            "status": true
+        }, 
+        "p1-019-34": {
+            "ansible_host": "10.209.2.53", 
+            "mac_address": "64:51:06:60:af:4d", 
+            "status": true
+        }, 
+        "p1-019-35": {
+            "ansible_host": "10.209.2.74", 
+            "mac_address": "a0:d3:c1:33:9a:82", 
+            "status": true
+        }, 
+        "p1-019-36": {
+            "ansible_host": "none", 
+            "mac_address": "c4:34:6b:74:b0:cb", 
+            "status": false
+        }, 
+        "p1-019-37": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:59:d9:73", 
+            "status": false
+        }, 
+        "p1-019-38": {
+            "ansible_host": "10.209.2.83", 
+            "mac_address": "e8:39:35:5d:e3:34", 
+            "status": true
+        }, 
+        "p1-019-41": {
+            "ansible_host": "10.209.2.115", 
+            "mac_address": "24:be:05:15:56:1c", 
+            "status": true
+        }, 
+        "p1-019-42": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:49:3b:4f", 
+            "status": false
+        }, 
+        "p1-019-43": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:04:b3:4c", 
+            "status": false
+        }, 
+        "p1-019-44": {
+            "ansible_host": "10.209.2.177", 
+            "mac_address": "2c:44:fd:39:8b:67", 
+            "status": true
+        }, 
+        "p1-019-45": {
+            "ansible_host": "10.209.2.148", 
+            "mac_address": "08:2e:5f:15:69:bb", 
+            "status": true
+        }, 
+        "p1-019-46": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:09:19:48", 
+            "status": false
+        }, 
+        "p1-019-47": {
+            "ansible_host": "none", 
+            "mac_address": "a0:d3:c1:0f:f2:1a", 
+            "status": false
+        }, 
+        "p1-019-48": {
+            "ansible_host": "none", 
+            "mac_address": "b4:b5:2f:ab:4b:0d", 
+            "status": false
+        }
+    }
+}
+
+TASK [Crear contenido del archivo de inventario] *******************************
+ok: [localhost]
+
+TASK [Guardar el inventario en un archivo] *************************************
+changed: [localhost]
+
+TASK [Actualizar inventario] ***************************************************
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:2f:56:ce'}, 'key': 'p1-019-00'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'2c:41:38:99:6d:a3'}, 'key': 'p1-019-28'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:5f:6f:bc'}, 'key': 'p1-019-23'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:61:3b:06'}, 'key': 'p1-019-21'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:0f:be:15'}, 'key': 'p1-019-26'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.46', 'mac_address': u'c4:34:6b:5e:5e:b4'}, 'key': 'p1-019-24'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.144', 'mac_address': u'24:be:05:21:0e:03'}, 'key': 'p1-019-25'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.83', 'mac_address': u'e8:39:35:5d:e3:34'}, 'key': 'p1-019-38'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.81', 'mac_address': u'64:51:06:5f:76:dc'}, 'key': 'p1-019-31'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:4d:0a:6f'}, 'key': 'p1-019-16'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.94', 'mac_address': u'a0:d3:c1:1d:b0:8e'}, 'key': 'p1-019-33'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'c4:34:6b:7a:ad:ea'}, 'key': 'p1-019-32'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.74', 'mac_address': u'a0:d3:c1:33:9a:82'}, 'key': 'p1-019-35'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'08:2e:5f:21:df:2b'}, 'key': 'p1-019-12'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'8c:dc:d4:2e:37:07'}, 'key': 'p1-019-11'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.53', 'mac_address': u'64:51:06:60:af:4d'}, 'key': 'p1-019-34'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:59:d9:73'}, 'key': 'p1-019-37'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'c4:34:6b:74:b0:cb'}, 'key': 'p1-019-36'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'b4:b5:2f:ab:4b:0d'}, 'key': 'p1-019-48'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.177', 'mac_address': u'2c:44:fd:39:8b:67'}, 'key': 'p1-019-44'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.148', 'mac_address': u'08:2e:5f:15:69:bb'}, 'key': 'p1-019-45'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:09:19:48'}, 'key': 'p1-019-46'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'a0:d3:c1:0f:f2:1a'}, 'key': 'p1-019-47'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.115', 'mac_address': u'24:be:05:15:56:1c'}, 'key': 'p1-019-41'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:49:3b:4f'}, 'key': 'p1-019-42'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:04:b3:4c'}, 'key': u'p1-019-43'})
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=7    changed=3    unreachable=0    failed=0   
+
+
+[pid: 25801|app: 0|req: 10/21] 10.209.2.232 () {42 vars in 770 bytes} [Mon Jun 17 15:32:03 2024] GET /run-scan/ => generated 18629 bytes in 14301 msecs (HTTP/1.1 200) 5 headers in 160 bytes (1 switches on core 1)
+[pid: 25801|app: 0|req: 11/22] 10.209.2.232 () {44 vars in 891 bytes} [Mon Jun 17 15:32:21 2024] GET / => generated 60586 bytes in 20 msecs (HTTP/1.1 200) 7 headers in 350 bytes (1 switches on core 0)
+[pid: 25801|app: 0|req: 12/23] 10.209.2.232 () {42 vars in 804 bytes} [Mon Jun 17 15:32:25 2024] GET /get-computer-details/3189/ => generated 117 bytes in 2 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 1)
+Executing ansible playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/upgrade_machines.yml with inventory /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini...
+['sudo', 'ansible-playbook', '-i', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/upgrade_machines.yml', '--extra-vars', 'target_host=p1-019-34']
+Processing output...
+Error al ejecutar el playbook:
+
+[pid: 25794|app: 0|req: 3/24] 10.209.2.232 () {50 vars in 1060 bytes} [Mon Jun 17 15:32:31 2024] POST /execute-playbook/upgrade_machines.yml/p1-019-34/ => generated 14 bytes in 13655 msecs (HTTP/1.1 200) 6 headers in 171 bytes (1 switches on core 0)
+Executing command: sudo ansible-playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/scan_p1_19_lab.yml
+Output: 
+PLAY [Ejecutar script de escaneo en localhost] *********************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Ejecutar script] *********************************************************
+changed: [localhost]
+
+TASK [Guardar salida del script] ***********************************************
+ok: [localhost -> localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=1    unreachable=0    failed=0   
+
+
+Executing command: sudo ansible-playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/update_inventory.yml
+Output: 
+PLAY [Actualizar inventario de Ansible y ejecutar tareas] **********************
+
+TASK [Ejecutar script para generar inventario] *********************************
+changed: [localhost -> localhost]
+
+TASK [Depurar salida del script de inventario] *********************************
+ok: [localhost] => {
+    "inventory_output.stdout": "p1-019-00:\n  ansible_host: none\n  mac_address: 64:51:06:2f:56:ce\n  status: off\np1-019-11:\n  ansible_host: none\n  mac_address: 8c:dc:d4:2e:37:07\n  status: off\np1-019-12:\n  ansible_host: none\n  mac_address: 08:2e:5f:21:df:2b\n  status: off\np1-019-16:\n  ansible_host: none\n  mac_address: 3c:d9:2b:4d:0a:6f\n  status: off\np1-019-21:\n  ansible_host: none\n  mac_address: 64:51:06:61:3b:06\n  status: off\np1-019-23:\n  ansible_host: none\n  mac_address: 64:51:06:5f:6f:bc\n  status: off\np1-019-24:\n  ansible_host: 10.209.2.46\n  mac_address: c4:34:6b:5e:5e:b4\n  status: on\np1-019-25:\n  ansible_host: 10.209.2.144\n  mac_address: 24:be:05:21:0e:03\n  status: on\np1-019-26:\n  ansible_host: none\n  mac_address: 24:be:05:0f:be:15\n  status: off\np1-019-28:\n  ansible_host: none\n  mac_address: 2c:41:38:99:6d:a3\n  status: off\np1-019-31:\n  ansible_host: 10.209.2.81\n  mac_address: 64:51:06:5f:76:dc\n  status: on\np1-019-32:\n  ansible_host: none\n  mac_address: c4:34:6b:7a:ad:ea\n  status: off\np1-019-33:\n  ansible_host: 10.209.2.94\n  mac_address: a0:d3:c1:1d:b0:8e\n  status: on\np1-019-34:\n  ansible_host: 10.209.2.53\n  mac_address: 64:51:06:60:af:4d\n  status: on\np1-019-35:\n  ansible_host: 10.209.2.74\n  mac_address: a0:d3:c1:33:9a:82\n  status: on\np1-019-36:\n  ansible_host: none\n  mac_address: c4:34:6b:74:b0:cb\n  status: off\np1-019-37:\n  ansible_host: none\n  mac_address: 3c:d9:2b:59:d9:73\n  status: off\np1-019-38:\n  ansible_host: 10.209.2.83\n  mac_address: e8:39:35:5d:e3:34\n  status: on\np1-019-41:\n  ansible_host: 10.209.2.115\n  mac_address: 24:be:05:15:56:1c\n  status: on\np1-019-42:\n  ansible_host: none\n  mac_address: 3c:d9:2b:49:3b:4f\n  status: off\np1-019-43:\n  ansible_host: none\n  mac_address: 24:be:05:04:b3:4c\n  status: off\np1-019-44:\n  ansible_host: 10.209.2.177\n  mac_address: 2c:44:fd:39:8b:67\n  status: on\np1-019-45:\n  ansible_host: 10.209.2.148\n  mac_address: 08:2e:5f:15:69:bb\n  status: on\np1-019-46:\n  ansible_host: none\n  mac_address: 24:be:05:09:19:48\n  status: off\np1-019-47:\n  ansible_host: none\n  mac_address: a0:d3:c1:0f:f2:1a\n  status: off\np1-019-48:\n  ansible_host: none\n  mac_address: b4:b5:2f:ab:4b:0d\n  status: off"
+}
+
+TASK [Cargar inventario dinámico] **********************************************
+ok: [localhost]
+
+TASK [Depurar inventario dinámico] *********************************************
+ok: [localhost] => {
+    "dynamic_inventory": {
+        "p1-019-00": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:2f:56:ce", 
+            "status": false
+        }, 
+        "p1-019-11": {
+            "ansible_host": "none", 
+            "mac_address": "8c:dc:d4:2e:37:07", 
+            "status": false
+        }, 
+        "p1-019-12": {
+            "ansible_host": "none", 
+            "mac_address": "08:2e:5f:21:df:2b", 
+            "status": false
+        }, 
+        "p1-019-16": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:4d:0a:6f", 
+            "status": false
+        }, 
+        "p1-019-21": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:61:3b:06", 
+            "status": false
+        }, 
+        "p1-019-23": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:5f:6f:bc", 
+            "status": false
+        }, 
+        "p1-019-24": {
+            "ansible_host": "10.209.2.46", 
+            "mac_address": "c4:34:6b:5e:5e:b4", 
+            "status": true
+        }, 
+        "p1-019-25": {
+            "ansible_host": "10.209.2.144", 
+            "mac_address": "24:be:05:21:0e:03", 
+            "status": true
+        }, 
+        "p1-019-26": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:0f:be:15", 
+            "status": false
+        }, 
+        "p1-019-28": {
+            "ansible_host": "none", 
+            "mac_address": "2c:41:38:99:6d:a3", 
+            "status": false
+        }, 
+        "p1-019-31": {
+            "ansible_host": "10.209.2.81", 
+            "mac_address": "64:51:06:5f:76:dc", 
+            "status": true
+        }, 
+        "p1-019-32": {
+            "ansible_host": "none", 
+            "mac_address": "c4:34:6b:7a:ad:ea", 
+            "status": false
+        }, 
+        "p1-019-33": {
+            "ansible_host": "10.209.2.94", 
+            "mac_address": "a0:d3:c1:1d:b0:8e", 
+            "status": true
+        }, 
+        "p1-019-34": {
+            "ansible_host": "10.209.2.53", 
+            "mac_address": "64:51:06:60:af:4d", 
+            "status": true
+        }, 
+        "p1-019-35": {
+            "ansible_host": "10.209.2.74", 
+            "mac_address": "a0:d3:c1:33:9a:82", 
+            "status": true
+        }, 
+        "p1-019-36": {
+            "ansible_host": "none", 
+            "mac_address": "c4:34:6b:74:b0:cb", 
+            "status": false
+        }, 
+        "p1-019-37": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:59:d9:73", 
+            "status": false
+        }, 
+        "p1-019-38": {
+            "ansible_host": "10.209.2.83", 
+            "mac_address": "e8:39:35:5d:e3:34", 
+            "status": true
+        }, 
+        "p1-019-41": {
+            "ansible_host": "10.209.2.115", 
+            "mac_address": "24:be:05:15:56:1c", 
+            "status": true
+        }, 
+        "p1-019-42": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:49:3b:4f", 
+            "status": false
+        }, 
+        "p1-019-43": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:04:b3:4c", 
+            "status": false
+        }, 
+        "p1-019-44": {
+            "ansible_host": "10.209.2.177", 
+            "mac_address": "2c:44:fd:39:8b:67", 
+            "status": true
+        }, 
+        "p1-019-45": {
+            "ansible_host": "10.209.2.148", 
+            "mac_address": "08:2e:5f:15:69:bb", 
+            "status": true
+        }, 
+        "p1-019-46": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:09:19:48", 
+            "status": false
+        }, 
+        "p1-019-47": {
+            "ansible_host": "none", 
+            "mac_address": "a0:d3:c1:0f:f2:1a", 
+            "status": false
+        }, 
+        "p1-019-48": {
+            "ansible_host": "none", 
+            "mac_address": "b4:b5:2f:ab:4b:0d", 
+            "status": false
+        }
+    }
+}
+
+TASK [Crear contenido del archivo de inventario] *******************************
+ok: [localhost]
+
+TASK [Guardar el inventario en un archivo] *************************************
+ok: [localhost]
+
+TASK [Actualizar inventario] ***************************************************
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:2f:56:ce'}, 'key': 'p1-019-00'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'2c:41:38:99:6d:a3'}, 'key': 'p1-019-28'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:5f:6f:bc'}, 'key': 'p1-019-23'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:61:3b:06'}, 'key': 'p1-019-21'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:0f:be:15'}, 'key': 'p1-019-26'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.46', 'mac_address': u'c4:34:6b:5e:5e:b4'}, 'key': 'p1-019-24'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.144', 'mac_address': u'24:be:05:21:0e:03'}, 'key': 'p1-019-25'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.83', 'mac_address': u'e8:39:35:5d:e3:34'}, 'key': 'p1-019-38'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.81', 'mac_address': u'64:51:06:5f:76:dc'}, 'key': 'p1-019-31'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:4d:0a:6f'}, 'key': 'p1-019-16'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.94', 'mac_address': u'a0:d3:c1:1d:b0:8e'}, 'key': 'p1-019-33'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'c4:34:6b:7a:ad:ea'}, 'key': 'p1-019-32'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.74', 'mac_address': u'a0:d3:c1:33:9a:82'}, 'key': 'p1-019-35'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'08:2e:5f:21:df:2b'}, 'key': 'p1-019-12'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'8c:dc:d4:2e:37:07'}, 'key': 'p1-019-11'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.53', 'mac_address': u'64:51:06:60:af:4d'}, 'key': 'p1-019-34'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:59:d9:73'}, 'key': 'p1-019-37'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'c4:34:6b:74:b0:cb'}, 'key': 'p1-019-36'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'b4:b5:2f:ab:4b:0d'}, 'key': 'p1-019-48'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.177', 'mac_address': u'2c:44:fd:39:8b:67'}, 'key': 'p1-019-44'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.148', 'mac_address': u'08:2e:5f:15:69:bb'}, 'key': 'p1-019-45'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:09:19:48'}, 'key': 'p1-019-46'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'a0:d3:c1:0f:f2:1a'}, 'key': 'p1-019-47'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.115', 'mac_address': u'24:be:05:15:56:1c'}, 'key': 'p1-019-41'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:49:3b:4f'}, 'key': 'p1-019-42'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:04:b3:4c'}, 'key': 'p1-019-43'})
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=7    changed=2    unreachable=0    failed=0   
+
+
+[pid: 25794|app: 0|req: 4/25] 10.209.2.232 () {42 vars in 770 bytes} [Mon Jun 17 15:33:40 2024] GET /run-scan/ => generated 18618 bytes in 16787 msecs (HTTP/1.1 200) 5 headers in 160 bytes (1 switches on core 1)
+[pid: 25801|app: 0|req: 13/26] 10.209.2.232 () {44 vars in 891 bytes} [Mon Jun 17 15:34:03 2024] GET / => generated 65937 bytes in 198 msecs (HTTP/1.1 200) 7 headers in 350 bytes (1 switches on core 0)
+Mon Jun 17 15:34:04 2024 - uwsgi_response_writev_headers_and_body_do(): Broken pipe [core/writer.c line 306] during GET /favicon.ico (10.209.2.232)
+OSError: write error
+[pid: 25801|app: 0|req: 14/27] 10.209.2.232 () {42 vars in 796 bytes} [Mon Jun 17 15:34:04 2024] GET /favicon.ico => generated 0 bytes in 14 msecs (HTTP/1.1 404) 5 headers in 0 bytes (0 switches on core 1)
+[pid: 25794|app: 0|req: 5/28] 10.209.2.232 () {42 vars in 804 bytes} [Mon Jun 17 15:34:08 2024] GET /get-computer-details/3215/ => generated 117 bytes in 44 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 0)
+[pid: 25794|app: 0|req: 6/29] 10.209.2.232 () {44 vars in 891 bytes} [Mon Jun 17 15:34:58 2024] GET / => generated 65937 bytes in 86 msecs (HTTP/1.1 200) 7 headers in 350 bytes (1 switches on core 1)
+Mon Jun 17 15:34:58 2024 - SIGPIPE: writing to a closed pipe/socket/fd (probably the client disconnected) !!!
+Mon Jun 17 15:34:58 2024 - uwsgi_response_writev_headers_and_body_do(): Broken pipe [core/writer.c line 306] during GET /favicon.ico (10.209.2.232)
+OSError: write error
+[pid: 25801|app: 0|req: 15/30] 10.209.2.232 () {42 vars in 796 bytes} [Mon Jun 17 15:34:58 2024] GET /favicon.ico => generated 0 bytes in 11 msecs (HTTP/1.1 404) 5 headers in 0 bytes (0 switches on core 0)
+Executing command: sudo ansible-playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/scan_p1_19_lab.yml
+Output: 
+PLAY [Ejecutar script de escaneo en localhost] *********************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Ejecutar script] *********************************************************
+changed: [localhost]
+
+TASK [Guardar salida del script] ***********************************************
+ok: [localhost -> localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=1    unreachable=0    failed=0   
+
+
+Executing command: sudo ansible-playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/update_inventory.yml
+Output: 
+PLAY [Actualizar inventario de Ansible y ejecutar tareas] **********************
+
+TASK [Ejecutar script para generar inventario] *********************************
+changed: [localhost -> localhost]
+
+TASK [Depurar salida del script de inventario] *********************************
+ok: [localhost] => {
+    "inventory_output.stdout": "p1-019-00:\n  ansible_host: none\n  mac_address: 64:51:06:2f:56:ce\n  status: off\np1-019-11:\n  ansible_host: none\n  mac_address: 8c:dc:d4:2e:37:07\n  status: off\np1-019-12:\n  ansible_host: none\n  mac_address: 08:2e:5f:21:df:2b\n  status: off\np1-019-16:\n  ansible_host: none\n  mac_address: 3c:d9:2b:4d:0a:6f\n  status: off\np1-019-21:\n  ansible_host: none\n  mac_address: 64:51:06:61:3b:06\n  status: off\np1-019-23:\n  ansible_host: none\n  mac_address: 64:51:06:5f:6f:bc\n  status: off\np1-019-24:\n  ansible_host: 10.209.2.46\n  mac_address: c4:34:6b:5e:5e:b4\n  status: on\np1-019-25:\n  ansible_host: 10.209.2.144\n  mac_address: 24:be:05:21:0e:03\n  status: on\np1-019-26:\n  ansible_host: none\n  mac_address: 24:be:05:0f:be:15\n  status: off\np1-019-28:\n  ansible_host: none\n  mac_address: 2c:41:38:99:6d:a3\n  status: off\np1-019-31:\n  ansible_host: 10.209.2.81\n  mac_address: 64:51:06:5f:76:dc\n  status: on\np1-019-32:\n  ansible_host: none\n  mac_address: c4:34:6b:7a:ad:ea\n  status: off\np1-019-33:\n  ansible_host: 10.209.2.94\n  mac_address: a0:d3:c1:1d:b0:8e\n  status: on\np1-019-35:\n  ansible_host: 10.209.2.74\n  mac_address: a0:d3:c1:33:9a:82\n  status: on\np1-019-36:\n  ansible_host: none\n  mac_address: c4:34:6b:74:b0:cb\n  status: off\np1-019-37:\n  ansible_host: none\n  mac_address: 3c:d9:2b:59:d9:73\n  status: off\np1-019-38:\n  ansible_host: 10.209.2.83\n  mac_address: e8:39:35:5d:e3:34\n  status: on\np1-019-41:\n  ansible_host: 10.209.2.115\n  mac_address: 24:be:05:15:56:1c\n  status: on\np1-019-42:\n  ansible_host: none\n  mac_address: 3c:d9:2b:49:3b:4f\n  status: off\np1-019-43:\n  ansible_host: none\n  mac_address: 24:be:05:04:b3:4c\n  status: off\np1-019-44:\n  ansible_host: 10.209.2.177\n  mac_address: 2c:44:fd:39:8b:67\n  status: on\np1-019-45:\n  ansible_host: 10.209.2.148\n  mac_address: 08:2e:5f:15:69:bb\n  status: on\np1-019-46:\n  ansible_host: none\n  mac_address: 24:be:05:09:19:48\n  status: off\np1-019-47:\n  ansible_host: none\n  mac_address: a0:d3:c1:0f:f2:1a\n  status: off\np1-019-48:\n  ansible_host: none\n  mac_address: b4:b5:2f:ab:4b:0d\n  status: off\np1-019-34:\n  ansible_host: 10.209.2.53\n  mac_address: 64:51:06:60:af:4d\n  status: off"
+}
+
+TASK [Cargar inventario dinámico] **********************************************
+ok: [localhost]
+
+TASK [Depurar inventario dinámico] *********************************************
+ok: [localhost] => {
+    "dynamic_inventory": {
+        "p1-019-00": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:2f:56:ce", 
+            "status": false
+        }, 
+        "p1-019-11": {
+            "ansible_host": "none", 
+            "mac_address": "8c:dc:d4:2e:37:07", 
+            "status": false
+        }, 
+        "p1-019-12": {
+            "ansible_host": "none", 
+            "mac_address": "08:2e:5f:21:df:2b", 
+            "status": false
+        }, 
+        "p1-019-16": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:4d:0a:6f", 
+            "status": false
+        }, 
+        "p1-019-21": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:61:3b:06", 
+            "status": false
+        }, 
+        "p1-019-23": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:5f:6f:bc", 
+            "status": false
+        }, 
+        "p1-019-24": {
+            "ansible_host": "10.209.2.46", 
+            "mac_address": "c4:34:6b:5e:5e:b4", 
+            "status": true
+        }, 
+        "p1-019-25": {
+            "ansible_host": "10.209.2.144", 
+            "mac_address": "24:be:05:21:0e:03", 
+            "status": true
+        }, 
+        "p1-019-26": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:0f:be:15", 
+            "status": false
+        }, 
+        "p1-019-28": {
+            "ansible_host": "none", 
+            "mac_address": "2c:41:38:99:6d:a3", 
+            "status": false
+        }, 
+        "p1-019-31": {
+            "ansible_host": "10.209.2.81", 
+            "mac_address": "64:51:06:5f:76:dc", 
+            "status": true
+        }, 
+        "p1-019-32": {
+            "ansible_host": "none", 
+            "mac_address": "c4:34:6b:7a:ad:ea", 
+            "status": false
+        }, 
+        "p1-019-33": {
+            "ansible_host": "10.209.2.94", 
+            "mac_address": "a0:d3:c1:1d:b0:8e", 
+            "status": true
+        }, 
+        "p1-019-34": {
+            "ansible_host": "10.209.2.53", 
+            "mac_address": "64:51:06:60:af:4d", 
+            "status": false
+        }, 
+        "p1-019-35": {
+            "ansible_host": "10.209.2.74", 
+            "mac_address": "a0:d3:c1:33:9a:82", 
+            "status": true
+        }, 
+        "p1-019-36": {
+            "ansible_host": "none", 
+            "mac_address": "c4:34:6b:74:b0:cb", 
+            "status": false
+        }, 
+        "p1-019-37": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:59:d9:73", 
+            "status": false
+        }, 
+        "p1-019-38": {
+            "ansible_host": "10.209.2.83", 
+            "mac_address": "e8:39:35:5d:e3:34", 
+            "status": true
+        }, 
+        "p1-019-41": {
+            "ansible_host": "10.209.2.115", 
+            "mac_address": "24:be:05:15:56:1c", 
+            "status": true
+        }, 
+        "p1-019-42": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:49:3b:4f", 
+            "status": false
+        }, 
+        "p1-019-43": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:04:b3:4c", 
+            "status": false
+        }, 
+        "p1-019-44": {
+            "ansible_host": "10.209.2.177", 
+            "mac_address": "2c:44:fd:39:8b:67", 
+            "status": true
+        }, 
+        "p1-019-45": {
+            "ansible_host": "10.209.2.148", 
+            "mac_address": "08:2e:5f:15:69:bb", 
+            "status": true
+        }, 
+        "p1-019-46": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:09:19:48", 
+            "status": false
+        }, 
+        "p1-019-47": {
+            "ansible_host": "none", 
+            "mac_address": "a0:d3:c1:0f:f2:1a", 
+            "status": false
+        }, 
+        "p1-019-48": {
+            "ansible_host": "none", 
+            "mac_address": "b4:b5:2f:ab:4b:0d", 
+            "status": false
+        }
+    }
+}
+
+TASK [Crear contenido del archivo de inventario] *******************************
+ok: [localhost]
+
+TASK [Guardar el inventario en un archivo] *************************************
+changed: [localhost]
+
+TASK [Actualizar inventario] ***************************************************
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:2f:56:ce'}, 'key': 'p1-019-00'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'2c:41:38:99:6d:a3'}, 'key': 'p1-019-28'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:5f:6f:bc'}, 'key': 'p1-019-23'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:61:3b:06'}, 'key': 'p1-019-21'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:0f:be:15'}, 'key': 'p1-019-26'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.46', 'mac_address': u'c4:34:6b:5e:5e:b4'}, 'key': 'p1-019-24'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.144', 'mac_address': u'24:be:05:21:0e:03'}, 'key': 'p1-019-25'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.83', 'mac_address': u'e8:39:35:5d:e3:34'}, 'key': 'p1-019-38'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.81', 'mac_address': u'64:51:06:5f:76:dc'}, 'key': 'p1-019-31'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:4d:0a:6f'}, 'key': 'p1-019-16'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.94', 'mac_address': u'a0:d3:c1:1d:b0:8e'}, 'key': 'p1-019-33'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'c4:34:6b:7a:ad:ea'}, 'key': 'p1-019-32'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.74', 'mac_address': u'a0:d3:c1:33:9a:82'}, 'key': 'p1-019-35'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'08:2e:5f:21:df:2b'}, 'key': 'p1-019-12'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'8c:dc:d4:2e:37:07'}, 'key': 'p1-019-11'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'10.209.2.53', 'mac_address': u'64:51:06:60:af:4d'}, 'key': 'p1-019-34'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:59:d9:73'}, 'key': 'p1-019-37'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'c4:34:6b:74:b0:cb'}, 'key': 'p1-019-36'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'b4:b5:2f:ab:4b:0d'}, 'key': 'p1-019-48'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.177', 'mac_address': u'2c:44:fd:39:8b:67'}, 'key': 'p1-019-44'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.148', 'mac_address': u'08:2e:5f:15:69:bb'}, 'key': 'p1-019-45'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:09:19:48'}, 'key': 'p1-019-46'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'a0:d3:c1:0f:f2:1a'}, 'key': 'p1-019-47'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.115', 'mac_address': u'24:be:05:15:56:1c'}, 'key': 'p1-019-41'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:49:3b:4f'}, 'key': 'p1-019-42'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:04:b3:4c'}, 'key': 'p1-019-43'})
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=7    changed=3    unreachable=0    failed=0   
+
+
+[pid: 25795|app: 0|req: 4/31] 10.209.2.232 () {42 vars in 770 bytes} [Mon Jun 17 15:35:16 2024] GET /run-scan/ => generated 18624 bytes in 20494 msecs (HTTP/1.1 200) 5 headers in 160 bytes (1 switches on core 1)
+[pid: 25801|app: 0|req: 16/32] 10.209.2.232 () {44 vars in 891 bytes} [Mon Jun 17 15:35:44 2024] GET / => generated 71292 bytes in 29 msecs (HTTP/1.1 200) 7 headers in 350 bytes (1 switches on core 1)
+*** Starting uWSGI 2.0.26 (64bit) on [Mon Jun 17 16:45:12 2024] ***
+compiled with version: 7.5.0 on 07 June 2024 13:04:53
+os: Linux-5.4.0-150-generic #167~18.04.1-Ubuntu SMP Wed May 24 00:51:42 UTC 2023
+nodename: p1-019-38
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto
+detected binary path: /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+chdir() to /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/app
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 15169
+your memory page size is 4096 bytes
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/app/myapp.sock fd 3
+Python version: 3.12.3 (main, Jun  5 2024, 18:41:36) [GCC 7.5.0]
+PEP 405 virtualenv detected: /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/venv
+Set PythonHome to /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/venv
+Python main interpreter initialized at 0x55682f5a1588
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 416880 bytes (407 KB) for 10 cores
+*** Operational MODE: preforking+threaded ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55682f5a1588 pid: 30925 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (pid: 30925, cores: 2)
+spawned uWSGI worker 2 (pid: 30926, cores: 2)
+spawned uWSGI worker 3 (pid: 30927, cores: 2)
+spawned uWSGI worker 4 (pid: 30929, cores: 2)
+spawned uWSGI worker 5 (pid: 30931, cores: 2)
+[pid: 30929|app: 0|req: 1/1] 10.209.2.232 () {44 vars in 891 bytes} [Mon Jun 17 15:45:15 2024] GET / => generated 71292 bytes in 88 msecs (HTTP/1.1 200) 7 headers in 350 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+Mon Jun 17 15:45:16 2024 - SIGPIPE: writing to a closed pipe/socket/fd (probably the client disconnected) !!!
+Mon Jun 17 15:45:16 2024 - uwsgi_response_writev_headers_and_body_do(): Broken pipe [core/writer.c line 306] during GET /favicon.ico (10.209.2.232)
+OSError: write error
+[pid: 30931|app: 0|req: 1/2] 10.209.2.232 () {42 vars in 796 bytes} [Mon Jun 17 15:45:16 2024] GET /favicon.ico => generated 0 bytes in 26 msecs (HTTP/1.1 404) 5 headers in 0 bytes (0 switches on core 0)
+Executing command: sudo ansible-playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/scan_p1_19_lab.yml
+Output: 
+PLAY [Ejecutar script de escaneo en localhost] *********************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Ejecutar script] *********************************************************
+changed: [localhost]
+
+TASK [Guardar salida del script] ***********************************************
+changed: [localhost -> localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=2    unreachable=0    failed=0   
+
+
+Executing command: sudo ansible-playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/update_inventory.yml
+Output: 
+PLAY [Actualizar inventario de Ansible y ejecutar tareas] **********************
+
+TASK [Ejecutar script para generar inventario] *********************************
+changed: [localhost -> localhost]
+
+TASK [Depurar salida del script de inventario] *********************************
+ok: [localhost] => {
+    "inventory_output.stdout": "p1-019-00:\n  ansible_host: none\n  mac_address: 64:51:06:2f:56:ce\n  status: off\np1-019-11:\n  ansible_host: none\n  mac_address: 8c:dc:d4:2e:37:07\n  status: off\np1-019-12:\n  ansible_host: none\n  mac_address: 08:2e:5f:21:df:2b\n  status: off\np1-019-16:\n  ansible_host: none\n  mac_address: 3c:d9:2b:4d:0a:6f\n  status: off\np1-019-21:\n  ansible_host: none\n  mac_address: 64:51:06:61:3b:06\n  status: off\np1-019-23:\n  ansible_host: none\n  mac_address: 64:51:06:5f:6f:bc\n  status: off\np1-019-24:\n  ansible_host: 10.209.2.46\n  mac_address: c4:34:6b:5e:5e:b4\n  status: on\np1-019-25:\n  ansible_host: 10.209.2.144\n  mac_address: 24:be:05:21:0e:03\n  status: on\np1-019-26:\n  ansible_host: none\n  mac_address: 24:be:05:0f:be:15\n  status: off\np1-019-28:\n  ansible_host: none\n  mac_address: 2c:41:38:99:6d:a3\n  status: off\np1-019-31:\n  ansible_host: 10.209.2.81\n  mac_address: 64:51:06:5f:76:dc\n  status: on\np1-019-32:\n  ansible_host: none\n  mac_address: c4:34:6b:7a:ad:ea\n  status: off\np1-019-33:\n  ansible_host: 10.209.2.94\n  mac_address: a0:d3:c1:1d:b0:8e\n  status: on\np1-019-34:\n  ansible_host: none\n  mac_address: 64:51:06:60:af:4d\n  status: off\np1-019-36:\n  ansible_host: none\n  mac_address: c4:34:6b:74:b0:cb\n  status: off\np1-019-37:\n  ansible_host: none\n  mac_address: 3c:d9:2b:59:d9:73\n  status: off\np1-019-38:\n  ansible_host: 10.209.2.83\n  mac_address: e8:39:35:5d:e3:34\n  status: on\np1-019-41:\n  ansible_host: 10.209.2.115\n  mac_address: 24:be:05:15:56:1c\n  status: on\np1-019-42:\n  ansible_host: none\n  mac_address: 3c:d9:2b:49:3b:4f\n  status: off\np1-019-43:\n  ansible_host: none\n  mac_address: 24:be:05:04:b3:4c\n  status: off\np1-019-44:\n  ansible_host: 10.209.2.177\n  mac_address: 2c:44:fd:39:8b:67\n  status: on\np1-019-45:\n  ansible_host: 10.209.2.148\n  mac_address: 08:2e:5f:15:69:bb\n  status: on\np1-019-46:\n  ansible_host: none\n  mac_address: 24:be:05:09:19:48\n  status: off\np1-019-47:\n  ansible_host: none\n  mac_address: a0:d3:c1:0f:f2:1a\n  status: off\np1-019-48:\n  ansible_host: none\n  mac_address: b4:b5:2f:ab:4b:0d\n  status: off\np1-019-35:\n  ansible_host: 10.209.2.74\n  mac_address: a0:d3:c1:33:9a:82\n  status: off"
+}
+
+TASK [Cargar inventario dinámico] **********************************************
+ok: [localhost]
+
+TASK [Depurar inventario dinámico] *********************************************
+ok: [localhost] => {
+    "dynamic_inventory": {
+        "p1-019-00": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:2f:56:ce", 
+            "status": false
+        }, 
+        "p1-019-11": {
+            "ansible_host": "none", 
+            "mac_address": "8c:dc:d4:2e:37:07", 
+            "status": false
+        }, 
+        "p1-019-12": {
+            "ansible_host": "none", 
+            "mac_address": "08:2e:5f:21:df:2b", 
+            "status": false
+        }, 
+        "p1-019-16": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:4d:0a:6f", 
+            "status": false
+        }, 
+        "p1-019-21": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:61:3b:06", 
+            "status": false
+        }, 
+        "p1-019-23": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:5f:6f:bc", 
+            "status": false
+        }, 
+        "p1-019-24": {
+            "ansible_host": "10.209.2.46", 
+            "mac_address": "c4:34:6b:5e:5e:b4", 
+            "status": true
+        }, 
+        "p1-019-25": {
+            "ansible_host": "10.209.2.144", 
+            "mac_address": "24:be:05:21:0e:03", 
+            "status": true
+        }, 
+        "p1-019-26": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:0f:be:15", 
+            "status": false
+        }, 
+        "p1-019-28": {
+            "ansible_host": "none", 
+            "mac_address": "2c:41:38:99:6d:a3", 
+            "status": false
+        }, 
+        "p1-019-31": {
+            "ansible_host": "10.209.2.81", 
+            "mac_address": "64:51:06:5f:76:dc", 
+            "status": true
+        }, 
+        "p1-019-32": {
+            "ansible_host": "none", 
+            "mac_address": "c4:34:6b:7a:ad:ea", 
+            "status": false
+        }, 
+        "p1-019-33": {
+            "ansible_host": "10.209.2.94", 
+            "mac_address": "a0:d3:c1:1d:b0:8e", 
+            "status": true
+        }, 
+        "p1-019-34": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:60:af:4d", 
+            "status": false
+        }, 
+        "p1-019-35": {
+            "ansible_host": "10.209.2.74", 
+            "mac_address": "a0:d3:c1:33:9a:82", 
+            "status": false
+        }, 
+        "p1-019-36": {
+            "ansible_host": "none", 
+            "mac_address": "c4:34:6b:74:b0:cb", 
+            "status": false
+        }, 
+        "p1-019-37": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:59:d9:73", 
+            "status": false
+        }, 
+        "p1-019-38": {
+            "ansible_host": "10.209.2.83", 
+            "mac_address": "e8:39:35:5d:e3:34", 
+            "status": true
+        }, 
+        "p1-019-41": {
+            "ansible_host": "10.209.2.115", 
+            "mac_address": "24:be:05:15:56:1c", 
+            "status": true
+        }, 
+        "p1-019-42": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:49:3b:4f", 
+            "status": false
+        }, 
+        "p1-019-43": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:04:b3:4c", 
+            "status": false
+        }, 
+        "p1-019-44": {
+            "ansible_host": "10.209.2.177", 
+            "mac_address": "2c:44:fd:39:8b:67", 
+            "status": true
+        }, 
+        "p1-019-45": {
+            "ansible_host": "10.209.2.148", 
+            "mac_address": "08:2e:5f:15:69:bb", 
+            "status": true
+        }, 
+        "p1-019-46": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:09:19:48", 
+            "status": false
+        }, 
+        "p1-019-47": {
+            "ansible_host": "none", 
+            "mac_address": "a0:d3:c1:0f:f2:1a", 
+            "status": false
+        }, 
+        "p1-019-48": {
+            "ansible_host": "none", 
+            "mac_address": "b4:b5:2f:ab:4b:0d", 
+            "status": false
+        }
+    }
+}
+
+TASK [Crear contenido del archivo de inventario] *******************************
+ok: [localhost]
+
+TASK [Guardar el inventario en un archivo] *************************************
+changed: [localhost]
+
+TASK [Actualizar inventario] ***************************************************
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:2f:56:ce'}, 'key': 'p1-019-00'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'2c:41:38:99:6d:a3'}, 'key': 'p1-019-28'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:5f:6f:bc'}, 'key': 'p1-019-23'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:61:3b:06'}, 'key': 'p1-019-21'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:0f:be:15'}, 'key': 'p1-019-26'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.46', 'mac_address': u'c4:34:6b:5e:5e:b4'}, 'key': 'p1-019-24'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.144', 'mac_address': u'24:be:05:21:0e:03'}, 'key': 'p1-019-25'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.83', 'mac_address': u'e8:39:35:5d:e3:34'}, 'key': 'p1-019-38'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.81', 'mac_address': u'64:51:06:5f:76:dc'}, 'key': 'p1-019-31'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:4d:0a:6f'}, 'key': 'p1-019-16'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.94', 'mac_address': u'a0:d3:c1:1d:b0:8e'}, 'key': 'p1-019-33'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'c4:34:6b:7a:ad:ea'}, 'key': 'p1-019-32'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'10.209.2.74', 'mac_address': u'a0:d3:c1:33:9a:82'}, 'key': 'p1-019-35'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'08:2e:5f:21:df:2b'}, 'key': 'p1-019-12'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'8c:dc:d4:2e:37:07'}, 'key': 'p1-019-11'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:60:af:4d'}, 'key': 'p1-019-34'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:59:d9:73'}, 'key': 'p1-019-37'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'c4:34:6b:74:b0:cb'}, 'key': 'p1-019-36'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'b4:b5:2f:ab:4b:0d'}, 'key': 'p1-019-48'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.177', 'mac_address': u'2c:44:fd:39:8b:67'}, 'key': 'p1-019-44'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.148', 'mac_address': u'08:2e:5f:15:69:bb'}, 'key': 'p1-019-45'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:09:19:48'}, 'key': 'p1-019-46'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'a0:d3:c1:0f:f2:1a'}, 'key': 'p1-019-47'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.115', 'mac_address': u'24:be:05:15:56:1c'}, 'key': 'p1-019-41'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:49:3b:4f'}, 'key': 'p1-019-42'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:04:b3:4c'}, 'key': u'p1-019-43'})
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=7    changed=3    unreachable=0    failed=0   
+
+
+[pid: 30931|app: 0|req: 2/3] 10.209.2.232 () {42 vars in 770 bytes} [Mon Jun 17 15:45:18 2024] GET /run-scan/ => generated 18610 bytes in 15854 msecs (HTTP/1.1 200) 5 headers in 160 bytes (1 switches on core 1)
+[pid: 30931|app: 0|req: 3/4] 10.209.2.232 () {44 vars in 891 bytes} [Mon Jun 17 15:45:41 2024] GET / => generated 76651 bytes in 37 msecs (HTTP/1.1 200) 7 headers in 350 bytes (1 switches on core 0)
+[pid: 30929|app: 0|req: 2/5] 10.209.2.232 () {42 vars in 804 bytes} [Mon Jun 17 15:45:43 2024] GET /get-computer-details/3279/ => generated 109 bytes in 3 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 1)
+Executing ansible playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/up_computers_down.yml with inventory /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini...
+['sudo', 'ansible-playbook', '-i', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/up_computers_down.yml', '--extra-vars', 'target_host=p1-019-34']
+Processing output...
+
+PLAY [Levantar máquinas con estado 'off'] **************************************
+
+TASK [Obtener lista de direcciones MAC fuera de línea] *************************
+ok: [localhost]
+
+TASK [Levantar máquinas con estado 'off'] **************************************
+changed: [localhost] => (item='64:51:06:60:af:4d')
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=1    unreachable=0    failed=0   
+
+
+[pid: 30927|app: 0|req: 1/6] 10.209.2.232 () {50 vars in 1062 bytes} [Mon Jun 17 15:45:44 2024] POST /execute-playbook/up_computers_down.yml/p1-019-34/ => generated 516 bytes in 1933 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 0)
+[pid: 30931|app: 0|req: 4/7] 10.209.2.232 () {42 vars in 804 bytes} [Mon Jun 17 15:45:47 2024] GET /get-computer-details/3276/ => generated 109 bytes in 3 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 1)
+Executing ansible playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/up_computers_down.yml with inventory /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini...
+['sudo', 'ansible-playbook', '-i', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/up_computers_down.yml', '--extra-vars', 'target_host=p1-019-35']
+Processing output...
+
+PLAY [Levantar máquinas con estado 'off'] **************************************
+
+TASK [Obtener lista de direcciones MAC fuera de línea] *************************
+ok: [localhost]
+
+TASK [Levantar máquinas con estado 'off'] **************************************
+changed: [localhost] => (item='a0:d3:c1:33:9a:82')
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=1    unreachable=0    failed=0   
+
+
+[pid: 30931|app: 0|req: 5/8] 10.209.2.232 () {50 vars in 1062 bytes} [Mon Jun 17 15:45:48 2024] POST /execute-playbook/up_computers_down.yml/p1-019-35/ => generated 516 bytes in 1830 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 0)
+[pid: 30929|app: 0|req: 3/9] 10.209.2.232 () {42 vars in 804 bytes} [Mon Jun 17 15:46:53 2024] GET /get-computer-details/3276/ => generated 109 bytes in 3 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 0)
+Executing command: sudo ansible-playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/scan_p1_19_lab.yml
+Output: 
+PLAY [Ejecutar script de escaneo en localhost] *********************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Ejecutar script] *********************************************************
+changed: [localhost]
+
+TASK [Guardar salida del script] ***********************************************
+changed: [localhost -> localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=2    unreachable=0    failed=0   
+
+
+Executing command: sudo ansible-playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/update_inventory.yml
+Output: 
+PLAY [Actualizar inventario de Ansible y ejecutar tareas] **********************
+
+TASK [Ejecutar script para generar inventario] *********************************
+changed: [localhost -> localhost]
+
+TASK [Depurar salida del script de inventario] *********************************
+ok: [localhost] => {
+    "inventory_output.stdout": "p1-019-00:\n  ansible_host: none\n  mac_address: 64:51:06:2f:56:ce\n  status: off\np1-019-11:\n  ansible_host: none\n  mac_address: 8c:dc:d4:2e:37:07\n  status: off\np1-019-12:\n  ansible_host: none\n  mac_address: 08:2e:5f:21:df:2b\n  status: off\np1-019-16:\n  ansible_host: none\n  mac_address: 3c:d9:2b:4d:0a:6f\n  status: off\np1-019-21:\n  ansible_host: none\n  mac_address: 64:51:06:61:3b:06\n  status: off\np1-019-23:\n  ansible_host: none\n  mac_address: 64:51:06:5f:6f:bc\n  status: off\np1-019-24:\n  ansible_host: 10.209.2.46\n  mac_address: c4:34:6b:5e:5e:b4\n  status: on\np1-019-25:\n  ansible_host: 10.209.2.144\n  mac_address: 24:be:05:21:0e:03\n  status: on\np1-019-26:\n  ansible_host: none\n  mac_address: 24:be:05:0f:be:15\n  status: off\np1-019-28:\n  ansible_host: none\n  mac_address: 2c:41:38:99:6d:a3\n  status: off\np1-019-31:\n  ansible_host: 10.209.2.81\n  mac_address: 64:51:06:5f:76:dc\n  status: on\np1-019-32:\n  ansible_host: none\n  mac_address: c4:34:6b:7a:ad:ea\n  status: off\np1-019-33:\n  ansible_host: 10.209.2.94\n  mac_address: a0:d3:c1:1d:b0:8e\n  status: on\np1-019-34:\n  ansible_host: 10.209.2.53\n  mac_address: 64:51:06:60:af:4d\n  status: on\np1-019-35:\n  ansible_host: none\n  mac_address: a0:d3:c1:33:9a:82\n  status: off\np1-019-36:\n  ansible_host: none\n  mac_address: c4:34:6b:74:b0:cb\n  status: off\np1-019-37:\n  ansible_host: none\n  mac_address: 3c:d9:2b:59:d9:73\n  status: off\np1-019-38:\n  ansible_host: 10.209.2.83\n  mac_address: e8:39:35:5d:e3:34\n  status: on\np1-019-41:\n  ansible_host: 10.209.2.115\n  mac_address: 24:be:05:15:56:1c\n  status: on\np1-019-42:\n  ansible_host: none\n  mac_address: 3c:d9:2b:49:3b:4f\n  status: off\np1-019-43:\n  ansible_host: none\n  mac_address: 24:be:05:04:b3:4c\n  status: off\np1-019-44:\n  ansible_host: 10.209.2.177\n  mac_address: 2c:44:fd:39:8b:67\n  status: on\np1-019-45:\n  ansible_host: 10.209.2.148\n  mac_address: 08:2e:5f:15:69:bb\n  status: on\np1-019-46:\n  ansible_host: none\n  mac_address: 24:be:05:09:19:48\n  status: off\np1-019-47:\n  ansible_host: none\n  mac_address: a0:d3:c1:0f:f2:1a\n  status: off\np1-019-48:\n  ansible_host: none\n  mac_address: b4:b5:2f:ab:4b:0d\n  status: off"
+}
+
+TASK [Cargar inventario dinámico] **********************************************
+ok: [localhost]
+
+TASK [Depurar inventario dinámico] *********************************************
+ok: [localhost] => {
+    "dynamic_inventory": {
+        "p1-019-00": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:2f:56:ce", 
+            "status": false
+        }, 
+        "p1-019-11": {
+            "ansible_host": "none", 
+            "mac_address": "8c:dc:d4:2e:37:07", 
+            "status": false
+        }, 
+        "p1-019-12": {
+            "ansible_host": "none", 
+            "mac_address": "08:2e:5f:21:df:2b", 
+            "status": false
+        }, 
+        "p1-019-16": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:4d:0a:6f", 
+            "status": false
+        }, 
+        "p1-019-21": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:61:3b:06", 
+            "status": false
+        }, 
+        "p1-019-23": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:5f:6f:bc", 
+            "status": false
+        }, 
+        "p1-019-24": {
+            "ansible_host": "10.209.2.46", 
+            "mac_address": "c4:34:6b:5e:5e:b4", 
+            "status": true
+        }, 
+        "p1-019-25": {
+            "ansible_host": "10.209.2.144", 
+            "mac_address": "24:be:05:21:0e:03", 
+            "status": true
+        }, 
+        "p1-019-26": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:0f:be:15", 
+            "status": false
+        }, 
+        "p1-019-28": {
+            "ansible_host": "none", 
+            "mac_address": "2c:41:38:99:6d:a3", 
+            "status": false
+        }, 
+        "p1-019-31": {
+            "ansible_host": "10.209.2.81", 
+            "mac_address": "64:51:06:5f:76:dc", 
+            "status": true
+        }, 
+        "p1-019-32": {
+            "ansible_host": "none", 
+            "mac_address": "c4:34:6b:7a:ad:ea", 
+            "status": false
+        }, 
+        "p1-019-33": {
+            "ansible_host": "10.209.2.94", 
+            "mac_address": "a0:d3:c1:1d:b0:8e", 
+            "status": true
+        }, 
+        "p1-019-34": {
+            "ansible_host": "10.209.2.53", 
+            "mac_address": "64:51:06:60:af:4d", 
+            "status": true
+        }, 
+        "p1-019-35": {
+            "ansible_host": "none", 
+            "mac_address": "a0:d3:c1:33:9a:82", 
+            "status": false
+        }, 
+        "p1-019-36": {
+            "ansible_host": "none", 
+            "mac_address": "c4:34:6b:74:b0:cb", 
+            "status": false
+        }, 
+        "p1-019-37": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:59:d9:73", 
+            "status": false
+        }, 
+        "p1-019-38": {
+            "ansible_host": "10.209.2.83", 
+            "mac_address": "e8:39:35:5d:e3:34", 
+            "status": true
+        }, 
+        "p1-019-41": {
+            "ansible_host": "10.209.2.115", 
+            "mac_address": "24:be:05:15:56:1c", 
+            "status": true
+        }, 
+        "p1-019-42": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:49:3b:4f", 
+            "status": false
+        }, 
+        "p1-019-43": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:04:b3:4c", 
+            "status": false
+        }, 
+        "p1-019-44": {
+            "ansible_host": "10.209.2.177", 
+            "mac_address": "2c:44:fd:39:8b:67", 
+            "status": true
+        }, 
+        "p1-019-45": {
+            "ansible_host": "10.209.2.148", 
+            "mac_address": "08:2e:5f:15:69:bb", 
+            "status": true
+        }, 
+        "p1-019-46": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:09:19:48", 
+            "status": false
+        }, 
+        "p1-019-47": {
+            "ansible_host": "none", 
+            "mac_address": "a0:d3:c1:0f:f2:1a", 
+            "status": false
+        }, 
+        "p1-019-48": {
+            "ansible_host": "none", 
+            "mac_address": "b4:b5:2f:ab:4b:0d", 
+            "status": false
+        }
+    }
+}
+
+TASK [Crear contenido del archivo de inventario] *******************************
+ok: [localhost]
+
+TASK [Guardar el inventario en un archivo] *************************************
+changed: [localhost]
+
+TASK [Actualizar inventario] ***************************************************
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:2f:56:ce'}, 'key': 'p1-019-00'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'2c:41:38:99:6d:a3'}, 'key': 'p1-019-28'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:5f:6f:bc'}, 'key': 'p1-019-23'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:61:3b:06'}, 'key': 'p1-019-21'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:0f:be:15'}, 'key': 'p1-019-26'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.46', 'mac_address': u'c4:34:6b:5e:5e:b4'}, 'key': 'p1-019-24'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.144', 'mac_address': u'24:be:05:21:0e:03'}, 'key': 'p1-019-25'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.83', 'mac_address': u'e8:39:35:5d:e3:34'}, 'key': 'p1-019-38'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.81', 'mac_address': u'64:51:06:5f:76:dc'}, 'key': 'p1-019-31'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:4d:0a:6f'}, 'key': 'p1-019-16'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.94', 'mac_address': u'a0:d3:c1:1d:b0:8e'}, 'key': 'p1-019-33'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'c4:34:6b:7a:ad:ea'}, 'key': 'p1-019-32'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'a0:d3:c1:33:9a:82'}, 'key': 'p1-019-35'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'08:2e:5f:21:df:2b'}, 'key': 'p1-019-12'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'8c:dc:d4:2e:37:07'}, 'key': 'p1-019-11'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.53', 'mac_address': u'64:51:06:60:af:4d'}, 'key': 'p1-019-34'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:59:d9:73'}, 'key': 'p1-019-37'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'c4:34:6b:74:b0:cb'}, 'key': 'p1-019-36'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'b4:b5:2f:ab:4b:0d'}, 'key': 'p1-019-48'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.177', 'mac_address': u'2c:44:fd:39:8b:67'}, 'key': 'p1-019-44'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.148', 'mac_address': u'08:2e:5f:15:69:bb'}, 'key': 'p1-019-45'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:09:19:48'}, 'key': 'p1-019-46'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'a0:d3:c1:0f:f2:1a'}, 'key': 'p1-019-47'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.115', 'mac_address': u'24:be:05:15:56:1c'}, 'key': 'p1-019-41'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:49:3b:4f'}, 'key': 'p1-019-42'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:04:b3:4c'}, 'key': u'p1-019-43'})
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=7    changed=3    unreachable=0    failed=0   
+
+
+[pid: 30925|app: 0|req: 1/10] 10.209.2.232 () {42 vars in 770 bytes} [Mon Jun 17 15:47:00 2024] GET /run-scan/ => generated 18609 bytes in 14058 msecs (HTTP/1.1 200) 5 headers in 160 bytes (1 switches on core 0)
+[pid: 30925|app: 0|req: 2/11] 10.209.2.232 () {44 vars in 891 bytes} [Mon Jun 17 15:47:17 2024] GET / => generated 82006 bytes in 32 msecs (HTTP/1.1 200) 7 headers in 350 bytes (1 switches on core 1)
+[pid: 30931|app: 0|req: 6/12] 10.209.2.232 () {42 vars in 804 bytes} [Mon Jun 17 15:47:19 2024] GET /get-computer-details/3303/ => generated 109 bytes in 2 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 1)
+Executing ansible playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/up_computers_down.yml with inventory /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini...
+['sudo', 'ansible-playbook', '-i', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/up_computers_down.yml', '--extra-vars', 'target_host=p1-019-35']
+Processing output...
+
+PLAY [Levantar máquinas con estado 'off'] **************************************
+
+TASK [Obtener lista de direcciones MAC fuera de línea] *************************
+ok: [localhost]
+
+TASK [Levantar máquinas con estado 'off'] **************************************
+changed: [localhost] => (item='a0:d3:c1:33:9a:82')
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=1    unreachable=0    failed=0   
+
+
+[pid: 30925|app: 0|req: 3/13] 10.209.2.232 () {50 vars in 1062 bytes} [Mon Jun 17 15:47:22 2024] POST /execute-playbook/up_computers_down.yml/p1-019-35/ => generated 516 bytes in 1856 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 0)
+[pid: 30931|app: 0|req: 7/14] 10.209.2.232 () {42 vars in 804 bytes} [Mon Jun 17 15:48:22 2024] GET /get-computer-details/3292/ => generated 117 bytes in 2 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 0)
+Executing ansible playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/upgrade_machines.yml with inventory /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini...
+['sudo', 'ansible-playbook', '-i', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/upgrade_machines.yml', '--extra-vars', 'target_host=p1-019-34']
+Processing output...
+Error al ejecutar el playbook:
+
+[pid: 30931|app: 0|req: 8/15] 10.209.2.232 () {50 vars in 1060 bytes} [Mon Jun 17 15:48:27 2024] POST /execute-playbook/upgrade_machines.yml/p1-019-34/ => generated 14 bytes in 25198 msecs (HTTP/1.1 200) 6 headers in 171 bytes (1 switches on core 1)
+[pid: 30925|app: 0|req: 4/16] 10.209.2.232 () {44 vars in 891 bytes} [Mon Jun 17 15:54:42 2024] GET / => generated 82006 bytes in 27 msecs (HTTP/1.1 200) 7 headers in 350 bytes (1 switches on core 1)
+Executing command: sudo ansible-playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/scan_p1_19_lab.yml
+Output: 
+PLAY [Ejecutar script de escaneo en localhost] *********************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Ejecutar script] *********************************************************
+changed: [localhost]
+
+TASK [Guardar salida del script] ***********************************************
+changed: [localhost -> localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=2    unreachable=0    failed=0   
+
+
+Executing command: sudo ansible-playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/update_inventory.yml
+Output: 
+PLAY [Actualizar inventario de Ansible y ejecutar tareas] **********************
+
+TASK [Ejecutar script para generar inventario] *********************************
+changed: [localhost -> localhost]
+
+TASK [Depurar salida del script de inventario] *********************************
+ok: [localhost] => {
+    "inventory_output.stdout": "p1-019-00:\n  ansible_host: none\n  mac_address: 64:51:06:2f:56:ce\n  status: off\np1-019-11:\n  ansible_host: none\n  mac_address: 8c:dc:d4:2e:37:07\n  status: off\np1-019-12:\n  ansible_host: none\n  mac_address: 08:2e:5f:21:df:2b\n  status: off\np1-019-16:\n  ansible_host: none\n  mac_address: 3c:d9:2b:4d:0a:6f\n  status: off\np1-019-21:\n  ansible_host: none\n  mac_address: 64:51:06:61:3b:06\n  status: off\np1-019-23:\n  ansible_host: none\n  mac_address: 64:51:06:5f:6f:bc\n  status: off\np1-019-24:\n  ansible_host: 10.209.2.46\n  mac_address: c4:34:6b:5e:5e:b4\n  status: on\np1-019-25:\n  ansible_host: 10.209.2.144\n  mac_address: 24:be:05:21:0e:03\n  status: on\np1-019-26:\n  ansible_host: none\n  mac_address: 24:be:05:0f:be:15\n  status: off\np1-019-28:\n  ansible_host: none\n  mac_address: 2c:41:38:99:6d:a3\n  status: off\np1-019-31:\n  ansible_host: 10.209.2.81\n  mac_address: 64:51:06:5f:76:dc\n  status: on\np1-019-32:\n  ansible_host: none\n  mac_address: c4:34:6b:7a:ad:ea\n  status: off\np1-019-33:\n  ansible_host: 10.209.2.94\n  mac_address: a0:d3:c1:1d:b0:8e\n  status: on\np1-019-34:\n  ansible_host: 10.209.2.53\n  mac_address: 64:51:06:60:af:4d\n  status: on\np1-019-35:\n  ansible_host: 10.209.2.74\n  mac_address: a0:d3:c1:33:9a:82\n  status: on\np1-019-36:\n  ansible_host: none\n  mac_address: c4:34:6b:74:b0:cb\n  status: off\np1-019-37:\n  ansible_host: none\n  mac_address: 3c:d9:2b:59:d9:73\n  status: off\np1-019-38:\n  ansible_host: 10.209.2.83\n  mac_address: e8:39:35:5d:e3:34\n  status: on\np1-019-41:\n  ansible_host: 10.209.2.115\n  mac_address: 24:be:05:15:56:1c\n  status: on\np1-019-42:\n  ansible_host: none\n  mac_address: 3c:d9:2b:49:3b:4f\n  status: off\np1-019-43:\n  ansible_host: none\n  mac_address: 24:be:05:04:b3:4c\n  status: off\np1-019-44:\n  ansible_host: 10.209.2.177\n  mac_address: 2c:44:fd:39:8b:67\n  status: on\np1-019-45:\n  ansible_host: 10.209.2.148\n  mac_address: 08:2e:5f:15:69:bb\n  status: on\np1-019-46:\n  ansible_host: none\n  mac_address: 24:be:05:09:19:48\n  status: off\np1-019-47:\n  ansible_host: none\n  mac_address: a0:d3:c1:0f:f2:1a\n  status: off\np1-019-48:\n  ansible_host: none\n  mac_address: b4:b5:2f:ab:4b:0d\n  status: off"
+}
+
+TASK [Cargar inventario dinámico] **********************************************
+ok: [localhost]
+
+TASK [Depurar inventario dinámico] *********************************************
+ok: [localhost] => {
+    "dynamic_inventory": {
+        "p1-019-00": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:2f:56:ce", 
+            "status": false
+        }, 
+        "p1-019-11": {
+            "ansible_host": "none", 
+            "mac_address": "8c:dc:d4:2e:37:07", 
+            "status": false
+        }, 
+        "p1-019-12": {
+            "ansible_host": "none", 
+            "mac_address": "08:2e:5f:21:df:2b", 
+            "status": false
+        }, 
+        "p1-019-16": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:4d:0a:6f", 
+            "status": false
+        }, 
+        "p1-019-21": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:61:3b:06", 
+            "status": false
+        }, 
+        "p1-019-23": {
+            "ansible_host": "none", 
+            "mac_address": "64:51:06:5f:6f:bc", 
+            "status": false
+        }, 
+        "p1-019-24": {
+            "ansible_host": "10.209.2.46", 
+            "mac_address": "c4:34:6b:5e:5e:b4", 
+            "status": true
+        }, 
+        "p1-019-25": {
+            "ansible_host": "10.209.2.144", 
+            "mac_address": "24:be:05:21:0e:03", 
+            "status": true
+        }, 
+        "p1-019-26": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:0f:be:15", 
+            "status": false
+        }, 
+        "p1-019-28": {
+            "ansible_host": "none", 
+            "mac_address": "2c:41:38:99:6d:a3", 
+            "status": false
+        }, 
+        "p1-019-31": {
+            "ansible_host": "10.209.2.81", 
+            "mac_address": "64:51:06:5f:76:dc", 
+            "status": true
+        }, 
+        "p1-019-32": {
+            "ansible_host": "none", 
+            "mac_address": "c4:34:6b:7a:ad:ea", 
+            "status": false
+        }, 
+        "p1-019-33": {
+            "ansible_host": "10.209.2.94", 
+            "mac_address": "a0:d3:c1:1d:b0:8e", 
+            "status": true
+        }, 
+        "p1-019-34": {
+            "ansible_host": "10.209.2.53", 
+            "mac_address": "64:51:06:60:af:4d", 
+            "status": true
+        }, 
+        "p1-019-35": {
+            "ansible_host": "10.209.2.74", 
+            "mac_address": "a0:d3:c1:33:9a:82", 
+            "status": true
+        }, 
+        "p1-019-36": {
+            "ansible_host": "none", 
+            "mac_address": "c4:34:6b:74:b0:cb", 
+            "status": false
+        }, 
+        "p1-019-37": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:59:d9:73", 
+            "status": false
+        }, 
+        "p1-019-38": {
+            "ansible_host": "10.209.2.83", 
+            "mac_address": "e8:39:35:5d:e3:34", 
+            "status": true
+        }, 
+        "p1-019-41": {
+            "ansible_host": "10.209.2.115", 
+            "mac_address": "24:be:05:15:56:1c", 
+            "status": true
+        }, 
+        "p1-019-42": {
+            "ansible_host": "none", 
+            "mac_address": "3c:d9:2b:49:3b:4f", 
+            "status": false
+        }, 
+        "p1-019-43": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:04:b3:4c", 
+            "status": false
+        }, 
+        "p1-019-44": {
+            "ansible_host": "10.209.2.177", 
+            "mac_address": "2c:44:fd:39:8b:67", 
+            "status": true
+        }, 
+        "p1-019-45": {
+            "ansible_host": "10.209.2.148", 
+            "mac_address": "08:2e:5f:15:69:bb", 
+            "status": true
+        }, 
+        "p1-019-46": {
+            "ansible_host": "none", 
+            "mac_address": "24:be:05:09:19:48", 
+            "status": false
+        }, 
+        "p1-019-47": {
+            "ansible_host": "none", 
+            "mac_address": "a0:d3:c1:0f:f2:1a", 
+            "status": false
+        }, 
+        "p1-019-48": {
+            "ansible_host": "none", 
+            "mac_address": "b4:b5:2f:ab:4b:0d", 
+            "status": false
+        }
+    }
+}
+
+TASK [Crear contenido del archivo de inventario] *******************************
+ok: [localhost]
+
+TASK [Guardar el inventario en un archivo] *************************************
+changed: [localhost]
+
+TASK [Actualizar inventario] ***************************************************
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:2f:56:ce'}, 'key': 'p1-019-00'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'2c:41:38:99:6d:a3'}, 'key': 'p1-019-28'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:5f:6f:bc'}, 'key': 'p1-019-23'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'64:51:06:61:3b:06'}, 'key': 'p1-019-21'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:0f:be:15'}, 'key': 'p1-019-26'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.46', 'mac_address': u'c4:34:6b:5e:5e:b4'}, 'key': 'p1-019-24'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.144', 'mac_address': u'24:be:05:21:0e:03'}, 'key': 'p1-019-25'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.83', 'mac_address': u'e8:39:35:5d:e3:34'}, 'key': 'p1-019-38'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.81', 'mac_address': u'64:51:06:5f:76:dc'}, 'key': 'p1-019-31'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:4d:0a:6f'}, 'key': 'p1-019-16'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.94', 'mac_address': u'a0:d3:c1:1d:b0:8e'}, 'key': 'p1-019-33'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'c4:34:6b:7a:ad:ea'}, 'key': 'p1-019-32'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.74', 'mac_address': u'a0:d3:c1:33:9a:82'}, 'key': 'p1-019-35'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'08:2e:5f:21:df:2b'}, 'key': 'p1-019-12'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'8c:dc:d4:2e:37:07'}, 'key': 'p1-019-11'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.53', 'mac_address': u'64:51:06:60:af:4d'}, 'key': 'p1-019-34'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:59:d9:73'}, 'key': 'p1-019-37'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'c4:34:6b:74:b0:cb'}, 'key': 'p1-019-36'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'b4:b5:2f:ab:4b:0d'}, 'key': 'p1-019-48'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.177', 'mac_address': u'2c:44:fd:39:8b:67'}, 'key': 'p1-019-44'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.148', 'mac_address': u'08:2e:5f:15:69:bb'}, 'key': 'p1-019-45'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:09:19:48'}, 'key': 'p1-019-46'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'a0:d3:c1:0f:f2:1a'}, 'key': 'p1-019-47'})
+changed: [localhost] => (item={'value': {'status': True, 'ansible_host': u'10.209.2.115', 'mac_address': u'24:be:05:15:56:1c'}, 'key': 'p1-019-41'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'3c:d9:2b:49:3b:4f'}, 'key': 'p1-019-42'})
+changed: [localhost] => (item={'value': {'status': False, 'ansible_host': u'none', 'mac_address': u'24:be:05:04:b3:4c'}, 'key': 'p1-019-43'})
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=7    changed=3    unreachable=0    failed=0   
+
+
+[pid: 30926|app: 0|req: 1/17] 10.209.2.232 () {42 vars in 770 bytes} [Mon Jun 17 15:54:44 2024] GET /run-scan/ => generated 18628 bytes in 14265 msecs (HTTP/1.1 200) 5 headers in 160 bytes (1 switches on core 0)
+[pid: 30931|app: 0|req: 9/18] 10.209.2.232 () {44 vars in 891 bytes} [Mon Jun 17 15:55:03 2024] GET / => generated 87357 bytes in 85 msecs (HTTP/1.1 200) 7 headers in 350 bytes (1 switches on core 0)
+[pid: 30931|app: 0|req: 10/19] 10.209.2.232 () {44 vars in 891 bytes} [Mon Jun 17 16:00:50 2024] GET / => generated 87357 bytes in 74 msecs (HTTP/1.1 200) 7 headers in 350 bytes (1 switches on core 1)
+[pid: 30931|app: 0|req: 11/20] 10.209.2.232 () {42 vars in 804 bytes} [Mon Jun 17 16:00:52 2024] GET /get-computer-details/3318/ => generated 117 bytes in 2 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 0)
+Executing ansible playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/upgrade_machines.yml with inventory /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini...
+['sudo', 'ansible-playbook', '-i', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/upgrade_machines.yml', '--extra-vars', 'target_host=p1-019-35 custom_command=\'echo "Este ordenador recibió una actualización en la $(date)" >> /home/alumno/Escritorio/upgrade.log\'']
+Processing output...
+
+PLAY [Update and upgrade packages on remote machine] ***************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Ensure target host is reachable] *****************************************
+ok: [localhost -> 10.209.2.74]
+
+TASK [Update APT package list] *************************************************
+changed: [localhost -> 10.209.2.74]
+
+TASK [Upgrade all APT packages] ************************************************
+ok: [localhost -> 10.209.2.74]
+
+TASK [Auto-remove unused packages] *********************************************
+ok: [localhost -> 10.209.2.74]
+
+TASK [Run custom command] ******************************************************
+changed: [localhost -> 10.209.2.74]
+
+TASK [Shutdown the machine] ****************************************************
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=6    changed=2    unreachable=0    failed=0   
+
+
+[pid: 30926|app: 0|req: 2/21] 10.209.2.232 () {50 vars in 1062 bytes} [Mon Jun 17 16:00:58 2024] POST /execute-playbook/upgrade_machines.yml/p1-019-35/ => generated 1062 bytes in 26041 msecs (HTTP/1.1 200) 6 headers in 173 bytes (1 switches on core 1)
+[pid: 30929|app: 0|req: 4/22] 10.209.2.232 () {42 vars in 804 bytes} [Mon Jun 17 16:02:30 2024] GET /get-computer-details/3319/ => generated 117 bytes in 3 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 1)
+Executing ansible playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/upgrade_machines.yml with inventory /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini...
+['sudo', 'ansible-playbook', '-i', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/upgrade_machines.yml', '--extra-vars', 'target_host=p1-019-34 custom_command=\'echo "Este ordenador recibió una actualización en la fecha siguiente:  $(date)" >> /home/alumno/Escritorio/upgrade.log\'']
+Processing output...
+
+PLAY [Update and upgrade packages on remote machine] ***************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Ensure target host is reachable] *****************************************
+ok: [localhost -> 10.209.2.53]
+
+TASK [Update APT package list] *************************************************
+changed: [localhost -> 10.209.2.53]
+
+TASK [Upgrade all APT packages] ************************************************
+ok: [localhost -> 10.209.2.53]
+
+TASK [Auto-remove unused packages] *********************************************
+ok: [localhost -> 10.209.2.53]
+
+TASK [Run custom command] ******************************************************
+changed: [localhost -> 10.209.2.53]
+
+TASK [Shutdown the machine] ****************************************************
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=6    changed=2    unreachable=0    failed=0   
+
+
+[pid: 30925|app: 0|req: 5/23] 10.209.2.232 () {50 vars in 1062 bytes} [Mon Jun 17 16:02:34 2024] POST /execute-playbook/upgrade_machines.yml/p1-019-34/ => generated 1062 bytes in 15302 msecs (HTTP/1.1 200) 6 headers in 173 bytes (1 switches on core 0)
+[pid: 30926|app: 0|req: 3/24] 10.209.2.232 () {42 vars in 804 bytes} [Mon Jun 17 16:03:14 2024] GET /get-computer-details/3318/ => generated 117 bytes in 3 msecs (HTTP/1.1 200) 6 headers in 172 bytes (1 switches on core 0)
+Executing ansible playbook /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/upgrade_machines.yml with inventory /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini...
+['sudo', 'ansible-playbook', '-i', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/inventories/dynamic_inventory.ini', '/home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/upgrade_machines.yml', '--extra-vars', 'target_host=p1-019-35 custom_command=\'echo "Este ordenador recibió una actualización en la fecha siguiente:  $(date)" >> /home/alumno/Escritorio/upgrade.log\'']
+Processing output...
+
+PLAY [Update and upgrade packages on remote machine] ***************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Ensure target host is reachable] *****************************************
+ok: [localhost -> 10.209.2.74]
+
+TASK [Update APT package list] *************************************************
+changed: [localhost -> 10.209.2.74]
+
+TASK [Upgrade all APT packages] ************************************************
+ok: [localhost -> 10.209.2.74]
+
+TASK [Auto-remove unused packages] *********************************************
+ok: [localhost -> 10.209.2.74]
+
+TASK [Run custom command] ******************************************************
+changed: [localhost -> 10.209.2.74]
+
+TASK [Shutdown the machine] ****************************************************
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=6    changed=2    unreachable=0    failed=0   
+
+
+[pid: 30925|app: 0|req: 6/25] 10.209.2.232 () {50 vars in 1062 bytes} [Mon Jun 17 16:03:19 2024] POST /execute-playbook/upgrade_machines.yml/p1-019-35/ => generated 1062 bytes in 14659 msecs (HTTP/1.1 200) 6 headers in 173 bytes (1 switches on core 1)
+[pid: 30931|app: 0|req: 12/26] 10.209.2.232 () {42 vars in 830 bytes} [Mon Jun 17 16:06:52 2024] GET /admin => generated 0 bytes in 0 msecs (HTTP/1.1 301) 5 headers in 175 bytes (1 switches on core 0)
+[pid: 30926|app: 0|req: 4/27] 10.209.2.232 () {42 vars in 832 bytes} [Mon Jun 17 16:06:52 2024] GET /admin/ => generated 4980 bytes in 53 msecs (HTTP/1.1 200) 8 headers in 293 bytes (1 switches on core 1)
+[pid: 30927|app: 0|req: 2/28] 10.209.2.232 () {42 vars in 832 bytes} [Mon Jun 17 16:06:54 2024] GET /admin/ => generated 4980 bytes in 35 msecs (HTTP/1.1 200) 8 headers in 293 bytes (1 switches on core 1)
+[pid: 30931|app: 0|req: 13/29] 10.209.2.232 () {44 vars in 933 bytes} [Mon Jun 17 16:06:59 2024] GET /admin/admin_web_app/computer/ => generated 28828 bytes in 116 msecs (HTTP/1.1 200) 9 headers in 462 bytes (1 switches on core 0)
+[pid: 30931|app: 0|req: 14/30] 10.209.2.232 () {42 vars in 807 bytes} [Mon Jun 17 16:06:59 2024] GET /admin/jsi18n/ => generated 3195 bytes in 6 msecs (HTTP/1.1 200) 6 headers in 189 bytes (1 switches on core 1)
+[pid: 30927|app: 0|req: 3/31] 10.209.2.232 () {46 vars in 765 bytes} [Mon Jun 17 16:07:28 2024] GET /admin/ => generated 0 bytes in 20 msecs (HTTP/1.1 302) 9 headers in 331 bytes (1 switches on core 0)
+[pid: 30927|app: 0|req: 4/32] 10.209.2.232 () {46 vars in 802 bytes} [Mon Jun 17 16:07:28 2024] GET /admin/login/?next=/admin/ => generated 2214 bytes in 27 msecs (HTTP/1.1 200) 9 headers in 461 bytes (1 switches on core 1)

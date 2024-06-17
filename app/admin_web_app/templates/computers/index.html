@@ -83,6 +83,7 @@
                     <h5>Actions</h5>
                     <button class="btn btn-primary" onclick="turnOnComputer('${computer_data}')">Turn ON</button>
                     <button class="btn btn-primary" onclick="turnOffComputer('${computer_data}')">Turn OFF</button>
+                    <button class="btn btn-warning" onclick="upgradeComputer('${computer_data}')">Upgrade</button>
                     <button class="btn btn-warning" onclick="executeCommand('${computer_data}')">Execute Command</button>
                     <button onclick="toggleWarning('${computer_data}')">
                         ${data.warning ? 'Disable Warning' : 'Enable Warning'}
@@ -107,18 +108,46 @@
         executePlaybook('down_computers_up.yml', computerInfo.name);
     }
 
-    function executePlaybook(playbook, hostname) {
-        showLoadingOverlay(` | Turning On ${hostname} | `);
-        fetch(`/execute-playbook/${playbook}/${hostname}/`)
-            .then(response => response.text())
-            .then(data => {
-                console.log(data);
-                alert("Playbook para encender el ordenador seleccionado ejecutado correctamente. Espere unos 2 minutos antes de realizar el escaneo.");
-            })
-            .catch(error => console.error('Error:', error))
-            .finally(() => {
-                hideLoadingOverlay();
-            });
+    function upgradeComputer(computerInfoEncoded) {
+        const computerInfo = JSON.parse(decodeURIComponent(computerInfoEncoded));
+        console.log("Actualizando el ordenador:", computerInfo.name);
+        const command = prompt('Introduce a value for COMMAND (optional):');
+        console.log("Command: ", command)
+        executePlaybook('upgrade_machines.yml', computerInfo.name, command)
+    }
+
+    // Función para ejecutar el playbook de Ansible con comando personalizado
+    function executePlaybook(playbook, hostname, customCommand = null) {
+        // Mostrar ventana de carga antes de hacer la solicitud
+        showLoadingOverlay(` | Ejecutando ${playbook} en ${hostname} | `);
+
+        const data = {
+            custom_command: customCommand
+        };
+
+        fetch(`/execute-playbook/${playbook}/${hostname}/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')  // Asegúrate de tener la función getCookie para obtener el token CSRF
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.output) {
+                console.log(data.output);
+                alert("Playbook ejecutado correctamente. Espere unos minutos antes de realizar el siguiente paso.");
+            } else if (data.error) {
+                console.error(data.error);
+                alert("Error al ejecutar el playbook: " + data.error);
+            }
+        })
+        .catch(error => console.error('Error:', error))
+        .finally(() => {
+            // Ocultar ventana de carga después de que se complete la solicitud
+            hideLoadingOverlay();
+        });
     }
 
     function showLoadingOverlay(name_function=null) {
@@ -195,5 +224,21 @@
             alert('An error occurred in toggleWarning function');
         });
     }
+
+    // Función para obtener el token CSRF de las cookies
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }   
+        return cookieValue;
+    }   
 </script>
 {% endblock %}
