@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function handleSynchronizeList
+    function handleSynchronizeList() {}
 
     function handleExecuteCommand() {
         const command = prompt('Introduce a value for COMMAND:');
