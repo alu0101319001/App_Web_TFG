@@ -105,33 +105,34 @@ document.addEventListener('DOMContentLoaded', function() {
             // Ocultar ventana de carga después de que se complete la solicitud
             hideLoadingOverlay();
         });
-    }
+    }  
 
-    // Función para abrir el explorador de archivos y ejecutar el script seleccionado (con argumento opcional)
-    function openFileExplorerAndExecute() {
-        const input = document.createElement('input');
-        input.type = 'file';
-        input.accept = '.sh'; // Aceptar solo archivos con extensión .sh
+    // Función para abrir el explorador de archivos y ejecutar la función recibida
+    function openFileExplorerAndExecute(execute_function, file_type) {
+        return function() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = file_type; // Aceptar solo archivos con extensión definida
 
-        input.onchange = function(event) {
-            const file = event.target.files[0];
-            if (!file) return;
+            input.onchange = function(event) {
+                const file = event.target.files[0];
+                if (!file) return;
 
-            // Preguntar al usuario si desea ingresar un argumento
-            const argument = prompt('Ingrese un argumento para el script (opcional):', '');
+                // Llamar a la función para ejecutar 
+                execute_function(file);
+            };
 
-            // Llamar a la función para ejecutar el script de bash con el archivo seleccionado y el argumento opcional
-            executeShScript(file, argument.trim());
+            input.click(); // Abrir el explorador de archivos
         };
-
-        input.click(); // Abrir el explorador de archivos
     }
 
     // Función para ejecutar el script de bash seleccionado (con argumento opcional)
-    function executeShScript(scriptFile, argument) {
+    function executeShScript(scriptFile) {
         // Mostrar ventana de carga antes de hacer la solicitud
         showLoadingOverlay('Running .sh Script');
 
+        // Preguntar al usuario si desea ingresar un argumento
+        const argument = prompt('Ingrese un argumento para el script (opcional):', '');
         const formData = new FormData();
         formData.append('scriptFile', scriptFile);
         if (argument) {
@@ -186,7 +187,51 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function handleSynchronizeList() {}
+    function handleSynchronizeList() {
+        showLoadingOverlay('| Synchronize List function...');
+    
+        const syncFileList = prompt("Please enter the sync_list path:");
+        if (syncFileList) {
+            const targetDirectory = prompt("Please enter the target hosts's directory:");
+            if (targetDirectory) {
+                const formData = new FormData();
+                formData.append('sync_file', syncFileList);
+                formData.append('target_directory', targetDirectory);
+    
+                const csrftoken = getCookie('csrftoken');
+    
+                fetch("/sync-list/", {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRFToken': csrftoken
+                    }
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.error) {
+                        alert('Error: ' + data.error);
+                    } else {
+                        alert('Sync started successfully');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred. Please check the console for details.');
+                })
+                .finally(() => {
+                    hideLoadingOverlay();
+                });
+            } else {
+                alert('You need to introduce both arguments to execute this functionality.');
+            }
+        }
+    }
 
     function handleExecuteCommand() {
         const command = prompt('Introduce a value for COMMAND:');
@@ -309,7 +354,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     if (runScriptButton) {
-        runScriptButton.addEventListener('click', openFileExplorerAndExecute);
+        runScriptButton.addEventListener('click', openFileExplorerAndExecute(executeShScript, '.sh'));
     }
 
     if (copyFilesButton) {

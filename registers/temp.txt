@@ -1,0 +1,20 @@
+GET
+http://adminwebapp.servehttp.com/favicon.ico
+[HTTP/1.1 404 Not Found 0ms]
+
+File { name: "sync_list.lst", lastModified: 1718805089747, webkitRelativePath: "", size: 118, type: "" }
+scripts.js:194:17
+/home/alumno/Escritorio/sync_test/ scripts.js:198:21
+FormData { sync_file → {}, target_directory → "/home/alumno/Escritorio/sync_test/" }
+​
+<entries>
+​​
+0: sync_file → File { name: "sync_list.lst", lastModified: 1718805089747, size: 118, … }
+​​
+1: target_directory → "/home/alumno/Escritorio/sync_test/"
+​
+<prototype>: FormDataPrototype { append: append(), delete: delete(), get: get(), … }
+scripts.js:203:25
+XHRPOST
+http://adminwebapp.servehttp.com/sync-list/
+[HTTP/1.1 400 Bad Request 2ms]

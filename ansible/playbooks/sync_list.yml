@@ -1,0 +1,17 @@
+# /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/sync_list.yml
+---
+- name: Sync files from lst file to target directory
+  hosts: localhost
+
+  tasks:
+    - name: Ensure target hosts are reachable
+      wait_for_connection:
+        timeout: 10
+      with_items: "{{ groups['online'] }}"
+
+    - name: Sync files from lst file to target directory on target hosts
+      shell: |
+        sshpass -p 'alumno' rsync -av --files-from={{ lst_file }} /home/administrador/Escritorio/sync_folder/ alumno@{{ hostvars[item]['ansible_host'] }}:{{ target_directory }}
+      with_items: "{{ groups['online'] }}"
+      register: rsync_result
+      ignore_errors: true  # Temporarily ignore errors to gather more information
