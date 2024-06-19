@@ -10,6 +10,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
+from django.core.files.storage import FileSystemStorage
 from .models import Computer
 from .management.commands.execute_ansible_playbooks import execute_ansible_playbook
 from .management.commands.execute_python_script import run_external_script
@@ -242,4 +243,36 @@ def toggle_warning(request, computer_id):
         computer.save()
         return JsonResponse({'success': True, 'warning': computer.warning})
     return JsonResponse({'error': 'Invalid request method'}, status=400)
+
+class SyncFilesView(View):
+    def get(self, request):
+        return render(request, 'sync_files.html')
+
+    @csrf_exempt
+    def post(self, request):
+        if request.method == 'POST' and request.FILES['sync_file']:
+            sync_file = request.FILES['sync_file']
+            target_directory = request.POST.get('target_directory')
+
+            # Guardar el archivo en el sistema de archivos del servidor
+            fs = FileSystemStorage()
+            filename = fs.save(sync_file.name, sync_file)
+            uploaded_file_path = fs.path(filename)
+
+            # Ejecutar el playbook de Ansible
+            playbook_path = os.path.join(os.path.dirname(__file__), 'playbooks/sync_files.yml')
+            command = [
+                'ansible-playbook',
+                playbook_path,
+                '--extra-vars',
+                f"lst_file={uploaded_file_path} target_directory={target_directory}"
+            ]
+            result = subprocess.run(command, capture_output=True, text=True)
+
+            if result.returncode != 0:
+                return JsonResponse({'error': result.stderr}, status=500)
+
+            return JsonResponse({'message': 'Sync started successfully'})
+
+        return JsonResponse({'error': 'Invalid request'}, status=400)
 

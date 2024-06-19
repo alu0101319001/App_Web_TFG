@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const runScriptButton = document.getElementById('runScriptButton');
     const copyFilesButton = document.getElementById('copyFilesButton');
     const executeCommandButton = document.getElementById('executeCommandButton');
+    const synchronizeListButton = document.getElementById('synchronizeListButton');
 
     function showLoadingOverlay(name_function=null) {
         const loadingMessage = document.getElementById('loadingMessage');
@@ -185,7 +186,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function handelExecuteCommand() {
+    function handleSynchronizeList
+
+    function handleExecuteCommand() {
         const command = prompt('Introduce a value for COMMAND:');
         const hostname = null
 
@@ -314,6 +317,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     if (executeCommandButton) {
-        executeCommandButton.addEventListener('click', handelExecuteCommand)
+        executeCommandButton.addEventListener('click', handleExecuteCommand)
+    }
+
+    if (synchronizeListButton) {
+        synchronizeListButton.addEventListener('click', handleSynchronizeList)
     }
 });
