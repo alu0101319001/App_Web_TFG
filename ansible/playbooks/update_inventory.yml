@@ -5,7 +5,7 @@
 
   tasks:
     - name: Ejecutar script para generar inventario
-      command: python3 ../scripts/generate_inventory.py
+      command: /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/venv/bin/python3.12 ../scripts/generate_inventory.py
       register: inventory_output
       delegate_to: localhost
 
@@ -24,13 +24,24 @@
     - name: Crear contenido del archivo de inventario
       set_fact:
         inventory_content: |
-          [online]
-          {% for host, info in dynamic_inventory.items() if info.status %}
-          {{ host }} ansible_host={{ info.ansible_host }} mac_address={{ info.mac_address }} status={{ info.status }}
+          [warning]
+          {% for host, info in dynamic_inventory.items() if info.warning %}
+          {{ host }} ansible_host={{ info.ansible_host }} mac_address={{ info.mac_address }} status={{ info.status }} warning={{ info.warning }} exam_mode={{ info.exam_mode }}
           {% endfor %}
+
           [offline]
-          {% for host, info in dynamic_inventory.items() if not info.status %}
-          {{ host }} ansible_host={{ info.ansible_host }} mac_address={{ info.mac_address }} status={{ info.status }}
+          {% for host, info in dynamic_inventory.items() if not info.status and not info.warning %}
+          {{ host }} ansible_host={{ info.ansible_host }} mac_address={{ info.mac_address }} status={{ info.status }} warning={{ info.warning }} exam_mode={{ info.exam_mode }}
+          {% endfor %}
+
+          [online]
+          {% for host, info in dynamic_inventory.items() if info.status and not info.warning and not info.exam_mode %}
+          {{ host }} ansible_host={{ info.ansible_host }} mac_address={{ info.mac_address }} status={{ info.status }} warning={{ info.warning }} exam_mode={{ info.exam_mode }}
+          {% endfor %}
+
+          [examMode]
+          {% for host, info in dynamic_inventory.items() if info.status and not info.warning and info.exam_mode %} 
+          {{ host }} ansible_host={{ info.ansible_host }} mac_address={{ info.mac_address }} status={{ info.status }} warning={{ info.warning }} exam_mode={{ info.exam_mode }}
           {% endfor %}
 
     - name: Guardar el inventario en un archivo

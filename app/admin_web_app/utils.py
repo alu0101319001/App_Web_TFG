@@ -57,8 +57,8 @@ def run_scan_playbook():
     update_yml_path = os.path.join(settings.PROJECT_PATH, "ansible", "playbooks", "update_inventory.yml")
 
     commands = [
-        f"sudo ansible-playbook {scan_yml_path}",
-        f"sudo ansible-playbook {update_yml_path}"
+        f"sudo ansible-playbook -vvv {scan_yml_path}",
+        f"sudo ansible-playbook -vvv {update_yml_path}"
     ]
 
     result_list = []

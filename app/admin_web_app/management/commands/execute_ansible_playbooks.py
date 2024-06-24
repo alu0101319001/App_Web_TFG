@@ -3,7 +3,7 @@ import subprocess
 def execute_ansible_playbook(playbook_path, inventory_path, extra_vars=None):
     print(f'Executing ansible playbook {playbook_path} with inventory {inventory_path}...')
     command = [
-        'sudo', 'ansible-playbook',
+        'sudo', 'ansible-playbook', '-vvv',
         '-i', inventory_path, playbook_path
     ]
     if extra_vars:

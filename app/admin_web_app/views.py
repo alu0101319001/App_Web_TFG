@@ -4,11 +4,14 @@ import json
 import subprocess
 import logging
 from datetime import datetime
+from functools import wraps
+from django.urls import reverse
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.views import View
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.models import Group
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
@@ -29,8 +32,26 @@ STATIC_DIR = os.path.join(CURRENT_DIR, 'static')
 def is_admin(user):
     return user.is_superuser
 
+def in_groups(user, group_names):
+    return user.groups.filter(name__in=group_names).exists()
+
+def group_required(group_names):
+    def decorator(view_func):
+        @wraps(view_func)
+        def _wrapped_view(request, *args, **kwargs):
+            if in_groups(request.user, group_names):
+                return view_func(request, *args, **kwargs)
+            else:
+                messages.error(request, "No tienes los permisos necesarios para acceder a esta página.")
+                return redirect('access_denied')
+        return _wrapped_view
+    return decorator
+
+def access_denied(request):
+    return render(request, 'access_denied.html')
+
 @login_required
-@user_passes_test(is_admin)
+@group_required(['profesorado', 'admin_group'])
 def base_page(request):
     # Obtener el timestamp actual
     timestamp = datetime.now().timestamp()
@@ -65,7 +86,7 @@ def testing_page(request):
     return render(request, 'testing_page.html', context)
 
 @login_required
-@user_passes_test(is_admin)
+@group_required(['profesorado', 'admin_group', 'alumnado'])
 def index(request):
     computers = Computer.objects.all()
 
@@ -77,7 +98,7 @@ def index(request):
     return render(request, 'computers/index.html', context)
 
 @login_required
-@user_passes_test(is_admin)
+@group_required(['profesorado', 'admin_group'])
 def get_computer_details(request, computer_id):
     computer = Computer.objects.get(pk=computer_id)
     data = {
@@ -92,7 +113,7 @@ def get_computer_details(request, computer_id):
 
 
 @login_required
-@user_passes_test(is_admin)
+@group_required(['profesorado', 'admin_group'])
 def turn_on_all(request):
     print('turn_on_all')
     playbook_path = os.path.abspath(os.path.join(PLAYBOOKS_DIR, 'up_computers_down.yml'))
@@ -103,7 +124,7 @@ def turn_on_all(request):
     return HttpResponse(output)
 
 @login_required
-@user_passes_test(is_admin)
+@group_required(['profesorado', 'admin_group'])
 def turn_off_all(request):
     print('turn_off_all')
     playbook_path = os.path.abspath(os.path.join(PLAYBOOKS_DIR, 'down_computers_up.yml'))
@@ -111,6 +132,7 @@ def turn_off_all(request):
     output = execute_ansible_playbook(playbook_path, inventory_path)
     return HttpResponse(output)
 
+@group_required(['profesorado', 'admin_group'])
 def run_scan(request):
     # Llama a las funciones para ejecutar los comandos
     playbook_result = run_scan_playbook()
@@ -123,7 +145,7 @@ def run_scan(request):
     })
 
 @login_required
-@user_passes_test(is_admin)
+@group_required(['profesorado', 'admin_group'])
 def execute_playbook(request, playbook, hostname):
     playbook_path = os.path.abspath(os.path.join(PLAYBOOKS_DIR, playbook))
     inventory_path = os.path.abspath(os.path.join(INVENTORY_DIR, 'dynamic_inventory.ini'))
@@ -157,7 +179,7 @@ def execute_playbook(request, playbook, hostname):
 
 @csrf_exempt
 @login_required
-@user_passes_test(is_admin)
+@group_required(['profesorado', 'admin_group'])
 def run_sh_script(request):
     if request.method == 'POST' and request.FILES.get('scriptFile'):
         script_file = request.FILES['scriptFile']
@@ -188,6 +210,7 @@ def run_sh_script(request):
     return JsonResponse({'error': 'Invalid request method'}, status=400)
 
 @csrf_exempt
+@group_required(['profesorado', 'admin_group', 'alumnado'])
 def copy_files(request):
     if request.method == 'POST':
         data = json.loads(request.body)
@@ -208,6 +231,7 @@ def copy_files(request):
     return JsonResponse({'message': 'Invalid request'}, status=400)
 
 @csrf_exempt
+@group_required(['profesorado', 'admin_group'])
 def execute_command(request):
     if request.method == 'POST':
         data = json.loads(request.body)
@@ -234,8 +258,8 @@ def execute_command(request):
     return JsonResponse({'error': 'Invalid request'}, status=400)
 
 @login_required
-@user_passes_test(is_admin)
 @csrf_exempt
+@group_required(['profesorado', 'admin_group'])
 def toggle_warning(request, computer_id):
     computer = Computer.objects.get(pk=computer_id)
     if request.method == 'POST':
@@ -249,6 +273,7 @@ def toggle_warning(request, computer_id):
     return JsonResponse({'error': 'Invalid request method'}, status=400)
 
 @csrf_exempt
+@group_required(['profesorado', 'admin_group'])
 def sync_list(request):
     if request.method == 'POST':
         sync_file = request.FILES.get('sync_file')

@@ -8,6 +8,7 @@ class Computer(models.Model):
     mac = models.CharField(max_length=17, blank=True, null=True, unique=True)  # Dirección MAC como único
     ip = models.GenericIPAddressField(protocol='both', unpack_ipv4=False, blank=True, null=True)  # Dirección IP
     warning = models.BooleanField(default=False)
+    exam_mode = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
