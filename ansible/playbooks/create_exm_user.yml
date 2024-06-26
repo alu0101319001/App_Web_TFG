@@ -1,0 +1,168 @@
+---
+- name: Crear y clonar perfil de usuario 'modo_examen' y configurar lightdm_exam.service
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: Crear usuario 'modo_examen'
+      user:
+        name: modo_examen
+        state: present
+        shell: /bin/bash
+        password: "$6$dnxO43JU50C$4hnHktojGLemDZNRh8ydwQK.8Tx9QQuZQ.4EqsDQyGV0iTPuQlpFsU0bsll4nNFc7JclPIV6vY//isArRFqI6/"
+        update_password: always
+
+    - name: Crear directorio home para 'modo_examen' en el servidor
+      file:
+        path: /home/modo_examen
+        state: directory
+        owner: modo_examen
+        group: modo_examen
+
+    - name: Copiar .bashrc en el servidor
+      copy:
+        src: /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/registers/config_exm_files/.bashrc
+        dest: /home/modo_examen/.bashrc
+        owner: modo_examen
+        group: modo_examen
+        mode: '0644'
+
+    - name: Copiar .profile en el servidor
+      copy:
+        src: /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/registers/config_exm_files/.profile
+        dest: /home/modo_examen/.profile
+        owner: modo_examen
+        group: modo_examen
+        mode: '0644'
+
+    - name: Crear directorio home para 'lightdm_conf_files' en el servidor
+      file:
+        path: /home/modo_examen/lightdm_conf_files
+        state: directory
+        owner: modo_examen
+        group: modo_examen
+
+    - name: Copiar configuración de LightDM para modo normal en el servidor
+      copy:
+        src: /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/registers/config_exm_files/lightdm.conf.normal
+        dest: /home/modo_examen/lightdm_conf_files/lightdm.conf.normal
+        owner: modo_examen
+        group: modo_examen
+        mode: '0644'
+
+    - name: Copiar configuración de LightDM para modo examen en el servidor
+      copy:
+        src: /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/registers/config_exm_files/lightdm.conf.exam
+        dest: /home/modo_examen/lightdm_conf_files/lightdm.conf.exam
+        owner: modo_examen
+        group: modo_examen
+        mode: '0644'
+
+    - name: Copiar script de inicio de sesión personalizado en el servidor
+      copy:
+        src: /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/registers/config_exm_files/exam_login_script.sh
+        dest: /home/modo_examen/exam_login_script.sh
+        owner: modo_examen
+        group: modo_examen
+        mode: '0755'
+
+    - name: Copiar fondo de pantalla desde el servidor a los hosts
+      copy:
+        src: /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/registers/config_exm_files/bckg_exm_mode.jpg
+        dest: /home/modo_examen/bckg_exm_mode.jpg
+        owner: modo_examen
+        group: modo_examen
+        mode: '0777'
+
+    - name: Copiar lightdm_exam.service al servidor
+      copy:
+        src: /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/registers/config_exm_files/lightdm_exam.service
+        dest: /home/modo_examen/lightdm_exam.service
+        owner: modo_examen
+        group: modo_examen
+        mode: '0644'
+
+- name: Clonar perfil de usuario 'modo_examen' en todos los hosts
+  hosts: online
+  become: yes
+  tasks:
+    - name: Crear usuario 'modo_examen'
+      user:
+        name: modo_examen
+        state: present
+        password: "$6$dnxO43JU50C$4hnHktojGLemDZNRh8ydwQK.8Tx9QQuZQ.4EqsDQyGV0iTPuQlpFsU0bsll4nNFc7JclPIV6vY//isArRFqI6/"
+        shell: /bin/bash
+
+    - name: Crear directorio home para 'modo_examen'
+      file:
+        path: /home/modo_examen
+        state: directory
+        owner: modo_examen
+        group: modo_examen
+
+    - name: Copiar .bashrc desde el servidor a los hosts
+      copy:
+        src: /home/modo_examen/.bashrc
+        dest: /home/modo_examen/.bashrc
+        owner: modo_examen
+        group: modo_examen
+        mode: '0644'
+
+    - name: Copiar .profile desde el servidor a los hosts
+      copy:
+        src: /home/modo_examen/.profile
+        dest: /home/modo_examen/.profile
+        owner: modo_examen
+        group: modo_examen
+        mode: '0644'
+
+    - name: Copiar configuración de LightDM para modo normal desde el servidor a los hosts
+      copy:
+        src: /home/modo_examen/lightdm_conf_files/lightdm.conf.normal
+        dest: /etc/lightdm/lightdm.conf.normal
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Copiar configuración de LightDM para modo examen desde el servidor a los hosts
+      copy:
+        src: /home/modo_examen/lightdm_conf_files/lightdm.conf.exam
+        dest: /etc/lightdm/lightdm.conf.exam
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Copiar script de inicio de sesión personalizado desde el servidor a los hosts
+      copy:
+        src: /home/modo_examen/exam_login_script.sh
+        dest: /home/modo_examen/exam_login_script.sh
+        owner: modo_examen
+        group: modo_examen
+        mode: '0755'
+
+    - name: Copiar fondo de pantalla del modo examen desde el servidor a los hosts
+      copy:
+        src: /home/modo_examen/bckg_exm_mode.jpg
+        dest: /home/modo_examen/bckg_exm_mode.jpg
+        owner: modo_examen
+        group: modo_examen
+        mode: '0777'
+
+    - name: Copiar lightdm_exam.service desde el servidor a los hosts
+      copy:
+        src: /home/modo_examen/lightdm_exam.service
+        dest: /etc/systemd/system/lightdm_exam.service
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Recargar systemd para detectar nuevos servicios
+      systemd:
+        daemon_reload: yes
+
+    - name: Habilitar lightdm_exam.service pero no iniciarlo
+      systemd:
+        name: lightdm_exam.service
+        enabled: yes
+        daemon_reload: yes
+      async: 45
+      poll: 0

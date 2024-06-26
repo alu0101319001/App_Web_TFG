@@ -1,0 +1,19 @@
+# /etc/lightdm/lightdm.conf.exam
+
+[Seat:*]
+allow-guest=false
+greeter-wrapper=/usr/lib/lightdm/lightdm-greeter-session
+guest-wrapper=/usr/lib/lightdm/lightdm-guest-session
+xserver-command=X -core
+greeter-setup-script=xubuntu-numlockx
+greeter-session=lightdm-gtk-greeter
+user-session=modo_examen
+greeter-show-manual-login=false
+greeter-hide-users=true
+autologin-guest=false
+autologin-user=modo_examen
+autologin-user-timeout=0
+background=/home/modo_examen/bckg_exm_mode.jpg  # Ruta al fondo de pantalla
+
+[LightDM]
+backup-logs=false

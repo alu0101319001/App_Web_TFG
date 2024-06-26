@@ -1,0 +1,11 @@
+---
+- name: Cambiar contraseña del usuario modo_examen en todos los hosts online
+  hosts: online
+  become: yes
+
+  tasks:
+    - name: Cambiar contraseña del usuario modo_examen
+      user:
+        name: modo_examen
+        password: "$6$dnxO43JU50C$4hnHktojGLemDZNRh8ydwQK.8Tx9QQuZQ.4EqsDQyGV0iTPuQlpFsU0bsll4nNFc7JclPIV6vY//isArRFqI6/"  # Contraseña 'modoexm' encriptada
+        update_password: always

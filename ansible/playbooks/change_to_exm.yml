@@ -1,0 +1,25 @@
+---
+- name: Alternar a modo examen
+  hosts: "{{ target_host | default('online') }}"
+  become: yes
+  tasks:
+    - name: Detener servicio LightDM normal
+      systemd:
+        name: lightdm
+        state: stopped
+
+    - name: Detener servicio LightDM examen (si está activo)
+      systemd:
+        name: lightdm_exam
+        state: stopped
+      ignore_errors: yes
+
+    - name: Esperar 1 segundo
+      pause:
+        seconds: 1
+
+    - name: Iniciar servicio LightDM examen
+      systemd:
+        name: lightdm_exam
+        state: started
+        enabled: yes

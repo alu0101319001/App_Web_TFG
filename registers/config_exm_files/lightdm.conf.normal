@@ -1,0 +1,73 @@
+# /etc/lightdm/lightdm.conf.normal
+
+[SeatDefaults]
+greeter-setup-script=/root/bin/lightdm_set_defualt_user.sh
+default-user=alumno
+# user-session=alumno
+# greeter-show-manual-login=false
+# greeter-hide-users=false
+# allow-guest=false
+
+[Seat:*]
+greeter-session=lightdm-gtk-greeter
+# user-session=default
+
+# Uncomment and configure these lines to enable automatic login for a specific user
+# autologin-user=your_default_user
+# autologin-user-timeout=0
+# autologin-session=default
+
+# Example of additional configurations:
+# Background settings
+# greeter-background=/usr/share/backgrounds/default.jpg
+
+# Position of the greeter window
+# greeter-geometry=800x600+200+200
+
+# Login screen timeout
+# greeter-timeout=60
+
+# Lock the screen after the screensaver is activated
+# lock-after-screensaver=true
+
+# Lock the screen when the session ends
+# lock-on-suspend=true
+
+# Maximum number of open seats
+# max-sessions=2
+
+# Minimum password length (requires 'pam' module)
+# pam-autologin-min-password-length=5
+
+# Number of users to list on the greeter
+# user-limit=100
+
+# Blacklist users (useful for hiding service accounts)
+# hidden-users=nobody nobody4 noaccess
+
+# Unblacklist users
+# unblacklist-users=someuser
+
+# User list (used to limit users in the user list)
+# user-list=someuser
+
+# Whitelist users (to include only specific users in the user list)
+# whitelist-users=someuser
+
+# Keyboard configuration
+# greeter-setup-script=/usr/bin/setxkbmap
+
+# Run a command when the greeter starts
+# greeter-setup-script=/usr/bin/numlockx on
+
+# Run a command when the user logs in
+# session-setup-script=
+
+# Run a command when the user logs out
+# session-cleanup-script=
+
+# Run a command when the user session starts
+# user-session-setup-script=
+
+# Run a command when the user session ends
+# user-session-cleanup-script=

@@ -1,0 +1,84 @@
+---
+- name: Verificar configuraciones de modo_examen
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: Verificar que el usuario 'modo_examen' existe
+      getent:
+        database: passwd
+        key: modo_examen
+      register: user_modo_examen
+      ignore_errors: yes
+
+    - name: Asegurarse de que el usuario 'modo_examen' existe
+      assert:
+        that:
+          - user_modo_examen is defined
+          - user_modo_examen.key == "modo_examen"
+        fail_msg: "El usuario 'modo_examen' no existe."
+
+    - name: Verificar que el directorio home de 'modo_examen' existe
+      file:
+        path: /home/modo_examen
+        state: directory
+      register: home_modo_examen
+      ignore_errors: yes
+
+    - name: Asegurarse de que el directorio home de 'modo_examen' existe
+      assert:
+        that:
+          - home_modo_examen.state == "directory"
+        fail_msg: "El directorio home de 'modo_examen' no existe."
+
+    - name: Verificar archivos copiados en el home de 'modo_examen'
+      stat:
+        path: "{{ item }}"
+      register: file_stats
+      with_items:
+        - /home/modo_examen/.bashrc
+        - /home/modo_examen/.profile
+        - /home/modo_examen/exam_login_script.sh
+
+    - name: Asegurarse de que los archivos existen y tienen los permisos correctos
+      assert:
+        that:
+          - item.stat.exists
+          - item.stat.mode == '0644' or item.stat.mode == '0755'
+      with_items: "{{ file_stats.results }}"
+      fail_msg: "El archivo {{ item.item }} no existe o no tiene los permisos correctos."
+
+    - name: Verificar la configuración de LightDM en modo examen
+      stat:
+        path: /etc/lightdm/lightdm.conf.exam
+      register: lightdm_conf_exam
+
+    - name: Asegurarse de que el archivo de configuración de LightDM para modo examen existe
+      assert:
+        that:
+          - lightdm_conf_exam.stat.exists
+          - lightdm_conf_exam.stat.mode == '0644'
+        fail_msg: "El archivo de configuración lightdm.conf.exam no existe o no tiene los permisos correctos."
+
+    - name: Verificar la configuración de LightDM en modo normal
+      stat:
+        path: /etc/lightdm/lightdm.conf.normal
+      register: lightdm_conf_normal
+
+    - name: Asegurarse de que el archivo de configuración de LightDM para modo normal existe
+      assert:
+        that:
+          - lightdm_conf_normal.stat.exists
+          - lightdm_conf_normal.stat.mode == '0644'
+        fail_msg: "El archivo de configuración lightdm.conf.normal no existe o no tiene los permisos correctos."
+
+    - name: Verificar que el servicio LightDM está corriendo
+      systemd:
+        name: lightdm
+        state: started
+      register: lightdm_service
+
+    - name: Asegurarse de que el servicio LightDM está corriendo
+      assert:
+        that:
+          - lightdm_service.status.ActiveState == "active"
+        fail_msg: "El servicio LightDM no está corriendo."
