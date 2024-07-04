@@ -14,6 +14,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import Group
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_http_methods
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from .models import Computer
@@ -310,3 +311,23 @@ def sync_list(request):
             return JsonResponse({'error': str(e)}, status=500)
 
     return JsonResponse({'error': 'Invalid request'}, status=400)
+
+@require_http_methods(["POST"])
+def activate_exam_mode(request, hostname='all'):
+    playbook_path = os.path.join(settings.PROJECT_PATH, 'ansible', 'playbooks', 'change_to_exm.yml')
+    inventory_path = os.path.join(settings.PROJECT_PATH, 'ansible', 'inventories', 'dynamic_inventory.ini')
+    extra_vars = f"target_host={hostname}" if hostname != 'all' else None
+
+    output = execute_ansible_playbook(playbook_path, inventory_path, extra_vars)
+    return JsonResponse({'status': 0 if 'Error' not in output else 1, 'output': output})
+
+@require_http_methods(["POST"])
+def deactivate_exam_mode(request, hostname='all'):
+    playbook_path = os.path.join(settings.PROJECT_PATH, 'ansible', 'playbooks', 'change_to_normal.yml')
+    inventory_path = os.path.join(settings.PROJECT_PATH, 'ansible', 'inventories', 'dynamic_inventory.ini')
+    extra_vars = f"target_host={hostname}" if hostname != 'all' else None
+
+    output = execute_ansible_playbook(playbook_path, inventory_path, extra_vars)
+    return JsonResponse({'status': 0 if 'Error' not in output else 1, 'output': output})
+
+
