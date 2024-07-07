@@ -158,11 +158,3 @@
     - name: Recargar systemd para detectar nuevos servicios
       systemd:
         daemon_reload: yes
-
-    - name: Habilitar lightdm_exam.service pero no iniciarlo
-      systemd:
-        name: lightdm_exam.service
-        enabled: yes
-        daemon_reload: yes
-      async: 45
-      poll: 0
