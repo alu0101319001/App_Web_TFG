@@ -4,10 +4,15 @@
 
 {% block content %}
 <style>
+    .grid-container {
+        overflow: auto;
+        max-height: 80vh; /* Ajustar según sea necesario */
+    }
     .computers-grid {
         display: grid;
-        grid-template-columns: repeat(8, 1fr); /* 8 columnas */
-        gap: 10px; /* Espacio entre los elementos del grid */
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 10px;
+        overflow: auto;
     }
     .computer-icon {
         display: flex;
@@ -18,16 +23,33 @@
         border-radius: 5px;
         background-color: #f9f9f9;
         cursor: pointer;
+        transition: transform 0.2s;
+    }
+    .computer-icon img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+    }
+    .computer-icon:hover {
+        transform: scale(1.05);
+    }
+    @media (max-width: 768px) {
+        .computer-icon img {
+            width: 60px;
+            height: 60px;
+        }
     }
 </style>
 
-<div class="computers-grid" id="computersGrid">
-    {% for computer in computers %}
-        <div class="computer-icon" id="{{ computer.name }}" onclick="showComputerDetails('{{ computer.id }}')">
-            <img src="{% static 'img/' %}{{ computer.icon }}" alt="{{ computer.name }}">
-            <p>{{ computer.name }}</p>
-        </div>
-    {% endfor %}
+<div class="grid-container">
+    <div class="computers-grid" id="computersGrid">
+        {% for computer in computers %}
+            <div class="computer-icon" id="{{ computer.name }}" onclick="showComputerDetails('{{ computer.id }}')">
+                <img src="{% static 'img/' %}{{ computer.icon }}" alt="{{ computer.name }}">
+                <p>{{ computer.name }}</p>
+            </div>
+        {% endfor %}
+    </div>
 </div>
 
 <script>
@@ -35,7 +57,7 @@
         const computers = document.querySelectorAll('.computer-icon');
         computers.forEach(computer => {
             const name = computer.id;
-            const pos = name.split('-')[2]; // Obtiene la última parte del nombre
+            const pos = name.split('-')[2];
 
             let fila, columna;
 
@@ -43,8 +65,8 @@
                 fila = 1;
                 columna = 1;
             } else {
-                fila = parseInt(pos[0]) + 1; // Suma 1 a la fila
-                columna = parseInt(pos[1]); // Suma 1 a la columna
+                fila = parseInt(pos[0]) + 1;
+                columna = parseInt(pos[1]);
             }
 
             computer.style.gridRowStart = fila;
@@ -73,25 +95,29 @@
                     'warning': data.warning
                 }));
                 
-                // Mostrar los detalles del ordenador en el sidebar derecho
                 computerDetails.innerHTML = `
                     <p><strong>Nombre:</strong> ${data.name}</p>
                     <p><strong>Estado:</strong> ${estado}</p>
                     <p><strong>MAC:</strong> ${data.mac}</p>
                     <p><strong>IP:</strong> ${data.ip}</p>
                     <p><strong>Warning:</strong> ${data.warning}</p>
-                    <h5>Actions</h5>
-                    <button class="btn btn-primary" onclick="turnOnComputer('${computer_data}')">Turn ON</button>
-                    <button class="btn btn-primary" onclick="turnOffComputer('${computer_data}')">Turn OFF</button>
-                    <button class="btn btn-warning" onclick="upgradeComputer('${computer_data}')">Upgrade</button>
-                    <button class="btn btn-warning" onclick="executeCommand('${computer_data}')">Execute Command</button>
-                    <button onclick="toggleWarning('${computer_data}')">
-                        ${data.warning ? 'Disable Warning' : 'Enable Warning'}
-                    </button>
                 `;
 
                 noComputerSelectedMessage.style.display = 'none';
                 computerDetails.style.display = 'block';
+                openRightSidebar();
+
+                const sidebarBody = document.querySelector('.sidebar-body');
+                sidebarBody.innerHTML = `
+                    <h5>Actions</h5>
+                    <button class="btn btn-primary mb-2" onclick="turnOnComputer('${computer_data}')">Turn ON</button>
+                    <button class="btn btn-primary mb-2" onclick="turnOffComputer('${computer_data}')">Turn OFF</button>
+                    <button class="btn btn-warning mb-2" onclick="upgradeComputer('${computer_data}')">Upgrade</button>
+                    <button class="btn btn-warning mb-2" onclick="executeCommand('${computer_data}')">Execute Command</button>
+                    <button class="btn ${data.warning ? 'btn-danger' : 'btn-secondary'}" onclick="toggleWarning('${computer_data}')">
+                        ${data.warning ? 'Disable Warning' : 'Enable Warning'}
+                    </button>
+                `;
             })
             .catch(error => console.error('Error:', error));
     }
@@ -116,9 +142,7 @@
         executePlaybook('upgrade_machines.yml', computerInfo.name, command)
     }
 
-    // Función para ejecutar el playbook de Ansible con comando personalizado
     function executePlaybook(playbook, hostname, customCommand = null) {
-        // Mostrar ventana de carga antes de hacer la solicitud
         showLoadingOverlay(` | Ejecutando ${playbook} en ${hostname} | `);
 
         const data = {
@@ -129,7 +153,7 @@
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRFToken': getCookie('csrftoken')  // Asegúrate de tener la función getCookie para obtener el token CSRF
+                'X-CSRFToken': getCookie('csrftoken')
             },
             body: JSON.stringify(data)
         })
@@ -145,12 +169,11 @@
         })
         .catch(error => console.error('Error:', error))
         .finally(() => {
-            // Ocultar ventana de carga después de que se complete la solicitud
             hideLoadingOverlay();
         });
     }
 
-    function showLoadingOverlay(name_function=null) {
+    function showLoadingOverlay(name_function = null) {
         const loadingMessage = document.getElementById('loadingMessage');
         loadingMessage.textContent = name_function ? `Executing ${name_function}...` : 'Executing functionality...';
     
@@ -214,7 +237,7 @@
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                location.reload(); // Refrescar la página para ver el estado actualizado de la advertencia
+                location.reload();
             } else {
                 alert('Error toggling warning');
             }
@@ -225,7 +248,6 @@
         });
     }
 
-    // Función para obtener el token CSRF de las cookies
     function getCookie(name) {
         let cookieValue = null;
         if (document.cookie && document.cookie !== '') {
@@ -239,6 +261,16 @@
             }
         }   
         return cookieValue;
-    }   
+    }
+
+    function openRightSidebar() {
+        const rightSidebar = document.getElementById('rightSidebar');
+        rightSidebar.style.right = '0';
+    }
+
+    function closeRightSidebar() {
+        const rightSidebar = document.getElementById('rightSidebar');
+        rightSidebar.style.right = '-300px';
+    }
 </script>
 {% endblock %}

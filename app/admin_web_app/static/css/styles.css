@@ -1,4 +1,3 @@
-/* frontend/static/css/styles.css */
 /* Reset some default styles */
 body, h1, h2, h3, h4, h5, h6, p {
     margin: 0;
@@ -12,7 +11,6 @@ body {
     color: #343a40;
 }
 
-/* Container adjustments */
 .container-fluid {
     padding: 20px;
 }
@@ -32,7 +30,7 @@ body {
 }
 
 /* Main content styles */
-.col-md-10 {
+.col-md-9 {
     padding: 20px;
 }
 
@@ -40,9 +38,6 @@ h3 {
     margin-bottom: 20px;
     font-size: 24px;
     color: #343a40;
-}
-body {
-    font-family: Arial, sans-serif;
 }
 
 header, footer {
@@ -52,27 +47,16 @@ header, footer {
     padding: 10px 0;
 }
 
-.container {
-    display: flex;
-    height: 100vh;
-}
-
-.sidebar {
-    width: 200px;
-    background-color: #f4f4f4;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-}
-
-.main-content {
-    flex: 1;
-    padding: 20px;
+.grid-container {
+    overflow: auto;
+    max-height: 80vh; /* Ajustar según sea necesario */
 }
 
 .computers-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+    overflow: auto;
 }
 
 .computer-icon {
@@ -81,11 +65,13 @@ header, footer {
     padding: 10px;
     border-radius: 8px;
     transition: transform 0.2s;
+    background-color: #f9f9f9;
+    cursor: pointer;
 }
 
 .computer-icon img {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     object-fit: cover;
 }
 
@@ -93,61 +79,11 @@ header, footer {
     transform: scale(1.05);
 }
 
-.computer-detail {
-    text-align: center;
-}
-
-.computer-detail img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-}
-
-.actions {
-    margin-top: 20px;
-}
-
-/* Modal styles */
-#modal::backdrop {
-    background-color: rgba(0,0,0,.55);
-}
-#modal {
-    max-width: 50ch;
-}
-.modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.modal-body {
-    padding: 20px;
-}
-
-.btn-primary, .btn-secondary {
-    border-radius: 8px;
-}
-
-.iconos-ordenadores {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-.icono-ordenador {
-    margin: 10px;
-    text-align: center;
-}
-
-.icono-ordenador img {
-    width: 40px; 
-    height: 40px;
-}
-
-.menu-lateral {
-    padding: 15px;
-    background-color: #f8f9fa;
-    border-right: 1px solid #dee2e6;
-    height: 100vh;
-    overflow-y: auto;
+@media (max-width: 768px) {
+    .computer-icon img {
+        width: 60px;
+        height: 60px;
+    }
 }
 
 /* Style for the load window */
@@ -158,29 +94,29 @@ header, footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.7); /* Color de fondo semitransparente */
-    z-index: 9999; /* Asegúrate de que esté en la parte superior */
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 9999;
 }
 
 .loader-container {
     position: absolute;
-    top: 50%; /* Centrado verticalmente */
-    left: 50%; /* Centrado horizontalmente */
-    transform: translate(-50%, -50%); /* Centrado absoluto */
-    text-align: center; /* Alineación del texto en el centro */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
 
 .loader {
-    border: 5px solid #f3f3f3; /* Light grey */
-    border-top: 5px solid #3498db; /* Blue */
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
     border-radius: 50%;
     width: 50px;
     height: 50px;
     animation: spin 2s linear infinite;
     position: absolute;
-    top: 50%; /* Centrado verticalmente */
-    left: 50%; /* Centrado horizontalmente */
-    transform: translate(-50%, -50%); /* Centrado absoluto */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 @keyframes spin {
@@ -189,19 +125,37 @@ header, footer {
 }
 
 #loadingMessage {
-    margin-top: 200px; /* Espacio entre el círculo y el mensaje */
+    margin-top: 200px;
 }
 
 /* Estilos para el sidebar derecho */
 #rightSidebar {
-    position: fixed; /* Sidebar fijo */
+    position: fixed;
     top: 0;
-    right: 0; /* Alineado a la derecha */
+    right: -300px;
     width: 300px;
     height: 100%;
     background-color: #f8f9fa;
     border-left: 1px solid #dee2e6;
     box-shadow: -1px 0 3px rgba(0,0,0,0.1);
     transition: right 0.3s ease;
-    z-index: 999; /* Asegurar que esté sobre otros elementos */
+    z-index: 999;
+    overflow-y: auto;
+}
+
+.sidebar-header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+}
+
+.sidebar-body {
+    padding: 20px;
+}
+
+.sidebar-footer {
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-top: 1px solid #dee2e6;
+    text-align: right;
 }

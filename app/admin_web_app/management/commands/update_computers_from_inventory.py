@@ -22,28 +22,23 @@ class Command(BaseCommand):
         config = configparser.ConfigParser()
         config.read(inventory_path)
 
-        log[time.time()] = 'Differentiate between online and offline sections...'
-        # Obtén la sección 'online' del inventario
-        online_computers = {}
-        if 'online' in config:
-            online_computers = dict(config.items('online'))
+        log[time.time()] = 'Differentiate between sections...'
+        # Define las secciones con su estado asociado
+        sections = {
+            'online': True,
+            'offline': False,
+            'warning': False,
+            'examMode': True
+        }
 
-        # Obtén la sección 'offline' del inventario
-        offline_computers = {}
-        if 'offline' in config:
-            offline_computers = dict(config.items('offline'))
+        computers = {section: dict(config.items(section)) if section in config else {} for section in sections}
 
-        # Iterar sobre los ordenadores en línea y actualizar la base de datos
-        log[time.time()] = 'Updating info for online computers...'
-        for host, details in online_computers.items():
-            log[time.time()] = f'\tCalling update for: {host}'
-            self.update_computer(host, details, 'online')
-        
-        # Iterar sobre los ordenadores fuera de línea y actualizar la base de datos
-        log[time.time()] = 'Updating info for offline computers...'
-        for host, details in offline_computers.items():
-            log[time.time()] = f'\tCalling update for: {host}'
-            self.update_computer(host, details, 'offline')
+        for section, computers_list in computers.items():
+            state = sections[section]
+            log[time.time()] = f'Updating info for {section} computers...'
+            for host, details in computers_list.items():
+                log[time.time()] = f'\tCalling update for: {host}'
+                self.update_computer(host, details, state)
 
         log[time.time()] = 'Computers updated successfully.\nEND'
         sorted_log = dict(sorted(log.items()))
@@ -59,24 +54,28 @@ class Command(BaseCommand):
         mac = self.get_value_from_string(details, 'mac_address')
         
         # Obtén la dirección IP solo si el estado es "online"
-        ip = self.get_value_from_string(details, 'ansible_host') if status.lower() == 'online' else None
+        ip = self.get_value_from_string(details, 'ansible_host') if status == True else None
 
         # Consulta el objeto existente de Computer si está presente
         existing_computer = Computer.objects.filter(mac=mac).first()
 
-        # Determina el valor de warning según la lógica deseada
+        # Determina el valor de warning y examMode según la lógica deseada
         if existing_computer:
             # Si ya existe un registro para esta MAC, mantener el estado actual de warning
             warning = existing_computer.warning
+            exam_mode = existing_computer.exam_mode
         else:
-            # Si no existe, establece el valor predeterminado de warning
-            warning = False  # Ajusta esto según tu lógica inicial
+            # Si no existe, establece el valor predeterminado de warning y exam_mode
+            warning = False  
+            exam_mode = False
 
-        # Determina el icono basado en el estado de warning
+        # Determina el icono basado en el estado de warning y exam_mode
         if warning:
-            icon = 'computer--exclamation.png' # if status.lower() == 'online' else 'computer-warning-off.png'
+            icon = 'computer--exclamation.png' # if status == True else 'computer-warning-off.png'
+        elif exam_mode:
+            icon = 'computer--pencil.png'
         else:
-            icon = 'computer.png' if status.lower() == 'online' else 'computer-off.png'
+            icon = 'computer.png' if status == True else 'computer-off.png'
 
         # Crear o obtener el registro de Computer con los datos actualizados
         computer_defaults = {
@@ -84,10 +83,11 @@ class Command(BaseCommand):
             'ip': ip,
             'icon': icon,
             'warning': warning,  # Mantener el estado actual si no se proporciona explícitamente
+            'exam_mode': exam_mode,
         }
 
         # Actualiza o crea el objeto Computer
-        output = f'\tUpdating data: {name}--{state}--{icon}--{mac}--{ip}'
+        output = f'\tUpdating data: {name}--{state}--{icon}--{mac}--{ip}--{warning}--{exam_mode}'
         Computer.get_or_create_by_name_and_mac(name, mac, computer_defaults)
         output += f'\n\tInventory computers created successfully for {name}'
         return output
