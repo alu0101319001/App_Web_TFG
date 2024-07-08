@@ -12,6 +12,7 @@
       systemd:
         name: lightdm_exam
         state: stopped
+        enabled: no
       ignore_errors: yes
 
     - name: Esperar 1 segundo
@@ -30,7 +31,6 @@
       systemd:
         name: lightdm_exam
         state: started
-        enabled: yes
 
     - name: Esperar 1 segundo
       pause:

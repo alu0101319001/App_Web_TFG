@@ -7,7 +7,7 @@
       systemd:
         name: lightdm_exam
         state: stopped
-
+        enabled: no
     - name: Detener servicio LightDM normal (si está activo)
       systemd:
         name: lightdm
