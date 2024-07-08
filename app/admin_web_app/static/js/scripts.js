@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const synchronizeListButton = document.getElementById('synchronizeListButton');
     const activateExamModeButton = document.getElementById('activateExamModeButton');
     const deactivateExamModeButton = document.getElementById('deactivateExamModeButton');
+    const updateExamModeButton = document.getElementById('updateExmMode');
 
     function showLoadingOverlay(name_function=null) {
         const loadingMessage = document.getElementById('loadingMessage');
@@ -288,30 +289,86 @@ document.addEventListener('DOMContentLoaded', function() {
         return cookieValue;
     }   
 
-    function activateExamMode() {
-        showLoadingOverlay('Activating Exam Mode');
-        fetch('/activate_exam_mode/', { method: 'POST' })
-            .then(response => response.json())
-            .then(data => {
-                alert(data.message || 'Exam mode activated successfully.');
-            })
-            .catch(error => console.error('Error:', error))
-            .finally(() => {
-                hideLoadingOverlay();
-            });
+    function handleActivateExamMode() {
+        showLoadingOverlay('Activating Exam Mode...');
+        fetch('/activate-exam-mode/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({})
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Exam mode activated successfully!');
+            } else {
+                alert('Error activating exam mode: ' + data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while activating exam mode.');
+        })
+        .finally(() => {
+            hideLoadingOverlay();
+        });
     }
 
-    function deactivateExamMode() {
-        showLoadingOverlay('Deactivating Exam Mode');
-        fetch('/deactivate_exam_mode/', { method: 'POST' })
-            .then(response => response.json())
-            .then(data => {
-                alert(data.message || 'Exam mode deactivated successfully.');
-            })
-            .catch(error => console.error('Error:', error))
-            .finally(() => {
-                hideLoadingOverlay();
-            });
+    function handleDeactivateExamMode() {
+        showLoadingOverlay('Deactivating Exam Mode...');
+        fetch('/deactivate-exam-mode/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({})
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Exam mode deactivated successfully!');
+            } else {
+                alert('Error deactivating exam mode: ' + data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while deactivating exam mode.');
+        })
+        .finally(() => {
+            hideLoadingOverlay();
+        });
+    }
+
+    function handleUpdateExamMode() {
+        showLoadingOverlay('Updating Exam Mode Account in Hosts...');
+        fetch('/update-exam-mode/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({})
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Exam mode updated successfully!');
+            } else {
+                alert('Error updating exam mode: ' + data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while updating exam mode.');
+        })
+        .finally(() => {
+            hideLoadingOverlay();
+        });
+
     }
 
     if (turnOnAllButton) {
@@ -397,10 +454,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     if (activateExamModeButton) {
-        activateExamModeButton.addEventListener('click', activateExamMode);
+        activateExamModeButton.addEventListener('click', handleActivateExamMode);
     }
 
     if (deactivateExamModeButton) {
-        deactivateExamModeButton.addEventListener('click', deactivateExamMode);
+        deactivateExamModeButton.addEventListener('click', handleDeactivateExamMode);
+    }
+
+    if (updateExamModeButton) {
+        updateExamModeButton.addEventListener('click', handleUpdateExamMode);
     }
 });

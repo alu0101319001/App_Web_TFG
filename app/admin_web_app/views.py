@@ -263,9 +263,13 @@ def execute_command(request):
 @group_required(['profesorado', 'admin_group'])
 def toggle_warning(request, computer_id):
     computer = Computer.objects.get(pk=computer_id)
+    target_host = computer.name
+    inventory_path = os.path.join(settings.PROJECT_PATH, 'ansible', 'inventories', 'dynamic_inventory.ini')
+
     if request.method == 'POST':
         computer.warning = not computer.warning
         if computer.warning == True:
+            playbook_path = os.path.join(settings.PROJECT_PATH, 'ansible', 'playbooks', 'execute_command.yml')
             computer.icon = 'computer--exclamation.png'
         else:
             computer.icon = 'computer-off.png'
@@ -273,7 +277,38 @@ def toggle_warning(request, computer_id):
         return JsonResponse({'success': True, 'warning': computer.warning})
     return JsonResponse({'error': 'Invalid request method'}, status=400)
 
+@login_required
 @csrf_exempt
+@group_required(['profesorado', 'admin_group'])
+def toggle_exam_mode(request, computer_id):
+    computer = Computer.objects.get(pk=computer_id)
+    if request.method == 'POST':
+        computer.exam_mode = not computer.exam_mode
+        if computer.exam_mode:
+            computer.icon = 'computer--pencil.png'
+            playbook_path = os.path.join(settings.PROJECT_PATH, 'ansible', 'playbooks', 'change_to_exm.yml')
+        else:
+            computer.icon = 'computer.png'
+            playbook_path = os.path.join(settings.PROJECT_PATH, 'ansible', 'playbooks', 'change_to_normal.yml')
+
+        computer.save()
+        inventory_path = os.path.join(settings.PROJECT_PATH, 'ansible', 'inventories', 'dynamic_inventory.ini')
+
+        try:
+            output = execute_ansible_playbook(
+                playbook_path=playbook_path,
+                inventory_path=inventory_path,
+                extra_vars=f"target_host={computer.name}"
+            )
+            return JsonResponse({'success': True, 'exam_mode': computer.exam_mode, 'output': output})
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+
+    return JsonResponse({'error': 'Invalid request method'}, status=400)
+
+
+@csrf_exempt
+@login_required
 @group_required(['profesorado', 'admin_group'])
 def sync_list(request):
     if request.method == 'POST':
@@ -313,21 +348,60 @@ def sync_list(request):
     return JsonResponse({'error': 'Invalid request'}, status=400)
 
 @require_http_methods(["POST"])
-def activate_exam_mode(request, hostname='all'):
-    playbook_path = os.path.join(settings.PROJECT_PATH, 'ansible', 'playbooks', 'change_to_exm.yml')
-    inventory_path = os.path.join(settings.PROJECT_PATH, 'ansible', 'inventories', 'dynamic_inventory.ini')
-    extra_vars = f"target_host={hostname}" if hostname != 'all' else None
+def activate_exam_mode(request):
+    if request.method == 'POST':
+        playbook_path = os.path.join(settings.PROJECT_PATH, 'ansible', 'playbooks', 'change_to_exm.yml')
+        inventory_path = os.path.join(settings.PROJECT_PATH, 'ansible', 'inventories', 'dynamic_inventory.ini')
+        
+        try:
+            output = execute_ansible_playbook(playbook_path, inventory_path)
 
-    output = execute_ansible_playbook(playbook_path, inventory_path, extra_vars)
-    return JsonResponse({'status': 0 if 'Error' not in output else 1, 'output': output})
+            # Actualizar la base de datos para los ordenadores en el grupo 'online'
+            online_computers = Computer.objects.filter(state=True, warning=False)
+            online_computers.update(exam_mode=True)
+            online_computers.update(icon='computer--pencil.png')
+
+            return JsonResponse({'success': True, 'output': output})
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)})
+
+    return JsonResponse({'success': False, 'error': 'Invalid request method.'})
 
 @require_http_methods(["POST"])
-def deactivate_exam_mode(request, hostname='all'):
-    playbook_path = os.path.join(settings.PROJECT_PATH, 'ansible', 'playbooks', 'change_to_normal.yml')
-    inventory_path = os.path.join(settings.PROJECT_PATH, 'ansible', 'inventories', 'dynamic_inventory.ini')
-    extra_vars = f"target_host={hostname}" if hostname != 'all' else None
+def deactivate_exam_mode(request):
+    if request.method == 'POST':
+        playbook_path = os.path.join(settings.PROJECT_PATH, 'ansible', 'playbooks', 'change_to_normal.yml')
+        inventory_path = os.path.join(settings.PROJECT_PATH, 'ansible', 'inventories', 'dynamic_inventory.ini')
+        
+        try:
+            output = execute_ansible_playbook(playbook_path, inventory_path)
 
-    output = execute_ansible_playbook(playbook_path, inventory_path, extra_vars)
-    return JsonResponse({'status': 0 if 'Error' not in output else 1, 'output': output})
+            # Actualizar la base de datos para los ordenadores en el grupo 'online'
+            online_computers = Computer.objects.filter(state=True, warning=False)
+            online_computers.update(exam_mode=False)
+            online_computers.update(icon='computer.png')
+
+            return JsonResponse({'success': True, 'output': output})
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)})
+
+    return JsonResponse({'success': False, 'error': 'Invalid request method.'})
+
+
+@login_required
+@csrf_exempt
+@group_required(['profesorado', 'admin_group'])
+def update_exam_mode(request):
+    if request.method == 'POST':
+        playbook_path = os.path.join(settings.PROJECT_PATH, 'ansible', 'playbooks', 'clone_exm_user.yml')
+        inventory_path = os.path.join(settings.PROJECT_PATH, 'ansible', 'inventories', 'dynamic_inventory.ini')
+        
+        try:
+            output = execute_ansible_playbook(playbook_path, inventory_path)
+            return JsonResponse({'success': True, 'output': output})
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)})
+
+    return JsonResponse({'success': False, 'error': 'Invalid request method.'})
 
 

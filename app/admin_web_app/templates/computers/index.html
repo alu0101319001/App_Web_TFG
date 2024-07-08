@@ -92,7 +92,8 @@
                     'state': estado,
                     'mac': data.mac,
                     'ip': data.ip,
-                    'warning': data.warning
+                    'warning': data.warning,
+                    'exam_mode': data.exam_mode
                 }));
                 
                 computerDetails.innerHTML = `
@@ -110,8 +111,11 @@
                 const sidebarBody = document.querySelector('.sidebar-body');
                 sidebarBody.innerHTML = `
                     <h5>Actions</h5>
-                    <button class="btn btn-primary mb-2" onclick="turnOnComputer('${computer_data}')">Turn ON</button>
-                    <button class="btn btn-primary mb-2" onclick="turnOffComputer('${computer_data}')">Turn OFF</button>
+                    <button class="btn btn-success mb-2" onclick="turnOnComputer('${computer_data}')">Turn ON</button>
+                    <button class="btn btn-danger mb-2" onclick="turnOffComputer('${computer_data}')">Turn OFF</button>
+                    <button class="btn ${data.exam_mode ? 'btn-secondary' : 'btn-dark'}" onclick="toggleExmMode('${computer_data}')">
+                        ${data.exam_mode ? 'Deactivate Exm Mode' : 'Activate Exm Mode'}
+                    </button>
                     <button class="btn btn-warning mb-2" onclick="upgradeComputer('${computer_data}')">Upgrade</button>
                     <button class="btn btn-warning mb-2" onclick="executeCommand('${computer_data}')">Execute Command</button>
                     <button class="btn ${data.warning ? 'btn-danger' : 'btn-secondary'}" onclick="toggleWarning('${computer_data}')">
@@ -246,6 +250,40 @@
             console.error('Error:', error);
             alert('An error occurred in toggleWarning function');
         });
+    }
+
+    function toggleExmMode(computerInfoEncoded) {
+        const computerInfo = JSON.parse(decodeURIComponent(computerInfoEncoded));
+        const computerId = computerInfo.id;
+
+        if (requestData) {
+            showLoadingOverlay(`Running Toggle Exm Mode for ${hostname}...`);
+
+            fetch(`/toggle-exam-mode/${computerId}/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    location.reload();
+                } else {
+                    alert('Error toggling Exam Mode');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error ocurred in toggleExmMode function');
+            })
+            .finally(() => {
+                hideLoadingOverlay();
+            });
+        } else {
+            alert('Error in get the computer information.');
+        }
     }
 
     function getCookie(name) {

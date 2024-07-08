@@ -19,7 +19,9 @@ urlpatterns = [
     path('execute-command/', views.execute_command, name='execute_command'),
     path('run-sh-script/', views.run_sh_script, name='run_sh_script'),
     path('toggle-warning/<int:computer_id>/', views.toggle_warning, name='toggle_warning'),
-    path('activate_exam_mode/<str:hostname>/', views.activate_exam_mode, name='activate_exam_mode_with_host'),
-    path('deactivate_exam_mode/<str:hostname>/', views.deactivate_exam_mode, name='deactivate_exam_mode_with_host'),
+    path('toggle-exam-mode/<int:computer_id>/', views.toggle_exam_mode, name='toggle_exam_mode'),
+    path('activate-exam-mode/', views.activate_exam_mode, name='activate_exam_mode'),
+    path('deactivate-exam-mode/', views.deactivate_exam_mode, name='deactivate_exam_mode'),
+    path('update-exam-mode/', views.update_exam_mode, name='update_exam_mode'),
 ]
 
