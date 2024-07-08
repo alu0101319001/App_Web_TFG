@@ -11,8 +11,12 @@ def obtener_macs(ruta_archivo, script_function, nombre_host=None):
         section = "offline"
     elif script_function == "online":
         section = "online"
+    elif script_function == "warning":
+        section = "warning"
+    elif script_function == "examMode":
+        section = "examMode"
     else:
-        print("Error: El argumento script_function debe ser 'offline' u 'online'")
+        print("Error: El argumento script_function debe ser 'offline','online','warning' o 'examMode'.")
         sys.exit(1)
 
     if section in config:

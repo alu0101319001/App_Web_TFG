@@ -9,12 +9,17 @@
     <!-- Incluir tus estilos personalizados -->
     {% load static %}
     <link href="{% static 'css/styles.css' %}?v={{ timestamp }}" rel="stylesheet">
+    <!-- Enlace a Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- Agregar jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 </head>
 <body>
-    <header class="bg-dark text-white text-center py-3">
-        <h1>Admin Web App</h1>
+    <header class="bg-dark text-white text-center py-3 d-flex align-items-center">
+        <a href="/admin/" class="btn btn-link text-white me-auto">
+            <i class="fas fa-cog"></i>
+        </a>
+        <h1 class="flex-grow-1">Admin Web App</h1>
     </header>
     <div class="container-fluid">
         <div class="row">
@@ -27,8 +32,8 @@
                     <button id="turnOffAllButton" class="btn btn-danger">Turn OFF All</button>
                     <button id="copyFilesButton" class="btn btn-primary">Copy Files</button>
                     <button id="synchronizeListButton" class="btn btn-primary">Synchronize List</button>
-                    <button id="runScriptButton" class="btn btn-warning">Run .sh Script</button>
                     <button id="executeCommandButton" class="btn btn-warning">Execute Command</button>
+                    <button id="runScriptButton" class="btn btn-warning">Run .sh Script</button>
                 </div>
             </aside>
             <!-- Contenido principal -->
