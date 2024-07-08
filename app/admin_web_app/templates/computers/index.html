@@ -102,6 +102,7 @@
                     <p><strong>MAC:</strong> ${data.mac}</p>
                     <p><strong>IP:</strong> ${data.ip}</p>
                     <p><strong>Warning:</strong> ${data.warning}</p>
+                    <p><strong>Exam Mode:</strong> ${data.exam_mode}</p>
                 `;
 
                 noComputerSelectedMessage.style.display = 'none';
@@ -256,34 +257,31 @@
         const computerInfo = JSON.parse(decodeURIComponent(computerInfoEncoded));
         const computerId = computerInfo.id;
 
-        if (requestData) {
-            showLoadingOverlay(`Running Toggle Exm Mode for ${hostname}...`);
+        showLoadingOverlay(`Toggling Exam Mode for ${computerInfo.name}...`);
 
-            fetch(`/toggle-exam-mode/${computerId}/`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': '{{ csrf_token }}'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    location.reload();
-                } else {
-                    alert('Error toggling Exam Mode');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('An error ocurred in toggleExmMode function');
-            })
-            .finally(() => {
-                hideLoadingOverlay();
-            });
-        } else {
-            alert('Error in get the computer information.');
-        }
+        fetch(`/toggle-exam-mode/${computerId}/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(`Exam mode ${data.exam_mode ? 'activated' : 'deactivated'} successfully!`);
+                location.reload();
+            } else {
+                alert('Error toggling Exam Mode: ' + data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while toggling Exam Mode.');
+        })
+        .finally(() => {
+            hideLoadingOverlay();
+        });
     }
 
     function getCookie(name) {

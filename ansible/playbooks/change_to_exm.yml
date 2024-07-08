@@ -16,10 +16,27 @@
 
     - name: Esperar 1 segundo
       pause:
-        seconds: 1
+        seconds: 3
+
+    - name: Copiar configuración de LightDM para modo examen
+      copy:
+        src: /etc/lightdm/lightdm.conf.exam
+        dest: /etc/lightdm/lightdm.conf
+        owner: root
+        group: root
+        mode: '0644'
 
     - name: Iniciar servicio LightDM examen
       systemd:
         name: lightdm_exam
         state: started
         enabled: yes
+
+    - name: Esperar 1 segundo
+      pause:
+        seconds: 1
+
+    - name: Reiniciar LightDM para aplicar los cambios
+      systemd:
+        name: lightdm_exam
+        state: restarted

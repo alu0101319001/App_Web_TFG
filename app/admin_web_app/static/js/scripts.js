@@ -301,6 +301,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.json())
         .then(data => {
+            location.reload();
             if (data.success) {
                 alert('Exam mode activated successfully!');
             } else {
@@ -328,6 +329,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.json())
         .then(data => {
+            location.reload();
             if (data.success) {
                 alert('Exam mode deactivated successfully!');
             } else {
@@ -355,6 +357,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.json())
         .then(data => {
+            location.reload()
             if (data.success) {
                 alert('Exam mode updated successfully!');
             } else {

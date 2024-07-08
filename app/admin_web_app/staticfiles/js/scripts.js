@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const copyFilesButton = document.getElementById('copyFilesButton');
     const executeCommandButton = document.getElementById('executeCommandButton');
     const synchronizeListButton = document.getElementById('synchronizeListButton');
+    const activateExamModeButton = document.getElementById('activateExamModeButton');
+    const deactivateExamModeButton = document.getElementById('deactivateExamModeButton');
+    const updateExamModeButton = document.getElementById('updateExmMode');
 
     function showLoadingOverlay(name_function=null) {
         const loadingMessage = document.getElementById('loadingMessage');
@@ -286,6 +289,90 @@ document.addEventListener('DOMContentLoaded', function() {
         return cookieValue;
     }   
 
+    function handleActivateExamMode() {
+        showLoadingOverlay('Activating Exam Mode...');
+        fetch('/activate-exam-mode/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({})
+        })
+        .then(response => response.json())
+        .then(data => {
+            location.reload();
+            if (data.success) {
+                alert('Exam mode activated successfully!');
+            } else {
+                alert('Error activating exam mode: ' + data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while activating exam mode.');
+        })
+        .finally(() => {
+            hideLoadingOverlay();
+        });
+    }
+
+    function handleDeactivateExamMode() {
+        showLoadingOverlay('Deactivating Exam Mode...');
+        fetch('/deactivate-exam-mode/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({})
+        })
+        .then(response => response.json())
+        .then(data => {
+            location.reload();
+            if (data.success) {
+                alert('Exam mode deactivated successfully!');
+            } else {
+                alert('Error deactivating exam mode: ' + data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while deactivating exam mode.');
+        })
+        .finally(() => {
+            hideLoadingOverlay();
+        });
+    }
+
+    function handleUpdateExamMode() {
+        showLoadingOverlay('Updating Exam Mode Account in Hosts...');
+        fetch('/update-exam-mode/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({})
+        })
+        .then(response => response.json())
+        .then(data => {
+            location.reload()
+            if (data.success) {
+                alert('Exam mode updated successfully!');
+            } else {
+                alert('Error updating exam mode: ' + data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while updating exam mode.');
+        })
+        .finally(() => {
+            hideLoadingOverlay();
+        });
+
+    }
 
     if (turnOnAllButton) {
         turnOnAllButton.addEventListener('click', function() {
@@ -367,5 +454,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (synchronizeListButton) {
         synchronizeListButton.addEventListener('click', handleSynchronizeList)
+    }
+    
+    if (activateExamModeButton) {
+        activateExamModeButton.addEventListener('click', handleActivateExamMode);
+    }
+
+    if (deactivateExamModeButton) {
+        deactivateExamModeButton.addEventListener('click', handleDeactivateExamMode);
+    }
+
+    if (updateExamModeButton) {
+        updateExamModeButton.addEventListener('click', handleUpdateExamMode);
     }
 });

@@ -9,13 +9,23 @@
         state: present
         password: "$6$dnxO43JU50C$4hnHktojGLemDZNRh8ydwQK.8Tx9QQuZQ.4EqsDQyGV0iTPuQlpFsU0bsll4nNFc7JclPIV6vY//isArRFqI6/"
         shell: /bin/bash
+        update_password: always
 
-    - name: Crear directorio home para 'modo_examen'
+    - name: Asegurarse de que el directorio home existe
       file:
         path: /home/modo_examen
         state: directory
         owner: modo_examen
         group: modo_examen
+
+    - name: Sincronizar el directorio home desde el servidor a los hosts
+      synchronize:
+        src: /home/modo_examen/
+        dest: /home/modo_examen/
+        archive: yes
+        delete: no
+        recursive: yes
+      delegate_to: localhost
 
     - name: Copiar .bashrc desde el servidor a los hosts
       copy:

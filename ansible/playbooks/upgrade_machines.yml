@@ -1,4 +1,3 @@
-# /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/upgrade_machines.yml
 - name: Update and upgrade packages on remote machine
   hosts: localhost
   become: yes
@@ -6,38 +5,36 @@
     target_host: "{{ target_host }}"
   tasks:
     - name: Ensure target host is reachable
-      delegate_to: "{{ target_host }}"
       wait_for_connection:
-        timeout: 10
+        timeout: 300
+      delegate_to: "{{ target_host }}"
 
     - name: Update APT package list
+      command: apt-get update
       delegate_to: "{{ target_host }}"
-      apt:
-        update_cache: yes
+      become: yes
 
     - name: Upgrade all APT packages
+      command: apt-get upgrade -y
       delegate_to: "{{ target_host }}"
-      apt:
-        upgrade: dist
-        autoremove: yes
-        allow_unauthenticated: yes
+      become: yes
 
     - name: Auto-remove unused packages
+      command: apt-get autoremove -y
       delegate_to: "{{ target_host }}"
-      apt:
-        autoremove: yes
-        purge: yes
+      become: yes
 
     - name: Run custom command
+      command: "{{ custom_command }}"
       delegate_to: "{{ target_host }}"
-      shell: "{{ custom_command }}"
+      become: yes
       when: custom_command is defined
 
-    - name: Shutdown the machine
-      delegate_to: "{{ target_host }}"
+    - name: Reboot the machine if custom_command is not defined
       command: shutdown -r now
+      delegate_to: "{{ target_host }}"
+      become: yes
       async: 0
       poll: 0
       ignore_errors: yes
       when: custom_command is not defined
-

@@ -109,6 +109,7 @@ def get_computer_details(request, computer_id):
         'mac': computer.mac,
         'ip': computer.ip,
         'warning': computer.warning,
+        'exam_mode': computer.exam_mode
     }
     return JsonResponse(data)
 
@@ -347,6 +348,9 @@ def sync_list(request):
 
     return JsonResponse({'error': 'Invalid request'}, status=400)
 
+@csrf_exempt
+@login_required
+@group_required(['profesorado', 'admin_group'])
 @require_http_methods(["POST"])
 def activate_exam_mode(request):
     if request.method == 'POST':
@@ -367,6 +371,9 @@ def activate_exam_mode(request):
 
     return JsonResponse({'success': False, 'error': 'Invalid request method.'})
 
+@csrf_exempt
+@login_required
+@group_required(['profesorado', 'admin_group'])
 @require_http_methods(["POST"])
 def deactivate_exam_mode(request):
     if request.method == 'POST':
