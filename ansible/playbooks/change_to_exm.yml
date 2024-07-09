@@ -1,3 +1,4 @@
+# /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/change_to_exm.yml
 ---
 - name: Alternar a modo examen
   hosts: "{{ target_host | default('online') }}"
@@ -15,14 +16,14 @@
         enabled: no
       ignore_errors: yes
 
-    - name: Esperar 1 segundo
+    - name: Esperar 3 segundo
       pause:
         seconds: 3
 
     - name: Copiar configuración de LightDM para modo examen
       copy:
         src: /etc/lightdm/lightdm.conf.exam
-        dest: /etc/lightdm/lightdm.conf
+        dest: /etc/lightdm/lightdm.conf.exam
         owner: root
         group: root
         mode: '0644'

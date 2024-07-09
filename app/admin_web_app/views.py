@@ -361,9 +361,9 @@ def activate_exam_mode(request):
             output = execute_ansible_playbook(playbook_path, inventory_path)
 
             # Actualizar la base de datos para los ordenadores en el grupo 'online'
-            online_computers = Computer.objects.filter(state=True, warning=False)
-            online_computers.update(exam_mode=True)
-            online_computers.update(icon='computer--pencil.png')
+            # online_computers = Computer.objects.filter(state=True, warning=False)
+            # online_computers.update(exam_mode=True)
+            # online_computers.update(icon='computer--pencil.png')
 
             return JsonResponse({'success': True, 'output': output})
         except Exception as e:
@@ -384,9 +384,9 @@ def deactivate_exam_mode(request):
             output = execute_ansible_playbook(playbook_path, inventory_path)
 
             # Actualizar la base de datos para los ordenadores en el grupo 'online'
-            online_computers = Computer.objects.filter(state=True, warning=False)
-            online_computers.update(exam_mode=False)
-            online_computers.update(icon='computer.png')
+            # online_computers = Computer.objects.filter(state=True, warning=False)
+            # online_computers.update(exam_mode=False)
+            # online_computers.update(icon='computer.png')
 
             return JsonResponse({'success': True, 'output': output})
         except Exception as e:

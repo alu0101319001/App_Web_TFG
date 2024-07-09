@@ -1,3 +1,4 @@
+# /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/clone_exm_user.yml
 ---
 - name: Clonar perfil de usuario 'modo_examen' en todos los hosts
   hosts: online

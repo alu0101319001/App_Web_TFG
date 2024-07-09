@@ -61,9 +61,9 @@ class Command(BaseCommand):
 
         # Determina el valor de warning y examMode según la lógica deseada
         if existing_computer:
-            # Si ya existe un registro para esta MAC, mantener el estado actual de warning
+            # Si ya existe un registro para esta MAC, mantener el estado actual de warning y resetear el exam_mode
             warning = existing_computer.warning
-            exam_mode = existing_computer.exam_mode
+            exam_mode = False
         else:
             # Si no existe, establece el valor predeterminado de warning y exam_mode
             warning = False  
@@ -72,7 +72,7 @@ class Command(BaseCommand):
         # Determina el icono basado en el estado de warning y exam_mode
         if warning:
             icon = 'computer--exclamation.png' # if status == True else 'computer-warning-off.png'
-        elif exam_mode:
+        elif exam_mode and status == True:
             icon = 'computer--pencil.png'
         else:
             icon = 'computer.png' if status == True else 'computer-off.png'

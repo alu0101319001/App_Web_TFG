@@ -1,3 +1,4 @@
+# /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/create_exm_user.yml
 ---
 - name: Crear y configurar perfil de usuario 'modo_examen' en el servidor
   hosts: localhost
