@@ -1,7 +1,7 @@
 # /home/administrador/Documentos/Repositorios/tfg_app_web_proyecto/ansible/playbooks/change_to_normal.yml
 ---
 - name: Alternar a modo normal
-  hosts: "{{ target_host | default('online') }}"
+  hosts: "{{ target_host | default('examMode') }}"
   become: yes
   tasks:
     - name: Detener servicio LightDM examen
@@ -33,11 +33,4 @@
         state: started
         enabled: yes
 
-    - name: Esperar 1 segundo
-      pause:
-        seconds: 3
 
-    - name: Reiniciar LightDM para aplicar los cambios
-      systemd:
-        name: lightdm
-        state: restarted

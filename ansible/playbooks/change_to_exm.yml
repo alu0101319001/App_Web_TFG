@@ -33,11 +33,4 @@
         name: lightdm_exam
         state: started
 
-    - name: Esperar 1 segundo
-      pause:
-        seconds: 1
 
-    - name: Reiniciar LightDM para aplicar los cambios
-      systemd:
-        name: lightdm_exam
-        state: restarted

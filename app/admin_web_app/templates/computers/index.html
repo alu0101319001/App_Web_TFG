@@ -128,23 +128,97 @@
     }
 
     function turnOnComputer(computerInfoEncoded) {
+        showLoadingOverlay('Turning on computer...');
         const computerInfo = JSON.parse(decodeURIComponent(computerInfoEncoded));
-        console.log("Encendiendo el ordenador:", computerInfo.name);
-        executePlaybook('up_computers_down.yml', computerInfo.name);    
-    }
+        const id = computerInfo.id
+
+        fetch(`/turn-on-computer/${id}/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log("Computer turned on successfully:", computerInfo.name);
+                alert("Encendido ejecutado correctamente.");
+                location.reload
+            } else {
+                alert('Error turning on computer: ' + data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while turning on the computer.');
+        })
+        .finally(() => {
+            hideLoadingOverlay();
+        });
+    }   
 
     function turnOffComputer(computerInfoEncoded) {
+        showLoadingOverlay('Turning off computer...');
         const computerInfo = JSON.parse(decodeURIComponent(computerInfoEncoded));
-        console.log("Apagando el ordenador:", computerInfo.name);
-        executePlaybook('down_computers_up.yml', computerInfo.name);
+        const id = computerInfo.id
+
+        fetch(`/turn-off-computer/${id}/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log("Computer turned off successfully:", computerInfo.name);
+                alert("Apagado ejecutado correctamente.");
+                location.reload()
+            } else {
+                alert('Error turning off computer: ' + data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while turning off the computer.');
+        })
+        .finally(() => {
+            hideLoadingOverlay();
+        });
     }
 
     function upgradeComputer(computerInfoEncoded) {
+        showLoadingOverlay('Upgrading computer...');
         const computerInfo = JSON.parse(decodeURIComponent(computerInfoEncoded));
-        console.log("Actualizando el ordenador:", computerInfo.name);
         const command = prompt('Introduce a value for COMMAND (optional):');
-        console.log("Command: ", command)
-        executePlaybook('upgrade_machines.yml', computerInfo.name, command)
+        const id = computerInfo.id
+
+        fetch(`/upgrade-computer/${id}/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({ command: command })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log("Computer upgraded successfully with command:", command);
+                alert("Actualización ejecutada correctamente. Espere unos minutos antes de realizar el siguiente paso en este ordenador.");
+            } else {
+                alert('Error upgrading computer: ' + data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while upgrading the computer.');
+        })
+        .finally(() => {
+            hideLoadingOverlay();
+        });
     }
 
     function executePlaybook(playbook, hostname, customCommand = null) {
@@ -232,6 +306,8 @@
         const computerInfo = JSON.parse(decodeURIComponent(computerInfoEncoded));
         const computerId = computerInfo.id
 
+        showLoadingOverlay(`Toggling Warning Advise for ${computerInfo.name}...`);
+
         fetch(`/toggle-warning/${computerId}/`, {
             method: 'POST',
             headers: {
@@ -250,6 +326,9 @@
         .catch(error => {
             console.error('Error:', error);
             alert('An error occurred in toggleWarning function');
+        })
+        .finally(() => {
+            hideLoadingOverlay();
         });
     }
 

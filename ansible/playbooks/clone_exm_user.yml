@@ -86,8 +86,8 @@
 
     - name: Copiar archivo de configuración de AccountsService para modo_examen
       copy:
-        src: /var/lib/AccountsService/user/modo_examen
-        dest: /var/lib/AccountsService/user/modo_examen
+        src: /var/lib/AccountsService/users/modo_examen 
+        dest: /var/lib/AccountsService/users/modo_examen 
         owner: root
         group: root
         mode: '0644'

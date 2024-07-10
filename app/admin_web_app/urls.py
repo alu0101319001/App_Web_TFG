@@ -23,5 +23,8 @@ urlpatterns = [
     path('activate-exam-mode/', views.activate_exam_mode, name='activate_exam_mode'),
     path('deactivate-exam-mode/', views.deactivate_exam_mode, name='deactivate_exam_mode'),
     path('update-exam-mode/', views.update_exam_mode, name='update_exam_mode'),
+    path('turn-on-computer/<int:computer_id>/', views.turn_on_computer, name='turn_on_computer'),
+    path('turn-off-computer/<int:computer_id>/', views.turn_off_computer, name='turn_off_computer'),
+    path('upgrade-computer/<int:computer_id>/', views.upgrade_computer, name='upgrade_computer')
 ]
 

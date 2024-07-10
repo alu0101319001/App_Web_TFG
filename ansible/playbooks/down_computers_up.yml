@@ -1,50 +1,15 @@
 ---
 - name: Apagar máquinas en línea
   hosts: "{{ target_host | default('localhost') }}"
-  become: yes
   tasks:
-    - name: Desactivar modo examen y activar modo normal
-      block:
-        - name: Detener servicio LightDM examen
-          systemd:
-            name: lightdm_exam
-            state: stopped
-            enabled: no
-
-        - name: Detener servicio LightDM normal (si está activo)
-          systemd:
-            name: lightdm
-            state: stopped
-          ignore_errors: yes
-
-        - name: Esperar 1 segundo
-          pause:
-            seconds: 1
-
-        - name: Copiar configuración de LightDM para modo normal
-          copy:
-            src: /etc/lightdm/lightdm.conf.normal
-            dest: /etc/lightdm/lightdm.conf
-            owner: root
-            group: root
-            mode: '0644'
-
-        - name: Iniciar y habilitar servicio LightDM normal
-          systemd:
-            name: lightdm
-            state: started
-            enabled: yes
-
-        - name: Esperar 1 segundo
-          pause:
-            seconds: 1
-
     - name: Apagar máquinas en el grupo [online]
       shell: |
         shutdown -h now
-        sleep 10  # Espera 10 segundos para permitir que la máquina se apague completamente
+        sleep 10  
       delegate_to: "{{ item }}"
-      ignore_errors: yes  # Ignora errores de conexión, ya que la máquina se está apagando
+      become: yes
+      become_method: sudo
+      ignore_errors: yes  
       with_items: "{{ groups['online'] if target_host is undefined else [target_host] }}"
 
     - name: Verificar que las máquinas se han apagado

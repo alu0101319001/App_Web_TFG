@@ -1,0 +1,17 @@
+- name: Ejecutar script de escaneo en localhost para un host específico
+  hosts: localhost
+  tasks:
+    - name: Ejecutar script
+      shell: "{{ script_path }} {{ target_host }}"
+      register: script_output
+
+    - name: Guardar salida del script
+      copy:
+        content: "{{ script_output.stdout_lines | join('\n') }}"
+        dest: "{{ output_directory }}/ansible_scan_output_{{ target_host }}.log"
+      delegate_to: localhost
+
+  vars:
+      script_path: "{{ lookup('env', 'HOME') }}/Documentos/Repositorios/tfg_app_web_proyecto/app/admin_web_app/management/bash/scan_for_one_computer.sh"
+      target_host: "{{ target_host }}"
+      output_directory: "{{ lookup('env', 'HOME') }}/Documentos/Repositorios/tfg_app_web_proyecto/outputs/scan_for_hosts/"

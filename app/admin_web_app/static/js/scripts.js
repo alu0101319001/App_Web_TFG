@@ -62,19 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => console.error('Error:', error));
     }
 
-    // Función para encender el ordenador seleccionado
-    function turnOnComputer(computerInfoEncoded) {
-        const computerInfo = JSON.parse(decodeURIComponent(computerInfoEncoded));
-        console.log("Encendiendo el ordenador:", computerInfo.name);
-        executePlaybook('up_computers_down.yml', computerInfo.name);    
-    }
-
-    // Función para apagar el ordenador seleccionado
-    function turnOffComputer(computerInfoEncoded) {
-        const computerInfo = JSON.parse(decodeURIComponent(computerInfoEncoded));
-        console.log("Apagando el ordenador:", computerInfo.name);
-        executePlaybook('down_computers_up.yml', computerInfo.name);
-    }
 
     // Función para ejecutar el playbook de Ansible con comando personalizado
     function executePlaybook(playbook, hostname, customCommand = null) {
@@ -384,6 +371,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 .then(data => {
                     console.log(data);
                     alert("Playbook para encender todos los dispositivos ejecutado correctamente. Espere unos 2 minutos antes de realizar el escaneo.");
+                    location.reload()
                 })
                 .catch(error => console.error('Error:', error))
                 .finally(() => {
@@ -405,6 +393,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 .then(data => {
                     console.log(data);
                     alert("Playbook para apagar todos los dispositivos ejecutado correctamente. Espere unos 2 minutos antes de realizar el escaneo.");
+                    location.reload()
                 })
                 .catch(error => console.error('Error:', error))
                 .finally(() => {

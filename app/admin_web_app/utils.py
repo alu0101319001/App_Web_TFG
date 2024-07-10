@@ -1,6 +1,3 @@
-from django.http import HttpResponse
-from django.conf import settings
-from django.core.management import execute_from_command_line
 import subprocess
 import os
 import io
@@ -8,6 +5,10 @@ import sys
 import time
 import re
 import json
+from django.http import HttpResponse
+from django.conf import settings
+from django.core.management import execute_from_command_line
+from .models import Computer
 
 
 # Añade el directorio del proyecto al PYTHONPATH
@@ -54,11 +55,9 @@ def run_external_script(script_path):
 
 def run_scan_playbook():
     scan_yml_path = os.path.join(settings.PROJECT_PATH, "ansible", "playbooks", "scan_p1_19_lab.yml")
-    update_yml_path = os.path.join(settings.PROJECT_PATH, "ansible", "playbooks", "update_inventory.yml")
 
     commands = [
-        f"sudo ansible-playbook -vvv {scan_yml_path}",
-        f"sudo ansible-playbook -vvv {update_yml_path}"
+        f"sudo ansible-playbook -vvv {scan_yml_path}"
     ]
 
     result_list = []
@@ -80,7 +79,7 @@ def run_scan_playbook():
     return result_list
 
 def run_scan_update():
-    script_path = os.path.join(settings.BASE_DIR, 'admin_web_app', 'management', 'commands', 'update_computers_from_inventory.py')
+    script_path = os.path.join(settings.BASE_DIR, 'admin_web_app', 'management', 'commands', 'update_all_hosts.py')
     
     # Capturar la salida del script en objetos StringIO
     stdout_capture = io.StringIO()
@@ -92,7 +91,37 @@ def run_scan_update():
 
     try:
         # Ejecutar el script
-        execute_from_command_line(['manage.py', 'update_computers_from_inventory'])
+        execute_from_command_line(['manage.py', 'update_all_hosts'])
+    finally:
+        # Restaurar la salida estándar y la salida de error
+        sys.stdout = sys.__stdout__
+        sys.stderr = sys.__stderr__
+
+    # Obtener la salida del objeto StringIO
+    stdout_output = stdout_capture.getvalue()
+    stderr_output = stderr_capture.getvalue()
+
+     # Procesar la salida para crear una cadena de log
+    log_output = stdout_output
+    if stderr_output:
+        log_output += f"\nError: {stderr_output}"
+
+    return log_output
+
+def run_single_scan_update(hostname):
+    script_path = os.path.join(settings.BASE_DIR, 'admin_web_app', 'management', 'commands', 'update_single_host.py')
+    
+    # Capturar la salida del script en objetos StringIO
+    stdout_capture = io.StringIO()
+    stderr_capture = io.StringIO()
+
+    # Redirigir la salida estándar y la salida de error al objeto StringIO
+    sys.stdout = stdout_capture
+    sys.stderr = stderr_capture
+
+    try:
+        # Ejecutar el script
+        execute_from_command_line(['manage.py', 'update_single_host', hostname])
     finally:
         # Restaurar la salida estándar y la salida de error
         sys.stdout = sys.__stdout__
@@ -136,4 +165,18 @@ def run_copyFiles_playbook(folder, files):
     except subprocess.CalledProcessError as e:
         return {'error': f'An error occurred: {e}'}
 
+def update_exam_mode_and_icon_for_online_computers(new_exam_mode, new_icon):
+    # Obtiene todas las computadoras con estado True
+    online_computers = Computer.objects.filter(state=True)
+    
+    # Extrae las IDs de las computadoras
+    computer_ids = list(online_computers.values_list('id', flat=True))
+    
+    # Actualiza el estado de exam_mode y el icono para todas las computadoras en línea
+    for computer in online_computers:
+        computer.exam_mode = new_exam_mode
+        computer.icon = new_icon
+        computer.save()
+
+    return computer_ids
 
